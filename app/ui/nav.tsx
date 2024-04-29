@@ -12,9 +12,19 @@ export default function Nav() {
 
   return (
     <>
-      <Link href='/mobilemenu'>
-        <Image src="/hamburgernavbar.png" alt="menu" width={30} height={30} />
-      </Link>
+      {isMenuOpen ? (
+        <Link href='/' onClick={toggleMenu}>
+
+          <Image src="/hamburgernavbar.png" alt="menu" width={30} height={30} />
+
+        </Link>
+      ) : (
+        <Link href='/mobilemenu' onClick={toggleMenu}>
+
+          <Image src="/hamburgernavbar.png" alt="menu" width={30} height={30} />
+
+        </Link>
+      )}
     </>
   )
 }
