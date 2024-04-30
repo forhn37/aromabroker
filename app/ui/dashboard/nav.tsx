@@ -11,7 +11,7 @@ export default function Nav() {
   };
 
   return (
-    <>
+    <div className="flex justify-center items-center">
       {isMenuOpen ? (
         <Link href='/' onClick={toggleMenu}>
 
@@ -25,6 +25,6 @@ export default function Nav() {
 
         </Link>
       )}
-    </>
+    </div>
   )
 }

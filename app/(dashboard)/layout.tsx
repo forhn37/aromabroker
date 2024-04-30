@@ -10,7 +10,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <header className="flex h-2/6 justify-between p-4">
+      <header className="flex h-2/6 justify-between p-6">
         <Image src="/mainlogo.png" alt="logo" width={100} height={50} />
         <Nav />
       </header>

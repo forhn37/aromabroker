@@ -6,8 +6,8 @@ import { sans } from "./font";
 // 예시 파일
 export const metadata: Metadata = {
   title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
+    template: '%s | Aromabroker',
+    default: 'Aromabroker',
   },
   description: 'The official Next.js Learn Dashboard built with App Router.',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
