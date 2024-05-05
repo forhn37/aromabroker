@@ -1,8 +1,10 @@
+import Imageslide from "@/app/ui/dashboard/imageslide";
+
 export default function Home() {
 
   return (
-    <main>
-      Hello Aromabroker
+    <main className="w-screen">
+      <Imageslide />
     </main>
   );
 }

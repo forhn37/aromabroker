@@ -1,6 +1,6 @@
 import Image from "next/image";
-import "../ui/globals.css"
-import Nav from "../ui/dashboard/nav";
+import "@/app/ui/globals.css"
+import Nav from "@/app/ui/dashboard/nav";
 
 
 export default function Layout({

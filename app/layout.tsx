@@ -1,8 +1,9 @@
 // TODO : 1. Font select, 2. metadata config
 
-import "./ui/globals.css";
+import "@/app/ui/globals.css";
 import { Metadata } from "next";
-import { sans } from "./font";
+// import { sans } from "@/app/ui/font";
+import { roboto } from "@/app/ui/font";
 // 예시 파일
 export const metadata: Metadata = {
   title: {
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={`${sans.className}`}>{children}</body>
+      <body className={`${roboto.className}`}>{children}</body>
     </html>
   );
 }
