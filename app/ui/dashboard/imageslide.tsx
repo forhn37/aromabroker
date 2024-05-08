@@ -1,33 +1,51 @@
 'use client'
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Imageslide() {
   const imagelist = ['eventimage1', 'eventimage2', 'eventimage3', 'eventimage4', 'eventimage5']
+  const [slideIndex, setSlideIndex] = useState(0);
 
-  const [slideindex, setSlideindex] = useState('0')
-  const interval = setInterval(()=> {
-    const newindex = setSlideindex(slideindex +1)
-  },5000)
+  const leftMove = () => {
+    if (slideIndex > 0) {
+      setSlideIndex(slideIndex - 1);
+    }
+  }
 
-  useEffect(()=> {
-    setInterval(()=> {
-      const newindex = setSlideindex(slideindex +1)
-    },5000)
-  },[])
-  console.log(slideindex)
+  const rightMove = () => {
+    if (slideIndex < imagelist.length - 1) {
+      setSlideIndex(slideIndex + 1);
+    }
+  }
+
+  const imageStyle = {
+    transform: `translateX(-${slideIndex * 100}%)`
+  }
+
   return (
-    <div className="flex">
-      {imagelist.map((image, index) => (
-        <Image
-          key={index}
-          src={`http://localhost:3000/${image}.jpg`}
-          width={500}
-          height={300}
-          alt="Picture of the author"
-          className="w-full"
-        />
-      ))}
-    </div>
-  )
+    <>
+      <div className="w-full h-56 flex transition-transform duration-500 relative" style={imageStyle} >
+        {imagelist.map((image, index) => (
+          <Image
+            // fill
+            key={index}
+            src={`http://localhost:3000/${image}.jpg`}
+            width={430}
+            height={400}
+            // className="object-cover"
+            style={{
+              width: 'auto',
+              height: 'auto',
+            }}
+            sizes="100vw"
+            alt={`Picture ${index}`}
+          // className="w-full"
+
+          />
+        ))}
+      </div>
+      <button onClick={leftMove}>이전</button>
+      <button onClick={rightMove}>다음</button>
+    </>
+  );
 }
