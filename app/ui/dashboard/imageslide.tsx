@@ -28,23 +28,40 @@ export default function Imageslide() {
     transform: `translateX(-${slideIndex * 100}%)`
   }
 
+
   return (
     <>
       <div className='flex' style={imageStyle} >
-        <div className="w-full h-1/2">
+        <div className="w-screen h-auto">
           <Image
             // fill
             src={eventimage1}
             // width={430}
-            height={600}
+            // height={600}
             // style={{
-              //   width: 'auto',
-              //   height: 'auto',
-              // }}
-              // sizes="100vw"
-              alt={`Picture ${eventimage1}`}              
-              />
-              </div>
+            //   width: 'auto',
+            //   height: 'auto',
+            // }}
+            // sizes="100vw"
+            alt={`Picture ${eventimage1}`}
+          />
+        </div>
+        <div className="w-auto h-auto ">
+          <Image
+            // fill
+            src={eventimage2}
+            // width={430}
+            // height={800}
+            
+            // style={{
+            //   width: 'auto',
+            //   height: 'auto',
+            // }}
+            // sizes="100vw"
+            // layout="fill"
+            alt={`Picture ${eventimage2}`}
+          />
+        </div>
       </div>
       <button onClick={leftMove}>이전</button>
       <button onClick={rightMove}>다음</button>
