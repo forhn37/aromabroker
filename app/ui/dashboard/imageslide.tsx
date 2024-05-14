@@ -30,32 +30,33 @@ export default function Imageslide() {
 
 
   return (
-    <>
-      <div className='flex' style={imageStyle} >
-        <div className="w-screen h-auto">
+    <div className="h-full">
+      <div style={{...imageStyle, width:'300vw'}} className="flex ">
+        <div className="w-screen" >
           <Image
             // fill
             src={eventimage1}
             // width={430}
             // height={600}
             // style={{
-            //   width: 'auto',
-            //   height: 'auto',
+            //   width: '100vw',
+            //   height: '40vh',
             // }}
             // sizes="100vw"
+            
             alt={`Picture ${eventimage1}`}
           />
         </div>
-        <div className="w-auto h-auto ">
+        <div className="w-screen">
           <Image
             // fill
             src={eventimage2}
             // width={430}
-            // height={800}
-            
+            // height={600}
+
             // style={{
-            //   width: 'auto',
-            //   height: 'auto',
+            //   width: '100vw',
+            //   height: '40vh',
             // }}
             // sizes="100vw"
             // layout="fill"
@@ -63,8 +64,10 @@ export default function Imageslide() {
           />
         </div>
       </div>
-      <button onClick={leftMove}>이전</button>
-      <button onClick={rightMove}>다음</button>
-    </>
+      <div className="flex justify-between items-center w-screen text-blue-800 h-full">
+        <button onClick={leftMove} className="z-10 ">이전</button>
+        <button onClick={rightMove} className="z-10">다음</button>
+      </div>
+    </div>
   );
 }

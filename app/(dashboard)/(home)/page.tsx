@@ -4,7 +4,10 @@ export default function Home() {
 
   return (
     <main>
-      <Imageslide />
-    </main>
+      {/* imageslide의 크기 지정요소 */}
+      <div>
+        <Imageslide />
+      </div>
+    </main> 
   );
 }
