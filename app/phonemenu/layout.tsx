@@ -17,7 +17,6 @@ export default function Layout({
         <Nav />
       </header>
       {children}
-      <footer>푸터입니다. </footer>
     </>
   )
 }

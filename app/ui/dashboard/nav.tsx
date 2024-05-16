@@ -19,7 +19,7 @@ export default function Nav() {
 
         </Link>
       ) : (
-        <Link href='/mobilemenu' onClick={toggleMenu}>
+        <Link href='/phonemenu' onClick={toggleMenu}>
 
           <Image src="/hamburgernavbar.png" alt="menu" width={30} height={30} />
 
