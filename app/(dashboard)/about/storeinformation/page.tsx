@@ -5,7 +5,7 @@
 export default function Storeinformation() {
   return (
     <main>
-      Hello Brand
+      Hello Storeinformation
     </main>
   );
 }
