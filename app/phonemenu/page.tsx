@@ -1,17 +1,14 @@
-import { useEffect } from 'react';
-
 export default function Mobilemenu() {
 
   return (
     <div>
-      <h1 className="text-4xl">새로운 메뉴</h1>
-      <div className="list-none ">
-        <li>메뉴1</li>
-        <li>메뉴2</li>
-        <li>메뉴3</li>
-        <li>메뉴4</li>
-        <li>메뉴5</li>
-        <li>메뉴6</li>
+      <div className="list-none text-3xl m-5">
+        <li className='mb-3'>ABOUT</li>
+        <li className='mb-3'>CAFEMENU</li>
+        <li className='mb-3'>SHOP</li>
+        <li className='mb-3'>BUSINESS</li>
+        <li className='mb-3'>CLASS</li>
+        <li className='mb-3'>COMMUNITY</li>
       </div>
     </div>
   );
