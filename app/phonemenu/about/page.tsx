@@ -4,6 +4,9 @@ export default function Mobilemenu() {
 
   return (
     <div>
+      <div className="flex justify-end pr-3">
+        <button className="block">BACK</button>
+      </div>
       <h1 className="text-4xl m-5">ABOUT</h1>
       <div className="list-none text-3xl m-5">
         <Link href="/about/brand">
