@@ -8,11 +8,21 @@ export default function Mobilemenu() {
         <Link href="/phonemenu/about">
           <li className='mb-3'>ABOUT</li>
         </Link>
-        <li className='mb-3'>CAFEMENU</li>
-        <li className='mb-3'>SHOP</li>
-        <li className='mb-3'>BUSINESS</li>
-        <li className='mb-3'>CLASS</li>
-        <li className='mb-3'>COMMUNITY</li>
+        <Link href="/cafemenu">
+          <li className='mb-3'>CAFEMENU</li>
+        </Link>
+        <Link href="/phonemenu/shop">
+          <li className='mb-3'>SHOP</li>
+        </Link>
+        <Link href="/phonemenu/business">
+          <li className='mb-3'>BUSINESS</li>
+        </Link>
+        <Link href="/phonemenu/class">
+          <li className='mb-3'>CLASS</li>
+        </Link>
+        <Link href="/phonemenu/community">
+          <li className='mb-3'>COMMUNITY</li>
+        </Link>
       </div>
     </div>
   );
