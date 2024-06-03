@@ -5,6 +5,7 @@ import Nav from "@/app/ui/dashboard/nav";
 import Link from "next/link";
 
 
+
 export default function Layout({
   children
 }: Readonly<{
@@ -17,10 +18,11 @@ export default function Layout({
         <Link href="/">
           <Image src="/mainlogo.png" alt="logo" width={100} height={50} />
         </Link>
-        <Nav />
+        <Link href='/' className="flex justify-center items-center">
+          <Image src="/hamburgernavbar.png" alt="menu" width={30} height={30} />
+        </Link>
       </header>
       {children}
-      <footer>푸터입니다. </footer>
     </>
   )
 }
