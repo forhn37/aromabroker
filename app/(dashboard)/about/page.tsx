@@ -7,16 +7,17 @@ import Image from 'next/image';
 export default function Brand() {
   return (
     <main className="h-screen">
-      <div className="w-full outline h-1/2 p-2">
+      <div className="w-full h-1/2 p-2">
         <h1 className="text-2xl ">아로마브로커</h1>
         <article>커피 한 잔 속에는 자연이 담겨져 있습니다.
           아로마브로커를 통해 아름다운 자연을 거니세요.
         </article>
-        <div className='flex justify-center'>
-          <Image src="/aboutcoffeimage.jpg" alt="coffeimage" width={400} height={200} />
+        <div className='flex justify-center w-full h-3/4 relative mt-2'>
+          <Image src="/aboutcoffeimage.jpg" alt="coffeimage" fill={true} />
         </div>
+
       </div>
-      <div className="w-full outline h-1/2 p-2">
+      <div className="w-full h-1/2 p-2">
         <div>
           <h1 className="text-2xl ">매장안내</h1>
           <div >
@@ -24,7 +25,7 @@ export default function Brand() {
             <div>매장 위치 : 대전 서구 월평로 2</div>
           </div>
         </div>
-        <div className='mt-2 outline h-64'>
+        <div className='mt-2 outline h-3/4'>
           <div>지도들어갈자리</div>
         </div>
       </div>
