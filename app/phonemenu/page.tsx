@@ -5,7 +5,7 @@ export default function Mobilemenu() {
   return (
     <div>
       <div className="list-none text-3xl m-5">
-        <Link href="/phonemenu/about">
+        <Link href="/about">
           <li className='mb-3'>ABOUT</li>
         </Link>
         <Link href="/cafemenu">
