@@ -20,7 +20,7 @@ export default function Layout({
         <Nav />
       </header>
       {children}
-      <footer>푸터입니다. </footer>
+      <footer>푸터 수정사항 적용중</footer>
     </>
   )
 }
