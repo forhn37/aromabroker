@@ -9,10 +9,43 @@ import Script from 'next/script';
  */
 
 export default function Brand() {
-  const [naverLoaded, setNaverLoaded] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
-    if (naverLoaded) {
+    const loadMapScript = () => {
+      // 기존 스크립트가 있으면 제거합니다.
+      const existingScript = document.getElementById('naver-map-script');
+      if (existingScript) {
+        existingScript.remove();
+      }
+
+      // 새로운 스크립트를 추가합니다.
+      const script = document.createElement('script');
+      script.id = 'naver-map-script';
+      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bukc5nvt67`;
+      script.onload = () => {
+        console.log('Naver Map script loaded successfully');
+        setMapLoaded(true);
+      };
+      script.onerror = (e) => {
+        console.error('Failed to load Naver Map script', e);
+      };
+      document.head.appendChild(script);
+    };
+
+    loadMapScript();
+
+    // Cleanup function: 컴포넌트가 언마운트될 때 스크립트를 제거합니다.
+    return () => {
+      const existingScript = document.getElementById('naver-map-script');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (mapLoaded && window.naver) {
       const mapOptions = {
         center: new naver.maps.LatLng(36.3548684, 127.3580136),
         zoom: 15,
@@ -20,13 +53,13 @@ export default function Brand() {
       const map = new naver.maps.Map('map', mapOptions);
 
       // 마커 설정
-      const marker = new naver.maps.Marker({
+      new naver.maps.Marker({
         position: new naver.maps.LatLng(36.3548684, 127.3580136),
         map: map,
         title: 'My Marker',
       });
     }
-  }, [naverLoaded]);
+  }, [mapLoaded]);
 
   return (
     <main className="h-screen">
@@ -50,17 +83,6 @@ export default function Brand() {
         </div>
         <div className='mt-2 h-3/4'>
           <div id="map" style={{ width: '100%', height: '100%' }}></div>
-          <Script
-            src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bukc5nvt67`}
-            strategy="lazyOnload"
-            onLoad={() => {
-              console.log('Naver Map script loaded successfully');
-              setNaverLoaded(true);
-            }}
-            onError={(e) => {
-              console.error('Failed to load Naver Map script', e);
-            }}
-          />
         </div>
       </div>
     </main>
