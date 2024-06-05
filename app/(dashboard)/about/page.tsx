@@ -56,7 +56,7 @@ export default function Brand() {
       new naver.maps.Marker({
         position: new naver.maps.LatLng(36.3548684, 127.3580136),
         map: map,
-        title: 'My Marker',
+        title: 'AROMABROKER',
       });
     }
   }, [mapLoaded]);
