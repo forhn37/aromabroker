@@ -4,34 +4,40 @@ import Image from 'next/image';
 
 export default function Home() {
   const [translateX, setTranslateX] = useState(0);
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const prvbutton = function() {
+  const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
     if (translateX < 0) {
       const newTranslateX = translateX + 100;
       setTranslateX(newTranslateX);
-      containerRef.current.style.transition = 'transform 1s ease-in-out';
-      containerRef.current.style.transform = `translateX(${newTranslateX}vw)`;
+      if (containerRef.current !== null) {
+
+        containerRef.current.style.transition = 'transform 1s ease-in-out';
+        containerRef.current.style.transform = `translateX(${newTranslateX}vw)`;
+      }
     }
   };
 
-  const nextbutton = function() {
+  const nextbutton = function () {
     const newTranslateX = translateX - 100;
-    if (newTranslateX < -200) {
-      // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
-      setTranslateX(0);
-      containerRef.current.style.transition = 'none';
-      containerRef.current.style.transform = `translateX(0vw)`;
+    if (containerRef.current !== null) {
+      if (newTranslateX < -200) {
+        // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
+        setTranslateX(0);
+        containerRef.current.style.transition = 'none';
+        containerRef.current.style.transform = `translateX(0vw)`;
 
-      // 트랜지션 효과를 위해 짧은 시간 후에 다시 설정
-      setTimeout(() => {
+        // 트랜지션 효과를 위해 짧은 시간 후에 다시 설정
+        setTimeout(() => {
+          if (containerRef.current !== null) {
+          containerRef.current.style.transition = 'transform 1s ease-in-out';
+      }}, 50);
+      } else {
+        setTranslateX(newTranslateX);
         containerRef.current.style.transition = 'transform 1s ease-in-out';
-      }, 50);
-    } else {
-      setTranslateX(newTranslateX);
-      containerRef.current.style.transition = 'transform 1s ease-in-out';
-      containerRef.current.style.transform = `translateX(${newTranslateX}vw)`;
+        containerRef.current.style.transform = `translateX(${newTranslateX}vw)`;
+      }
     }
   };
 
