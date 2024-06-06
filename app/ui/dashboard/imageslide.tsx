@@ -15,7 +15,6 @@ export default function Imageslide() {
       const newindex = setSlideindex(slideindex +1)
     },5000)
   },[])
-  console.log(slideindex)
   return (
     <div className="flex">
       {imagelist.map((image, index) => (
