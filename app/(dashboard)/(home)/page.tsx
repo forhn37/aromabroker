@@ -1,6 +1,7 @@
 'use client'
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Card from '@/app/ui/dashboard/card';
 
 export default function Home() {
   const [translateX, setTranslateX] = useState(0);
@@ -88,6 +89,7 @@ export default function Home() {
         <button className="flex justify-center" onClick={prvbutton}>이전</button>
         <button className="flex justify-center" onClick={nextbutton}>다음</button>
       </div>
+      <Card />
     </main>
   )
 }
