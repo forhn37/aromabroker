@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 // pages/api/channelVideos.js
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET() {
   const channelId = 'UCKgiZa1ZEwvtRqKeT3u9d4A'; // 여기에 유튜브 채널 ID를 입력하세요
   const apiKey = 'AIzaSyAV-9GHs1rSCmpPO2dsRPZqdBAtSR8Mvaw'; // 여기에 API 키를 입력하세요
 
@@ -13,8 +13,8 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
 
     const data = await response.json();
     console.log(data)
-    return Response.json(data)
+    return Response.json( data )
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch data' });
+    return Response.json({ error: 'Failed to fetch data' });
   }
 }
