@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+
 // pages/api/channelVideos.js
 export async function GET() {
   const channelId = 'UCKgiZa1ZEwvtRqKeT3u9d4A'; // 여기에 유튜브 채널 ID를 입력하세요
