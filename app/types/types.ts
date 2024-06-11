@@ -36,3 +36,16 @@ export interface YoutubeAPIResponse {
   etag: string;
   items: YoutubeVideo[];
 }
+
+export interface Bean {
+  name: string;
+  price: string;
+  weight: string;
+  strength: string;
+  shippingcost: string;
+  description: string;
+}
+
+export interface Data {
+  beans: Bean[];
+}
