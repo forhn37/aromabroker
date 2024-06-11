@@ -1,12 +1,11 @@
 import Image from 'next/image';
 export default async function Beans({ params }: { params: { bean: string } }) {
 
-  const res = await fetch('http://localhost:3000/data.json/')
+  const res = await fetch('http://localhost:3000/data.json')
   // console.log(res)
   const data = await res.json()
-  console.log(data)
-  const foundBean = data.beans.find(bean => bean.name === params.bean);
-  console.log(foundBean)
+
+  const foundBean = await data.beans.find(bean => bean.name === params.bean);
 
   return (
     <main className='flex flex-col justify-center items-center bg-slate-300 p-3'>
@@ -16,7 +15,9 @@ export default async function Beans({ params }: { params: { bean: string } }) {
         <div className='text-xl mb-2'>{foundBean.name}</div>
         <div className='text-lg mb-2'>{foundBean.price}</div>
         <div className='text-lg mb-2'>{foundBean.weight}</div>
+        <div className='text-lg mb-2'>{foundBean.strength}</div>
         <div>배송비 : {foundBean.shippingcost}</div>
+        <div className='text-lg mb-2'>{foundBean.description}</div>
       </div>
     </main>
   );

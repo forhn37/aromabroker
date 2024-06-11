@@ -1,7 +1,7 @@
 {
   "beans": [
     {
-      "name": "starbuck1",
+      "name": "starbucks1",
       "description": "A brewed drink prepared from roasted coffee beans.",
       "price": 5.99,
       "weight": "200g",
@@ -9,7 +9,7 @@
       "strength": "medium"
     },
     {
-      "name": "starbuck2",
+      "name": "starbucks2",
       "description": "A species of legume native to East Asia.",
       "price": 4.99,
       "weight": "250g",
@@ -17,7 +17,7 @@
       "strength": "light"
     },
     {
-      "name": "starbuck3",
+      "name": "starbucks3",
       "description": "A popular coffee beverage known for its rich flavor.",
       "price": 6.49,
       "weight": "300g",
@@ -25,7 +25,7 @@
       "strength": "city"
     },
     {
-      "name": "starbuck4",
+      "name": "starbucks4",
       "description": "A type of bean often used in traditional Asian dishes.",
       "price": 5.49,
       "weight": "220g",
@@ -33,7 +33,7 @@
       "strength": "medium"
     },
     {
-      "name": "starbuck5",
+      "name": "starbucks5",
       "description": "A high-quality coffee bean sourced from the best farms.",
       "price": 7.99,
       "weight": "350g",
@@ -41,7 +41,7 @@
       "strength": "light"
     },
     {
-      "name": "starbuck6",
+      "name": "starbucks6",
       "description": "A unique bean with a distinctive flavor profile.",
       "price": 8.49,
       "weight": "400g",
