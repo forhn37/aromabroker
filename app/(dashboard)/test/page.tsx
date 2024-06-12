@@ -15,7 +15,7 @@ export default function Home() {
 
       if (error) console.log('Error fetching data:', error)
       else setData(data)
-    console.log(data)
+      console.log(data)
     }
 
     fetchData()
@@ -26,7 +26,17 @@ export default function Home() {
       <h1>Supabase Data</h1>
       <ul>
         {data.map(item => (
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id}>
+            <div>
+              {item.name}
+            </div>
+            <div>
+              {item.weight}
+            </div>
+            <div>
+              {item.price}
+            </div>
+            </li>
         ))}
       </ul>
     </div>
