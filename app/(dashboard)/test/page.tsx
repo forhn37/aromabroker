@@ -11,7 +11,7 @@ export default function Home() {
     const fetchData = async () => {
       const { data, error } = await supabase
         .from('aromabrokertable')
-        .select('*')
+        .select()
 
       if (error) console.log('Error fetching data:', error)
       else setData(data)
