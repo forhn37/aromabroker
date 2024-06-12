@@ -3,7 +3,7 @@ import {Bean, Data} from '@/app/types/types'
 
 export default async function Beans({ params }: { params: { bean: string } }) {
 
-  const res = await fetch('/data.json');
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data.json`);
   const data: Data = await res.json() as Data;
 
   const foundBean: Bean | undefined = data.beans.find(bean => bean.name === params.bean);
