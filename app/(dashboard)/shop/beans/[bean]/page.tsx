@@ -2,7 +2,11 @@ import Image from 'next/image';
 import { Bean, Data } from '@/app/types/types';
 
 export default async function Beans({ params }: { params: { bean: string } }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data.json`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data.json`, {
+    headers: {
+      Accept: "application/json",
+    },
+  });
   if (!res.ok) {
     console.error('Failed to fetch data:', res.status, res.statusText);
     return <div>Failed to fetch data</div>;
