@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Carddetail from "./carddetail";
 
 
-export default function Card({beanCategory}) {
+export default function Card({Category}) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -58,7 +58,7 @@ export default function Card({beanCategory}) {
   return (
     <div className="overflow-hidden mt-3">
       <div className="w-screen p-3 text-2xl">
-        {beanCategory}
+        {Category}
       </div>
       <div className="p-3 text-lg">
         아로마브로커만의 특유한 풍미가 담겨있는 시그니처 원두

@@ -1,7 +1,9 @@
+import Card from "@/app/ui/dashboard/card";
+
 export default function Dripbag() {
   return (
     <main>
-      Hello Dripbag
+      <Card Category={"Drip Bag"}/>
     </main>
   );
 }
