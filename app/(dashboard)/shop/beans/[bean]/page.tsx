@@ -4,7 +4,7 @@ import { supabase } from '@/app/lib/supabase/supabaseClient';
 
 export default async function Beans({ params }: { params: { bean: string } }) {
   const { data, error } = await supabase
-    .from('aromabrokertable')
+    .from('beans')
     .select();
 
   if (error) {
