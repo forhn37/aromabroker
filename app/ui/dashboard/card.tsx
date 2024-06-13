@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Carddetail from "./carddetail";
 
 
-export default function Card() {
+export default function Card({beanCategory}) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -57,8 +57,11 @@ export default function Card() {
 
   return (
     <div className="overflow-hidden mt-3">
-      <div className="w-screen p-3 text-xl">
-        New Arrival
+      <div className="w-screen p-3 text-2xl">
+        {beanCategory}
+      </div>
+      <div className="p-3 text-lg">
+        아로마브로커만의 특유한 풍미가 담겨있는 시그니처 원두
       </div>
       <div style={{ width: '300vw' }} className="flex" ref={cardRef}>
         <Carddetail beanname={'starbucks1'} realname={'환희'}/>

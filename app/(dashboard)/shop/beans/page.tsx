@@ -1,7 +1,9 @@
+import Card from "@/app/ui/dashboard/card";
+
 export default function Beans() {
   return (
     <main>
-      Hello Beans
+      <Card beanCategory={"Aromabroker Signiture Beans"} />
     </main>
   );
 }

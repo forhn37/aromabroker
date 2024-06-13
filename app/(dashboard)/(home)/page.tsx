@@ -90,7 +90,7 @@ export default function Home() {
         <button className="flex justify-center" onClick={prvbutton}>이전</button>
         <button className="flex justify-center" onClick={nextbutton}>다음</button>
       </div>
-      <Card />
+      <Card beanCategory={"Best Beans"}/>
       <Utubevideo />
     </main>
   )

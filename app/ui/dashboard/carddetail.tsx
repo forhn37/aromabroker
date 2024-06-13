@@ -9,7 +9,7 @@ interface CardDetailProps {
 
 const Carddetail: React.FC<CardDetailProps> = ({ beanname, realname }) => {
   return (
-    <div style={{ width: '50vw', height: '370px' }} className="bg-orange-100 p-4 m-3">
+    <div style={{ width: '50vw', height: '370px' }} className="bg-gray-300 p-4 m-3">
       <Link href={`/shop/beans/${beanname}`}>
         <Image src={`/${beanname}.jpg`} width={200} height={200} alt="beans" />
         <div className="flex flex-col justify-center items-center text-sm mt-5">
