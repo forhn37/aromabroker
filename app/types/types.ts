@@ -49,3 +49,8 @@ export interface Bean {
 export interface Data {
   beans: Bean[];
 }
+
+export interface Categories {
+  category: string;
+  description? : string;
+}

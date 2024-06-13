@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Carddetail from "./carddetail";
+import { Categories} from '@/app/types/types';
 
-
-export default function Card({Category}) {
+export default function Card({category, description} : Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -58,18 +58,18 @@ export default function Card({Category}) {
   return (
     <div className="overflow-hidden mt-3">
       <div className="w-screen p-3 text-2xl">
-        {Category}
+        {category}
       </div>
       <div className="p-3 text-lg">
-        아로마브로커만의 특유한 풍미가 담겨있는 시그니처 원두
+        {description}
       </div>
       <div style={{ width: '300vw' }} className="flex" ref={cardRef}>
-        <Carddetail beanname={'starbucks1'} realname={'환희'}/>
-        <Carddetail beanname={'starbucks2'} realname={'월광'}/>
-        <Carddetail beanname={'starbucks3'} realname={'시절인연'}/>
-        <Carddetail beanname={'starbucks4'} realname={'콜롬비아'}/>
-        <Carddetail beanname={'starbucks5'} realname={'에티오피아'}/>
-        <Carddetail beanname={'starbucks6'} realname={'야호'}/>
+        <Carddetail productname={'starbucks1'} realname={'환희'}/>
+        <Carddetail productname={'starbucks2'} realname={'월광'}/>
+        <Carddetail productname={'starbucks3'} realname={'시절인연'}/>
+        <Carddetail productname={'starbucks4'} realname={'콜롬비아'}/>
+        <Carddetail productname={'starbucks5'} realname={'에티오피아'}/>
+        <Carddetail productname={'starbucks6'} realname={'야호'}/>
       </div>
       <div className="flex justify-around w-screen mt-4">
         <button className="flex justify-center" onClick={prvbutton}>이전</button>
