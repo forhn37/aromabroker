@@ -1,20 +1,23 @@
 import Image from 'next/image';
-import { Bean, Data } from '@/app/types/types';
+import { Bean } from '@/app/types/types';
+import { supabase } from '@/app/lib/supabase/supabaseClient';
 
 export default async function Beans({ params }: { params: { bean: string } }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data.json`, {
-    headers: {
-      Accept: "application/json",
-    },
-  });
-  if (!res.ok) {
-    console.error('Failed to fetch data:', res.status, res.statusText);
-    return <div>Failed to fetch data</div>;
-  }
-  
-  const data: Data = await res.json();
+  const { data, error } = await supabase
+    .from('aromabrokertable')
+    .select();
 
-  const foundBean: Bean | undefined = data.beans.find(bean => bean.name === params.bean);
+  if (error) {
+    console.error('Error fetching data:', error);
+    return <div>Failed to load data</div>;
+  }
+
+  if (!data) {
+    console.error('No data returned from Supabase');
+    return <div>No data available</div>;
+  }
+
+  const foundBean: Bean | undefined = data.find(bean => bean.name === params.bean);
 
   if (!foundBean) {
     return <div>Bean not found</div>;
