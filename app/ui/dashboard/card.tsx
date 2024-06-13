@@ -1,4 +1,6 @@
 'use client'
+/**1. page에서 전달된 props인 category를 통하여 서버로부터 데이터를 받아온다
+ * 2. 그 데이터 중에서  */ 
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";

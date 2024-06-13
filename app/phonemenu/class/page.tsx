@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 
-export default function Mobilemenu() {
+export default function MobilemenuClassPage() {
   const router = useRouter();
 
   return (
