@@ -1,12 +1,23 @@
 'use client'
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import Carddetail from "./carddetail";
-import { Categories} from '@/app/types/types';
+import { Categories } from '@/app/types/types';
+import { usePathname } from 'next/navigation'
 
-export default function Card({category, description} : Categories) {
+
+export default function Card({ category, description }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  const pathname = usePathname()
+  console.log(pathname)
+  const parts = pathname.split('/');
+  const lastPart = parts.pop();
+  console.log(lastPart)
+
 
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
@@ -33,8 +44,9 @@ export default function Card({category, description} : Categories) {
         // 트랜지션 효과를 위해 짧은 시간 후에 다시 설정
         setTimeout(() => {
           if (cardRef.current !== null) {
-          cardRef.current.style.transition = 'transform 1s ease-in-out';
-      }}, 50);
+            cardRef.current.style.transition = 'transform 1s ease-in-out';
+          }
+        }, 50);
       } else {
         setTranslateX(newTranslateX);
         cardRef.current.style.transition = 'transform 1s ease-in-out';
@@ -64,12 +76,12 @@ export default function Card({category, description} : Categories) {
         {description}
       </div>
       <div style={{ width: '300vw' }} className="flex" ref={cardRef}>
-        <Carddetail productname={'starbucks1'} realname={'환희'}/>
-        <Carddetail productname={'starbucks2'} realname={'월광'}/>
-        <Carddetail productname={'starbucks3'} realname={'시절인연'}/>
-        <Carddetail productname={'starbucks4'} realname={'콜롬비아'}/>
-        <Carddetail productname={'starbucks5'} realname={'에티오피아'}/>
-        <Carddetail productname={'starbucks6'} realname={'야호'}/>
+        <Carddetail productname={'starbucks1'} realname={'환희'} />
+        <Carddetail productname={'starbucks2'} realname={'월광'} />
+        <Carddetail productname={'starbucks3'} realname={'시절인연'} />
+        <Carddetail productname={'starbucks4'} realname={'콜롬비아'} />
+        <Carddetail productname={'starbucks5'} realname={'에티오피아'} />
+        <Carddetail productname={'starbucks6'} realname={'야호'} />
       </div>
       <div className="flex justify-around w-screen mt-4">
         <button className="flex justify-center" onClick={prvbutton}>이전</button>

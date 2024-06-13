@@ -10,13 +10,12 @@ import { YoutubeAPIResponse, YoutubeVideo } from '../types/types'
 
 export default function Utubevideo() {
   const [videos, setVideos] = useState<YoutubeVideo[]>([]);
-  console.log(videos.length)
 
   useEffect(() => {
     async function fetchChannelVideos() {
       try {
         const res = await fetch('/api/utubeapi');
-        console.log(res)
+        
         if (!res.ok) {
           throw new Error('Failed to fetch videos');
         }
