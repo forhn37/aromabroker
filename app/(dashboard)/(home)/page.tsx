@@ -56,18 +56,18 @@ export default function Home() {
     // 컴포넌트 언마운트 시 인터벌 정리
     return () => clearInterval(interval);
   }, [translateX]);
+
   useEffect(()=> {
     const fetchImages = async () => {
-    const filePaths = await listImages("beans")
-    if (!filePaths) return
-    console.log(filePaths)
+    const beansImageFilePaths = await listImages("beans")
+    console.log(beansImageFilePaths)
+    if (!beansImageFilePaths) return
+    
   
-    const urls = await Promise.all(filePaths.map(path => getImageUrl(path)))
+    const urls = await Promise.all(beansImageFilePaths.map(path => getImageUrl(path)))
   
     const checkedUrls = urls.filter((url): url is string => url !== null)
     setConfirmedurl(checkedUrls)
-
-
     }
     fetchImages();
 

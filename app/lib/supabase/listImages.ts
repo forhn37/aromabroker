@@ -10,9 +10,10 @@ export async function listImages(folder: string): Promise<string[] | null> {
     console.error('Error listing files:', error)
     return null
   }
-  console.log(data)
+  
   const files = data
     .filter(file => file.name !== '.emptyFolderPlaceholder')
     .map(file => `${folder}/${file.name}`)
+    console.log(files)
   return files
 }
