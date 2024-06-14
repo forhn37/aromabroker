@@ -9,7 +9,7 @@ import { getImageUrl } from '@/app/lib/supabase/getImageUrl';
 export default function Home() {
   const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [confirmedurl, setConfirmedurl] = useState([''])
+  const [confirmedurl, setConfirmedurl] = useState<string[]>([]);
 
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
@@ -66,6 +66,7 @@ export default function Home() {
 
 
       const urls = await Promise.all(beansImageFilePaths.map(path => getImageUrl(path)))
+      console.log(urls)
 
       const checkedUrls = urls.filter((url): url is string => url !== null)
       setConfirmedurl(checkedUrls)

@@ -2,8 +2,7 @@
 import { supabase } from './supabaseClient'
 
 export async function getImageUrl(filePath: string): Promise<string | null> {
-  const { data, error } = supabase
-    .storage
+  const { data, error } = supabase.storage
     .from('aromabrokerbucket')
     .getPublicUrl(filePath)
 
@@ -12,5 +11,5 @@ export async function getImageUrl(filePath: string): Promise<string | null> {
     return null
   }
 
-  return data.publicUrl
+  return data.publicUrl;
 }
