@@ -1,5 +1,5 @@
 // utils/getImageUrl.ts
-import { supabase } from '@/app/lib/supabase/supabaseClient'
+import { supabase } from './supabaseClient'
 
 export async function getImageUrl(filePath: string): Promise<string | null> {
   const { data, error } = supabase
@@ -7,7 +7,7 @@ export async function getImageUrl(filePath: string): Promise<string | null> {
     .from('aromabrokerbucket')
     .getPublicUrl(filePath)
 
-  if (error) {
+  if (!data || error) {
     console.error('Error getting public URL:', error)
     return null
   }
