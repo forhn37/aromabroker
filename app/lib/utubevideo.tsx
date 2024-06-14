@@ -32,11 +32,11 @@ export default function Utubevideo() {
 
   return (
     <div>
-      <h1 className='p-3 text-xl'>Utube</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <h1 className='p-3 text-2xl'>Utube</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }} className='w-screen'>
         {videos.length > 0 ? (
           videos.map((video) => (
-            <div key={video.id.videoId} style={{ margin: '10px' }} className='w-28 h-28'>
+            <div key={video.id.videoId} className='w-1/2 p-2'>
               <Link
                 href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                 target="_blank"
@@ -50,7 +50,7 @@ export default function Utubevideo() {
                   style={{ width: '100%' }}
                   className='p-1'
                 />
-                <h3 className='text-sm'>{video.snippet.title}</h3>
+                <h3 className='text-sm p-1'>{video.snippet.title}</h3>
               </Link>
             </div>
           ))

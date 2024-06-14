@@ -3,7 +3,6 @@
  * 2. 그 데이터 중에서  */ 
 
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import Carddetail from "./carddetail";
 import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
@@ -12,7 +11,6 @@ import { usePathname } from 'next/navigation'
 export default function Card({ category, description, confirmedurl }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   const pathname = usePathname()
   console.log(pathname)
@@ -38,7 +36,7 @@ export default function Card({ category, description, confirmedurl }: Categories
   const nextbutton = function () {
     const newTranslateX = translateX - 50;
     if (cardRef.current !== null) {
-      if (newTranslateX < -200) {
+      if (newTranslateX < -250) {
         // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
         setTranslateX(0);
         cardRef.current.style.transition = 'none';
@@ -75,10 +73,10 @@ export default function Card({ category, description, confirmedurl }: Categories
       <div className="w-screen p-3 text-2xl">
         {category}
       </div>
-      <div className="p-3 text-lg">
+      {/* <div className="p-3 text-lg">
         {description}
-      </div>
-      <div style={{ width: '300vw' }} className="flex" ref={cardRef}>
+      </div> */}
+      <div style={{ width: '350vw' }} className="flex" ref={cardRef}>
         {confirmedurl.map((checkurl, index)=> (
           <Carddetail key={index} checkurl={checkurl}/>
 

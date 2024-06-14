@@ -19,7 +19,7 @@ const Carddetail: React.FC<CardDetailProps> = ({ productname, realname, checkurl
   const filenameWithoutExtension = filenameWithExtension?.split('.')[0];
 
   return (
-    <div style={{ width: '50vw', height: '370px' }} className="bg-gray-300 p-4 m-3">
+    <div style={{ width: '50vw', height: '340px' }} className="bg-gray-300 p-4 m-3">
       <Link href={`/shop/beans/${filenameWithoutExtension}`}>
           <Image src={checkurl} width={200} height={200} alt="beans" />
         <div className="flex flex-col justify-center items-center text-sm mt-5">

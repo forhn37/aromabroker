@@ -9,7 +9,7 @@ import { getImageUrl } from '@/app/lib/supabase/getImageUrl';
 export default function Home() {
   const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [confirmedurl, setConfirmedurl] =useState([''])
+  const [confirmedurl, setConfirmedurl] = useState([''])
 
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
@@ -36,8 +36,9 @@ export default function Home() {
         // 트랜지션 효과를 위해 짧은 시간 후에 다시 설정
         setTimeout(() => {
           if (containerRef.current !== null) {
-          containerRef.current.style.transition = 'transform 1s ease-in-out';
-      }}, 50);
+            containerRef.current.style.transition = 'transform 1s ease-in-out';
+          }
+        }, 50);
       } else {
         setTranslateX(newTranslateX);
         containerRef.current.style.transition = 'transform 1s ease-in-out';
@@ -57,17 +58,17 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [translateX]);
 
-  useEffect(()=> {
+  useEffect(() => {
     const fetchImages = async () => {
-    const beansImageFilePaths = await listImages("beans")
-    console.log(beansImageFilePaths)
-    if (!beansImageFilePaths) return
-    
-  
-    const urls = await Promise.all(beansImageFilePaths.map(path => getImageUrl(path)))
-  
-    const checkedUrls = urls.filter((url): url is string => url !== null)
-    setConfirmedurl(checkedUrls)
+      const beansImageFilePaths = await listImages("beans")
+      console.log(beansImageFilePaths)
+      if (!beansImageFilePaths) return
+
+
+      const urls = await Promise.all(beansImageFilePaths.map(path => getImageUrl(path)))
+
+      const checkedUrls = urls.filter((url): url is string => url !== null)
+      setConfirmedurl(checkedUrls)
     }
     fetchImages();
 
@@ -77,7 +78,7 @@ export default function Home() {
   return (
     <main className="w-screen overflow-hidden">
       {/* <Imageslide /> */}
-
+      {/* 이벤트 이미지 자리 */}
       <div
         className="h-1/3 flex transition-transform duration-300"
         style={{ width: '300vw' }}
@@ -110,7 +111,7 @@ export default function Home() {
         <button className="flex justify-center" onClick={prvbutton}>이전</button>
         <button className="flex justify-center" onClick={nextbutton}>다음</button>
       </div>
-      <Card category={"Best Beans"} confirmedurl ={confirmedurl}/>
+      <Card category={"Best Beans"} confirmedurl={confirmedurl} />
       <Utubevideo />
     </main>
   )

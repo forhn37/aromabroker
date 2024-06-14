@@ -5,7 +5,7 @@ export async function GET() {
   const apiKey = 'AIzaSyAV-9GHs1rSCmpPO2dsRPZqdBAtSR8Mvaw'; // 여기에 API 키를 입력하세요
 
   try {
-    const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=12&order=date&key=${apiKey}`);
+    const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=8&order=date&key=${apiKey}`);
     console.log(response)
     if (!response.ok) {
       throw new Error('Failed to fetch data');
