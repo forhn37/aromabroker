@@ -4,46 +4,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface CardDetailProps {
-  productname: string;
-  realname: string;
+  productname?: string;
+  realname?: string;
+  confirmedurl?: string[]
+  checkurl: string
 }
 
-const Carddetail: React.FC<CardDetailProps> = ({ productname, realname }) => {
-  const [imagePath, setImagePath] = useState<string | null>(null);
+const Carddetail: React.FC<CardDetailProps> = ({ productname, realname, checkurl }) => {
 
-  useEffect(() => {
-    const checkImage = async () => {
-      const jpgPath = `/${productname}.jpg`;
-      const pngPath = `/${productname}.png`;
+  const parts = checkurl.split('/');
+  const filenameWithExtension = parts.pop(); // 마지막 요소인 파일 이름을 가져옴 (starbucks6.jpg)
 
-      try {
-        const jpgResponse = await fetch(jpgPath);
-        if (jpgResponse.ok) {
-          setImagePath(jpgPath);
-        } else {
-          const pngResponse = await fetch(pngPath);
-          if (pngResponse.ok) {
-            setImagePath(pngPath);
-          } else {
-            console.error('Image not found');
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching image:', error);
-      }
-    };
-
-    checkImage();
-  }, [productname]);
+  // 확장자를 제거한 파일 이름 가져오기
+  const filenameWithoutExtension = filenameWithExtension?.split('.')[0];
 
   return (
     <div style={{ width: '50vw', height: '370px' }} className="bg-gray-300 p-4 m-3">
-      <Link href={`/shop/beans/${productname}`}>
-        {imagePath ? (
-          <Image src={imagePath} width={200} height={200} alt="beans" />
-        ) : (
-          <p>Loading image...</p>
-        )}
+      <Link href={`/shop/beans/${filenameWithoutExtension}`}>
+          <Image src={checkurl} width={200} height={200} alt="beans" />
         <div className="flex flex-col justify-center items-center text-sm mt-5">
           <div className="text-center font-bold mb-3 text-base">{realname}</div>
           <div className="text-center mb-3">

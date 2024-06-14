@@ -3,10 +3,13 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Card from '@/app/ui/dashboard/card';
 import Utubevideo from '@/app/lib/utubevideo';
+import { listImages } from '@/app/lib/supabase/listImages';
+import { getImageUrl } from '@/app/lib/supabase/getImageUrl';
 
 export default function Home() {
   const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [confirmedurl, setConfirmedurl] =useState([''])
 
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
@@ -53,6 +56,23 @@ export default function Home() {
     // 컴포넌트 언마운트 시 인터벌 정리
     return () => clearInterval(interval);
   }, [translateX]);
+  useEffect(()=> {
+    const fetchImages = async () => {
+    const filePaths = await listImages("beans")
+    if (!filePaths) return
+    console.log(filePaths)
+  
+    const urls = await Promise.all(filePaths.map(path => getImageUrl(path)))
+  
+    const checkedUrls = urls.filter((url): url is string => url !== null)
+    setConfirmedurl(checkedUrls)
+
+
+    }
+    fetchImages();
+
+  }, [])
+
 
   return (
     <main className="w-screen overflow-hidden">
@@ -90,7 +110,7 @@ export default function Home() {
         <button className="flex justify-center" onClick={prvbutton}>이전</button>
         <button className="flex justify-center" onClick={nextbutton}>다음</button>
       </div>
-      <Card category={"Best Beans"} />
+      <Card category={"Best Beans"} confirmedurl ={confirmedurl}/>
       <Utubevideo />
     </main>
   )

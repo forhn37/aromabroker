@@ -9,7 +9,7 @@ import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
 
 
-export default function Card({ category, description }: Categories) {
+export default function Card({ category, description, confirmedurl }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -19,6 +19,7 @@ export default function Card({ category, description }: Categories) {
   const parts = pathname.split('/');
   const lastPart = parts.pop();
   console.log(lastPart)
+  console.log(confirmedurl)
 
 
   const prvbutton = function () {
@@ -78,12 +79,12 @@ export default function Card({ category, description }: Categories) {
         {description}
       </div>
       <div style={{ width: '300vw' }} className="flex" ref={cardRef}>
-        <Carddetail productname={'starbucks1'} realname={'환희'} />
-        <Carddetail productname={'starbucks2'} realname={'월광'} />
-        <Carddetail productname={'starbucks3'} realname={'시절인연'} />
-        <Carddetail productname={'starbucks4'} realname={'콜롬비아'} />
-        <Carddetail productname={'starbucks5'} realname={'에티오피아'} />
-        <Carddetail productname={'starbucks6'} realname={'야호'} />
+        {confirmedurl.map((checkurl, index)=> (
+          <Carddetail key={index} checkurl={checkurl}/>
+
+        ))
+      }
+        
       </div>
       <div className="flex justify-around w-screen mt-4">
         <button className="flex justify-center" onClick={prvbutton}>이전</button>
