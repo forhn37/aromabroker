@@ -4,15 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface CardDetailProps {
-  productname?: string;
   realname?: string;
-  confirmedurl?: string[]
-  checkurl: string
+  imageurl: string
 }
 
-const Carddetail: React.FC<CardDetailProps> = ({ productname, realname, checkurl }) => {
+const Carddetail: React.FC<CardDetailProps> = ({ realname, imageurl }) => {
 
-  const parts = checkurl.split('/');
+  const parts = imageurl.split('/');
   const filenameWithExtension = parts.pop(); // 마지막 요소인 파일 이름을 가져옴 (starbucks6.jpg)
 
   // 확장자를 제거한 파일 이름 가져오기
@@ -21,7 +19,7 @@ const Carddetail: React.FC<CardDetailProps> = ({ productname, realname, checkurl
   return (
     <div style={{ width: '50vw', height: '340px' }} className="bg-gray-300 p-4 m-3">
       <Link href={`/shop/beans/${filenameWithoutExtension}`}>
-          <Image src={checkurl} width={200} height={200} alt="beans" />
+          <Image src={imageurl} width={200} height={200} alt="beans" />
         <div className="flex flex-col justify-center items-center text-sm mt-5">
           <div className="text-center font-bold mb-3 text-base">{realname}</div>
           <div className="text-center mb-3">

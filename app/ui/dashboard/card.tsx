@@ -8,7 +8,7 @@ import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
 
 
-export default function Card({ category, confirmedurl, description }: Categories) {
+export default function Card({ category, confirmedurls, description }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname()
@@ -34,7 +34,7 @@ export default function Card({ category, confirmedurl, description }: Categories
   const nextbutton = function () {
     const newTranslateX = translateX - 50;
     if (cardRef.current !== null) {
-      if (newTranslateX < -(50 * (confirmedurl.length - 2))) {
+      if (newTranslateX < -(50 * (confirmedurls.length - 2))) {
         // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
         setTranslateX(0);
         cardRef.current.style.transition = 'none';
@@ -74,9 +74,9 @@ export default function Card({ category, confirmedurl, description }: Categories
       <div className="p-3 text-lg">
         {description}
       </div>
-      <div style={{ width: `${50 * confirmedurl.length}vw` }}className="flex" ref={cardRef}>
-        {confirmedurl.map((checkurl, index)=> (
-          <Carddetail key={index} checkurl={checkurl}/>
+      <div style={{ width: `${50 * confirmedurls.length}vw` }}className="flex" ref={cardRef}>
+        {confirmedurls.map((imageurl, index)=> (
+          <Carddetail key={index} imageurl={imageurl}/>
 
         ))
       }

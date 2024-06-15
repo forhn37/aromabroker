@@ -21,7 +21,7 @@ export default async function Home() {
   return (
     <div>
       <MainImageSlide />
-      <Card category={"Best Beans"} confirmedurl={checkedUrls} />
+      <Card category={"Best Beans"} confirmedurls={checkedUrls} />
       <Utubevideo />
     </div>
 
