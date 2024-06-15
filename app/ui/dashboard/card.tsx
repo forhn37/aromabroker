@@ -8,7 +8,7 @@ import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
 
 
-export default function Card({ category, confirmedurl }: Categories) {
+export default function Card({ category, confirmedurl, description }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -73,9 +73,9 @@ export default function Card({ category, confirmedurl }: Categories) {
       <div className="w-screen p-3 text-2xl">
         {category}
       </div>
-      {/* <div className="p-3 text-lg">
+      <div className="p-3 text-lg">
         {description}
-      </div> */}
+      </div>
       <div style={{ width: '350vw' }} className="flex" ref={cardRef}>
         {confirmedurl.map((checkurl, index)=> (
           <Carddetail key={index} checkurl={checkurl}/>
