@@ -8,7 +8,7 @@ import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
 
 
-export default function Card({ category, description, confirmedurl }: Categories) {
+export default function Card({ category, confirmedurl }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
