@@ -11,13 +11,10 @@ import { usePathname } from 'next/navigation'
 export default function Card({ category, confirmedurl, description }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
-
   const pathname = usePathname()
-  console.log(pathname)
   const parts = pathname.split('/');
   const lastPart = parts.pop();
-  console.log(lastPart)
-  console.log(confirmedurl)
+
 
 
   const prvbutton = function () {
