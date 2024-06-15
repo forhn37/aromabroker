@@ -17,6 +17,7 @@ export default function Card({ category, confirmedurl, description }: Categories
 
 
 
+
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
     if (translateX < 0) {
@@ -33,7 +34,7 @@ export default function Card({ category, confirmedurl, description }: Categories
   const nextbutton = function () {
     const newTranslateX = translateX - 50;
     if (cardRef.current !== null) {
-      if (newTranslateX < -250) {
+      if (newTranslateX < -(50 * (confirmedurl.length - 2))) {
         // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
         setTranslateX(0);
         cardRef.current.style.transition = 'none';
@@ -73,7 +74,7 @@ export default function Card({ category, confirmedurl, description }: Categories
       <div className="p-3 text-lg">
         {description}
       </div>
-      <div style={{ width: '350vw' }} className="flex" ref={cardRef}>
+      <div style={{ width: `${50 * confirmedurl.length}vw` }}className="flex" ref={cardRef}>
         {confirmedurl.map((checkurl, index)=> (
           <Carddetail key={index} checkurl={checkurl}/>
 
