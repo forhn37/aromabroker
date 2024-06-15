@@ -53,5 +53,6 @@ export interface Data {
 export interface Categories {
   category: string;
   description? : string;
-  confirmedurls : string[]
+  confirmedurls : string[];
+  datatable : string[];
 }

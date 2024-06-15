@@ -14,6 +14,7 @@ export default function Card({ category, confirmedurls, description }: Categorie
   const pathname = usePathname()
   const parts = pathname.split('/');
   const lastPart = parts.pop();
+  console.log(lastPart)
 
 
 
