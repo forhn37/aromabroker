@@ -37,14 +37,14 @@ export interface YoutubeAPIResponse {
   items: YoutubeVideo[];
 }
 
-export interface Bean {
-  name: string;
-  price: string;
-  weight: string;
-  strength: string;
-  shippingcost: string;
-  description: string;
-}
+// export interface Bean {
+//   name: string;
+//   price: string;
+//   weight: string;
+//   strength: string;
+//   shippingcost: string;
+//   description: string;
+// }
 
 export interface Data {
   beans: Bean[];
@@ -52,7 +52,20 @@ export interface Data {
 
 export interface Categories {
   category: string;
-  description? : string;
-  confirmedurls : string[];
-  datatable : string[];
+  description?: string;
+  confirmedurls: string[];
+  datatable: object[];
+}
+
+export interface Bean {
+  id: number;
+  created_at: string;
+  name: string;
+  description: string;
+  weight: string;
+  price: number;
+  shippingcost: number;
+  strength: string;
+  category: string;
+  imagematchname: string;
 }

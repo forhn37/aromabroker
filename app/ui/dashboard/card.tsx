@@ -8,13 +8,14 @@ import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
 
 
-export default function Card({ category, confirmedurls, description }: Categories) {
+export default function Card({ category, confirmedurls, description, datatable }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname()
   const parts = pathname.split('/');
   const lastPart = parts.pop();
   console.log(lastPart)
+  console.log(datatable)
 
 
 
