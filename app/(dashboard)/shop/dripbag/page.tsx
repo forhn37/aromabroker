@@ -4,7 +4,7 @@ import { supabase } from "@/app/lib/supabase/supabaseClient";
 import GetTable from '@/app/lib/supabase/gettable';
 import { Dripbag } from '@/app/types/types';
 
-export default async function Dripbags() {
+export default async function DripbagPage() {
   const confirmedurls = await SupabaseGetUrls("dripbag");
   // 타입 가드를 사용하여 undefined 처리
   const safeConfirmedUrls = confirmedurls ?? []; // undefined인 경우 빈 배열로 대체
