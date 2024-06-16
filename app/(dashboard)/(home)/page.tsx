@@ -5,6 +5,7 @@ import { listImages } from '@/app/lib/supabase/listImages';
 import { getImageUrl } from '@/app/lib/supabase/getImageUrl';
 import MainImageSlide from '@/app/ui/dashboard/mainimageslide';
 import GetTable from '@/app/lib/supabase/gettable';
+import { Bean } from '@/app/types/types';
 
 export default async function Home() {
 
@@ -19,14 +20,14 @@ export default async function Home() {
   const checkedUrls = urls.filter((url): url is string => url !== null)
 
   // 해당하는 테이블을 가져옴
-  const GetedTable = await GetTable('beans')
-  console.log(GetedTable)
+  const beans = await GetTable<Bean>("beans");
+  console.log(beans);
 
 
   return (
     <div>
       <MainImageSlide />
-      <Card category={"Best Beans"} confirmedurls={checkedUrls} datatable={GetedTable}/>
+      <Card category={"Best Beans"} confirmedurls={checkedUrls} datatable={beans}/>
       <Utubevideo />
     </div>
 
