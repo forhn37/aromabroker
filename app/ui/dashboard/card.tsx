@@ -6,15 +6,17 @@ import { useState, useEffect, useRef } from "react";
 import Carddetail from "./carddetail";
 import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
+import { Bean } from "@/app/types/types";
 
 
-export default function Card({ category, confirmedurls, description, datatables }: Categories) {
+export default function Card({ category, description, datatables }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname()
   const parts = pathname.split('/');
   const lastPart = parts.pop();
   console.log(lastPart)
+  console.log(datatables.length)
   console.log(datatables)
 
 
@@ -36,7 +38,7 @@ export default function Card({ category, confirmedurls, description, datatables 
   const nextbutton = function () {
     const newTranslateX = translateX - 50;
     if (cardRef.current !== null) {
-      if (newTranslateX < -(50 * (confirmedurls.length - 2))) {
+      if (newTranslateX < -(50 * (datatables.length - 2))) {
         // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
         setTranslateX(0);
         cardRef.current.style.transition = 'none';
@@ -76,9 +78,9 @@ export default function Card({ category, confirmedurls, description, datatables 
       <div className="p-3 text-lg">
         {description}
       </div>
-      <div style={{ width: `${50 * confirmedurls.length}vw` }}className="flex" ref={cardRef}>
-        {datatables.map((beans, index)=> (
-          <Carddetail key={index} beans={beans}/>
+      <div style={{ width: `${50 *datatables.length}vw` }} className="flex" ref={cardRef}>
+        {datatables.map((item, index)=> (
+          <Carddetail key={index} item={item as Bean}/>
 
         ))
       }

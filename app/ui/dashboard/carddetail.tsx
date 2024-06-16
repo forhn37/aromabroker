@@ -2,47 +2,40 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Bean, Dripbag } from '@/app/types/types';
 
-interface CardDetailProps {
+export interface CardDetailProps {
   realname?: string;
-  beans: Bean;
+  item: Bean | Dripbag;
 }
-export interface Bean {
-  id: number;
-  created_at: string;
-  name: string;
-  description: string;
-  price: number;
-  weight: string;
-  shippingcost: number;
-  strength: string;
-  category: string;
-  imageurl: string;
+
+function isBean(item: Bean | Dripbag): item is Bean {
+  return (item as Bean).name !== undefined;
 }
 
 
-const Carddetail: React.FC<CardDetailProps> = ({ realname, beans }) => {
+export default function Carddetail({ realname, item } : CardDetailProps){
+  console.log(item)
 
   // const parts = imageurl.split('/');
   // const filenameWithExtension = parts.pop(); // 마지막 요소인 파일 이름을 가져옴 (starbucks6.jpg)
 
   // // 확장자를 제거한 파일 이름 가져오기
   // const filenameWithoutExtension = filenameWithExtension?.split('.')[0];
-  console.log(beans)
+  // console.log(beans)
   return (
     <div style={{ width: '50vw', height: '340px' }} className="bg-gray-300 p-4 m-3">
       {/* <Link href={`/shop/beans/${filenameWithoutExtension}`}> */}
-          <Image src={beans.imageurl} width={200} height={200} alt="beans" />
+          <Image src={item.imageurl} width={200} height={200} alt="beans" />
         <div className="flex flex-col justify-center items-center text-sm mt-5">
-          <div className="text-center font-bold mb-3 text-base">{realname}</div>
+          <div className="text-center font-bold mb-3 text-base">{isBean(item) ? item.name : item.productname}</div>
           <div className="text-center mb-3">
-            우리가 가장 빛난 순간을 표현한 CITY Roasting bean, 사랑하는 사람과 함께 좋은 순간을 나눠보세요
+           {item.description}
           </div>
-          <div className="text-center">23,000원</div>
+          <div className="text-center">{item.weight}</div>
+          <div className="text-center">{item.price}</div>
         </div>
       {/* </Link> */}
     </div>
   );
 };
-
-export default Carddetail;

@@ -43,20 +43,21 @@ export interface YoutubeAPIResponse {
 //   weight: string;
 //   strength: string;
 //   shippingcost: string;
-//   description: string;
+//   description: string; 
 // }
-
-export interface Data {
-  beans: Bean[];
-}
 
 export interface Categories {
   category: string;
   description?: string;
-  confirmedurls: string[];
-  datatables: object[];
+  datatables: Bean[] | Dripbag[];
 }
-
+// 원두 관련 데이터타입 
+export interface BeanDatas {
+  datatables: Bean[];
+}
+export interface DripbagDatas {
+  datatables: Dripbag[];
+}
 export interface Bean {
   id: number;
   created_at: string;
@@ -68,4 +69,20 @@ export interface Bean {
   strength: string;
   category: string;
   imageurl: string;
+  englishname: string;
 }
+
+export interface Dripbag {
+  id: number;
+  created_at: string;
+  productname: string;
+  description: string;
+  price: number;
+  weight: string;
+  shippingcost: number;
+  category: string;
+  issinggle: boolean;
+  imageurl: string;
+  englishname: string;
+}
+

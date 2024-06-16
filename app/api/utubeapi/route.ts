@@ -6,13 +6,13 @@ export async function GET() {
 
   try {
     const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=8&order=date&key=${apiKey}`);
-    console.log(response)
+    
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
 
     const data = await response.json();
-    console.log(data)
+    
     return Response.json( data )
   } catch (error) {
     return Response.json({ error: 'Failed to fetch data' });
