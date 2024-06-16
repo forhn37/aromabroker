@@ -20,14 +20,14 @@ export default async function Home() {
   const checkedUrls = urls.filter((url): url is string => url !== null)
 
   // 해당하는 테이블을 가져옴
-  const beans = await GetTable<Bean>("beans");
-  console.log(beans);
+  const datatables = await GetTable<Bean>("beans");
+  console.log(datatables);
 
 
   return (
     <div>
       <MainImageSlide />
-      <Card category={"Best Beans"} confirmedurls={checkedUrls} datatable={beans}/>
+      <Card category={"Best Beans"} confirmedurls={checkedUrls} datatables={datatables}/>
       <Utubevideo />
     </div>
 

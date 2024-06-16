@@ -54,7 +54,7 @@ export interface Categories {
   category: string;
   description?: string;
   confirmedurls: string[];
-  datatable: object[];
+  datatables: object[];
 }
 
 export interface Bean {
@@ -62,10 +62,10 @@ export interface Bean {
   created_at: string;
   name: string;
   description: string;
-  weight: string;
   price: number;
+  weight: string;
   shippingcost: number;
   strength: string;
   category: string;
-  imagematchname: string;
+  imageurl: string;
 }
