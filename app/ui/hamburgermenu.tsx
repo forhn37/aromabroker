@@ -1,12 +1,19 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  console.log(pathname)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
 
   return (
     <div className="relative">
