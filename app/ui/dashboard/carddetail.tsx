@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Bean, Dripbag } from '@/app/types/types';
 
 export interface CardDetailProps {
-  realname?: string;
   item: Bean | Dripbag;
 }
 
@@ -14,7 +13,7 @@ function isBean(item: Bean | Dripbag): item is Bean {
 }
 
 
-export default function Carddetail({ realname, item } : CardDetailProps){
+export default function Carddetail({ item } : CardDetailProps){
   console.log(item)
 
   // const parts = imageurl.split('/');
