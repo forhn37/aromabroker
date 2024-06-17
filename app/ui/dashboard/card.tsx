@@ -75,9 +75,6 @@ export default function Card({ category, description, datatables }: Categories) 
       <div className="w-screen p-3 text-2xl">
         {category}
       </div>
-      <div className="p-3 text-lg">
-        {description}
-      </div>
       <div style={{ width: `${50 *datatables.length}vw` }} className="flex" ref={cardRef}>
         {datatables.map((item, index)=> (
           <Carddetail key={index} item={item as Bean}/>
