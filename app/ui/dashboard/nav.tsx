@@ -11,13 +11,13 @@ export default function Nav() {
     setIsOpen(prev => !prev);
   };
 
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
-
+  // const handleLinkClick = () => {
+  //   setIsOpen(false);
+  // };
   useEffect(() => {
-    // 경로가 변경되면 메뉴를 닫음
-    setIsOpen(false);
+    if (pathname === '/') {
+      setIsOpen(false);
+    }
   }, [pathname]);
 
 

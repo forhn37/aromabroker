@@ -12,19 +12,18 @@ import { BeanDatas, DripbagDatas } from '@/app/types/types';
 export default async function Home() {
 
   const beansImageFilePaths = await listImages("beans")
-  console.log(beansImageFilePaths)
+  
   if (!beansImageFilePaths) return
 
 
   const urls = await Promise.all(beansImageFilePaths.map(path => getImageUrl(path)))
-  console.log(urls)
+  
 
   const checkedUrls = urls.filter((url): url is string => url !== null)
 
   // 해당하는 테이블을 가져옴
   const beansTable = await GetTable<Bean>("beans");
   const dripbagsTable = await GetTable<Dripbag>("dripbags");
-  console.log(beansTable, dripbagsTable);
 
 
   return (

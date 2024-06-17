@@ -4,7 +4,6 @@ import Image from "next/image";
 export default async function Test() {
   const filePaths = await listImages("beans")
   if (!filePaths) return
-  console.log(filePaths)
 
   const urls = await Promise.all(filePaths.map(path => getImageUrl(path)))
 

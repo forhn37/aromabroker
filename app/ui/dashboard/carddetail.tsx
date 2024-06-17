@@ -14,8 +14,6 @@ function isBean(item: Bean | Dripbag): item is Bean {
 
 
 export default function Carddetail({ item }: CardDetailProps) {
-  console.log(item)
-
 
   return (
     <div style={{ width: '50vw', height: '420px' }} className="bg-gray-300 p-4 m-3">

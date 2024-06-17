@@ -15,11 +15,6 @@ export default function Card({ category, description, datatables }: Categories) 
   const pathname = usePathname()
   const parts = pathname.split('/');
   const lastPart = parts.pop();
-  console.log(lastPart)
-  console.log(datatables.length)
-  console.log(datatables)
-
-
 
 
   const prvbutton = function () {
