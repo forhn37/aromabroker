@@ -1,5 +1,4 @@
 import { supabase } from "./supabaseClient";
-import { Bean } from "@/app/types/types";
 
 // Bean 테이블의 데이터를 가져오는 함수입니다.
 export default async function getBeanTable<T>(tablename: string): Promise<T[]> {

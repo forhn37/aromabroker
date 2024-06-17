@@ -47,7 +47,7 @@ export default function MainImageSlide() {
     const interval = setInterval(() => {
       // 자동으로 다음 슬라이드로 이동
       nextbutton();
-    }, 5000); // 5초마다 실행
+    }, 3000); // 5초마다 실행
 
     // 컴포넌트 언마운트 시 인터벌 정리
     return () => clearInterval(interval);
