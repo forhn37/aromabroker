@@ -3,6 +3,7 @@ import Image from "next/image";
 import "@/app/ui/globals.css"
 import Nav from "@/app/ui/dashboard/nav";
 import Link from "next/link";
+import Footer from "../ui/dashboard/footer";
 
 
 export default function Layout({
@@ -20,7 +21,7 @@ export default function Layout({
         <Nav />
       </header>
       {children}
-      <footer>푸터 수정사항 적용중</footer>
+      <Footer />
     </>
   )
 }
