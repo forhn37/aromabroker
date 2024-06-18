@@ -86,3 +86,13 @@ export interface Dripbag {
   englishname: string;
 }
 
+export interface Posts {
+  id : number;
+  created_at: string;
+  title : string;
+  content : string;
+  author : string;
+  views : number;
+
+}
+

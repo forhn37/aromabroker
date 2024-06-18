@@ -7,18 +7,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-bold">CS CENTER</h3>
-            <p className="text-2xl font-bold mt-2">042-485-1164</p>
+            <h3 className="text-lg font-medium">CS CENTER</h3>
+            <p className="text-2xl  mt-2">042-485-1164</p>
             <p className="mt-2">상담시간 : 10:00 - 18:00</p>
             <p>SUNDAY OFF</p>
           </div>
           <div>
-            <h3 className="text-lg font-bold">BANK ACCOUNT</h3>
-            <p className="text-2xl font-bold mt-2">833-910016-10705</p>
+            <h3 className="text-lg ">BANK ACCOUNT</h3>
+            <p className="text-2xl  mt-2">833-910016-10705</p>
             <p>하나은행 아로마브로커</p>
           </div>
           <div className='border-t border-gray-200 '>
-            <h3 className="text-lg font-bold mt-3 ">COMPANY INFO</h3>
+            <h3 className="text-lg mt-3 mb-2 ">COMPANY INFO</h3>
             <p>상호 : 아로마브로커</p>
             <p>대표자 : 김민성</p>
             <p>전화 : 042-485-1164</p>

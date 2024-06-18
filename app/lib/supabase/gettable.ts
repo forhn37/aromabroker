@@ -1,11 +1,21 @@
 import { supabase } from "./supabaseClient";
 
 // Bean 테이블의 데이터를 가져오는 함수입니다.
-export default async function getBeanTable<T>(tablename: string): Promise<T[]> {
+export default async function GetTable<T>(
+  tablename: string,
+  standard?: string,
+  value?: string | number
+): Promise<T[]> {
   // supabase 클라이언트를 사용하여 데이터베이스에서 데이터를 가져옵니다.
-  const { data, error } = await supabase
-    .from(tablename) // 테이블 이름은 string 타입
-    .select('*'); // 테이블의 모든 열을 선택합니다.
+  // supabase 클라이언트를 사용하여 데이터베이스에서 데이터를 가져옵니다.
+  let query = supabase.from(tablename).select("*");
+
+  // standard와 value가 제공되었을 때만 조건을 추가합니다.
+  if (standard && value !== undefined) {
+    query = query.eq(standard, value);
+  }
+
+  const { data, error } = await query;
 
   // 데이터베이스에서 데이터를 가져오는 동안 오류가 발생하면 예외를 던집니다.
   if (error) {

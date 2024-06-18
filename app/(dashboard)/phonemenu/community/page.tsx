@@ -11,8 +11,8 @@ export default function MobilemenuCommunityPage() {
       <div className="flex justify-end pr-3">
         <button className="block" onClick={router.back}>BACK</button>
       </div>
-      <h1 className="text-4xl m-5">COMMUNITY</h1>
-      <div className="list-none text-3xl m-5">
+      <h1 className="text-3xl m-5">COMMUNITY</h1>
+      <div className="list-none text-2xl m-5">
         <Link href="/community/notice">
           <li className='mb-3'>공지</li>
         </Link>

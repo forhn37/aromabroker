@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={`${sans.className}`}>{children}</body>
+      <body className={roboto.className}>{children}</body>
     </html>
   );
 }

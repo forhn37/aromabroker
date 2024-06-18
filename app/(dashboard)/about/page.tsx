@@ -64,7 +64,7 @@ export default function Brand() {
   return (
     <main className="h-screen">
       <div className="w-full h-1/2 p-2">
-        <h1 className="text-2xl ">아로마브로커</h1>
+        <h1 className="text-2xl font-medium mb-2">아로마브로커</h1>
         <article>커피 한 잔 속에는 자연이 담겨져 있습니다.
           아로마브로커를 통해 아름다운 자연을 거니세요.
         </article>
@@ -75,7 +75,7 @@ export default function Brand() {
       </div>
       <div className="w-full h-1/2 p-2">
         <div>
-          <h1 className="text-2xl ">매장안내</h1>
+          <h1 className="text-2xl font-medium mb-2 ">매장안내</h1>
           <div >
             <h2>아로마 브로커 로스터리 까페</h2>
             <div>매장 위치 : 대전 서구 월평로 2</div>
