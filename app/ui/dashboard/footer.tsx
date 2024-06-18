@@ -22,7 +22,7 @@ export default function Footer() {
             <p>상호 : 아로마브로커</p>
             <p>대표자 : 김민성</p>
             <p>전화 : 042-485-1164</p>
-            <p>정보관리책임자 : 김민성</p>
+            <p>정보관리책임자 : 임하나</p>
             <p>사업자등록번호 : 176-06-01711
               <Link href='http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1760601711' target="_blank" rel="noopener noreferrer">
                 [사업자정보확인]
