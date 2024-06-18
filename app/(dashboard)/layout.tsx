@@ -14,9 +14,9 @@ export default function Layout({
 
   return (
     <>
-      <header className="flex h-2/6 justify-between p-6">
+      <header className="flex justify-between p-4">
         <Link href="/">
-          <Image src="/mainlogo.png" alt="logo" width={90} height={30} />
+          <Image src="/mainlogo.png" alt="logo" width={55} height={28} />
         </Link>
         <Nav />
       </header>

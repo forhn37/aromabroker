@@ -17,7 +17,7 @@ const HamburgerMenu = () => {
 
   return (
     <div className="relative">
-      <div className="w-8 h-8 flex flex-col justify-between items-center cursor-pointer" onClick={toggleMenu}>
+      <div className="w-5 h-5 flex flex-col justify-between items-center cursor-pointer" onClick={toggleMenu}>
         <div className={`h-1 w-full bg-black transition-transform duration-300 ${isOpen ? 'transform rotate-45 translate-y-3.5' : ''}`}></div>
         <div className={`h-1 w-full bg-black transition-transform duration-300 ${isOpen ? 'transform -rotate-45 -translate-y-3.5' : ''}`}></div>
       </div>

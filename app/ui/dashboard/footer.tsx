@@ -17,7 +17,7 @@ export default function Footer() {
             <p className="text-2xl  mt-2">833-910016-10705</p>
             <p>하나은행 아로마브로커</p>
           </div>
-          <div className='border-t border-gray-200 '>
+          <div className='border-t border-gray-200 text-sm '>
             <h3 className="text-lg mt-3 mb-2 ">COMPANY INFO</h3>
             <p>상호 : 아로마브로커</p>
             <p>대표자 : 김민성</p>

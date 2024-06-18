@@ -15,12 +15,12 @@ export default function Utubevideo() {
     async function fetchChannelVideos() {
       try {
         const res = await fetch('/api/utubeapi');
-        
+
         if (!res.ok) {
           throw new Error('Failed to fetch videos');
         }
 
-        const data : YoutubeAPIResponse = await res.json();
+        const data: YoutubeAPIResponse = await res.json();
         setVideos(data.items || []);
       } catch (error) {
         console.error('Error fetching videos:', error);
@@ -32,7 +32,16 @@ export default function Utubevideo() {
 
   return (
     <div>
-      <h1 className='p-3 text-2xl'>Utube</h1>
+      <div className='flex justify-start items-center'>
+        <Image
+          src={`/utubeimage.png`}
+          width={30}
+          height={10}
+          alt="Picture of the author"
+          className='ml-3'
+        />
+        <h1 className='p-3 text-2xl'>YouTube</h1>
+      </div>
       <div style={{ display: 'flex', flexWrap: 'wrap' }} className='w-screen'>
         {videos.length > 0 ? (
           videos.map((video) => (

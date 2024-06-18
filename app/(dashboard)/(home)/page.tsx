@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <div>
       <MainImageSlide />
-      <Card category={"Best Beans"} datatables={beansTable}/>
+      <Card category={"Best Beans"} datatables={beansTable} imagename='coffee'/>
       <Utubevideo />
     </div>
 

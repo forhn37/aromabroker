@@ -1,15 +1,16 @@
 'use client'
 /**1. page에서 전달된 props인 category를 통하여 서버로부터 데이터를 받아온다
- * 2. 그 데이터 중에서  */ 
+ * 2. 그 데이터 중에서  */
 
 import { useState, useEffect, useRef } from "react";
 import Carddetail from "./carddetail";
 import { Categories } from '@/app/types/types';
 import { usePathname } from 'next/navigation'
 import { Bean } from "@/app/types/types";
+import Image from "next/image";
 
 
-export default function Card({ category, description, datatables }: Categories) {
+export default function Card({ category, description, datatables, imagename }: Categories) {
   const [translateX, setTranslateX] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname()
@@ -67,16 +68,24 @@ export default function Card({ category, description, datatables }: Categories) 
 
   return (
     <div className="overflow-hidden mt-3">
-      <div className="w-screen p-3 text-2xl">
-        {category}
+      <div className="w-screen p-3 text-2xl flex justify-start items-center">
+        <Image
+          src={`/${imagename}.png`}
+          width={30}
+          height={10}
+          alt="Picture of the author"
+        />
+        <div className="p-2">
+          {category}
+        </div>
       </div>
-      <div style={{ width: `${50 *datatables.length}vw` }} className="flex" ref={cardRef}>
-        {datatables.map((item, index)=> (
-          <Carddetail key={index} item={item as Bean}/>
+      <div style={{ width: `${50 * datatables.length}vw` }} className="flex" ref={cardRef}>
+        {datatables.map((item, index) => (
+          <Carddetail key={index} item={item as Bean} />
 
         ))
-      }
-        
+        }
+
       </div>
       <div className="flex justify-around w-screen mt-4">
         <button className="flex justify-center" onClick={prvbutton}>이전</button>

@@ -50,6 +50,7 @@ export interface Categories {
   category: string;
   description?: string;
   datatables: Bean[] | Dripbag[];
+  imagename? : string;
 }
 // 원두 관련 데이터타입 
 export interface BeanDatas {
