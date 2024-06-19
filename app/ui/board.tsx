@@ -15,7 +15,7 @@ interface Post {
 
 const PAGE_SIZE = 5;
 
-const QABoard: React.FC = () => {
+export default function QABoard() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -71,7 +71,7 @@ const QABoard: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Q&A</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">title</h1>
       <p className="mb-4 text-sm">궁금한 점이 있으시다면 Q&A 통해 답변을 받아보세요.</p>
       <div className="border-t border-gray-300 mb-4"></div>
       <form onSubmit={handleSearch} className="mb-4 flex">
@@ -128,5 +128,3 @@ const QABoard: React.FC = () => {
     </div>
   );
 };
-
-export default QABoard;
