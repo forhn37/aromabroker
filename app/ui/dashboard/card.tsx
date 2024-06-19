@@ -73,21 +73,23 @@ export default function Card({ category, description, datatables, imagename }: C
           <Carddetail key={index} item={item as Bean} />
         ))}
       </div>
-      <div className="flex justify-center w-screen mt-4 ">
+      <div className="flex justify-center w-screen mt-4">
         <div
-          className={`w-4 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8' : 'w-4'} transition-all duration-800`}
+          className={`w-4 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8' : 'w-4'} transition-all duration-200`}
           onMouseEnter={() => setHoveringPrev(true)}
           onMouseLeave={() => setHoveringPrev(false)}
           onTouchStart={() => setHoveringPrev(true)}
-          onTouchEnd={() => setHoveringPrev(false)}
+          onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
+          onTouchCancel={() => setHoveringPrev(false)}
           onClick={prvbutton}
         />
         <div
-          className={`w-4 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-8' : 'w-4'} transition-all duration-800`}
+          className={`w-4 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-8' : 'w-4'} transition-all duration-200`}
           onMouseEnter={() => setHoveringNext(true)}
           onMouseLeave={() => setHoveringNext(false)}
           onTouchStart={() => setHoveringNext(true)}
-          onTouchEnd={() => setHoveringNext(false)}
+          onTouchEnd={() => setTimeout(() => setHoveringNext(false), 100)}
+          onTouchCancel={() => setHoveringNext(false)}
           onClick={nextbutton}
         />
       </div>
