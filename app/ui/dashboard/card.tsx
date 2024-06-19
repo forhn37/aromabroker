@@ -75,7 +75,7 @@ export default function Card({ category, description, datatables, imagename }: C
       </div>
       <div className="flex justify-center w-screen mt-4 ">
         <div
-          className={`w-4 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8' : 'w-4'} transition-all duration-300`}
+          className={`w-4 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8' : 'w-4'} transition-all duration-800`}
           onMouseEnter={() => setHoveringPrev(true)}
           onMouseLeave={() => setHoveringPrev(false)}
           onTouchStart={() => setHoveringPrev(true)}
@@ -83,7 +83,7 @@ export default function Card({ category, description, datatables, imagename }: C
           onClick={prvbutton}
         />
         <div
-          className={`w-4 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-8' : 'w-4'} transition-all duration-300`}
+          className={`w-4 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-8' : 'w-4'} transition-all duration-800`}
           onMouseEnter={() => setHoveringNext(true)}
           onMouseLeave={() => setHoveringNext(false)}
           onTouchStart={() => setHoveringNext(true)}
