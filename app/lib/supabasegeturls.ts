@@ -1,18 +1,30 @@
 import { listImages } from "./supabase/listImages";
 import { getImageUrl } from "./supabase/getImageUrl";
 
+export default async function SupabaseGetUrls(category: string): Promise<string[]> {
+  try {
+    const beansImageFilePaths = await listImages(category);
+    console.log(beansImageFilePaths);
 
+    if (!beansImageFilePaths || beansImageFilePaths.length === 0) {
+      console.error("No image file paths found");
+      return [];
+    }
 
-export default async function SupabaseGetUrls(category: string) {
-  const beansImageFilePaths = await listImages(category);
-  console.log(beansImageFilePaths);
-  if (!beansImageFilePaths) return;
+    const urls = await Promise.all(
+      beansImageFilePaths.map(async (path) => {
+        const url = await getImageUrl(path);
+        if (url === null) {
+          console.error(`Failed to get URL for path: ${path}`);
+        }
+        return url;
+      })
+    );
 
-  const urls = await Promise.all(
-    beansImageFilePaths.map((path) => getImageUrl(path))
-  );
-  console.log(urls);
-
-  const checkedUrls = urls.filter((url): url is string => url !== null);
-  return checkedUrls;
+    const checkedUrls = urls.filter((url): url is string => url !== null);
+    return checkedUrls;
+  } catch (error) {
+    console.error("Error fetching URLs:", error);
+    return [];
+  }
 }

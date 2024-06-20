@@ -14,12 +14,13 @@ export default async function Home() {
   const beansTable = await GetTable<Bean>("beans");
   const dripbagsTable = await GetTable<Dripbag>("dripbags");
   //이미지 url 가져오기
-  const url = SupabaseGetUrls('')
+  const urls = await SupabaseGetUrls('mainimage')
+  console.log(urls)
 
 
   return (
     <div>
-      <MainImageSlide />
+      <MainImageSlide urlsarray={urls}/>
       <Card category={"Best Beans"} datatables={beansTable} imagename='coffee'/>
       <Utubevideo />
     </div>
