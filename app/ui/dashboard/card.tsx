@@ -57,7 +57,7 @@ export default function Card({ category, description, datatables, imagename }: C
 
   return (
     <div className="overflow-hidden my-3">
-      <div className="w-screen p-3 text-2xl flex justify-start items-center">
+      <div className="w-screen px-3 text-2xl flex justify-start items-center">
         <Image
           src={`/${imagename}.png`}
           width={30}
