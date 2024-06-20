@@ -3,6 +3,8 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function MainImageSlide() {
+  const [hoveringPrev, setHoveringPrev] = useState(false);
+  const [hoveringNext, setHoveringNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -82,6 +84,26 @@ export default function MainImageSlide() {
           height={400}
           alt="Picture of the author"
           className='w-screen'
+        />
+      </div>
+      <div className="flex justify-center w-screen mt-3">
+        <div
+          className={`w-10 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-20' : 'w-10'} transition-all duration-200`}
+          onMouseEnter={() => setHoveringPrev(true)}
+          onMouseLeave={() => setHoveringPrev(false)}
+          onTouchStart={() => setHoveringPrev(true)}
+          onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
+          onTouchCancel={() => setHoveringPrev(false)}
+          onClick={prvbutton}
+        />
+        <div
+          className={`w-10 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-20' : 'w-10'} transition-all duration-200`}
+          onMouseEnter={() => setHoveringNext(true)}
+          onMouseLeave={() => setHoveringNext(false)}
+          onTouchStart={() => setHoveringNext(true)}
+          onTouchEnd={() => setTimeout(() => setHoveringNext(false), 100)}
+          onTouchCancel={() => setHoveringNext(false)}
+          onClick={nextbutton}
         />
       </div>
     </div>

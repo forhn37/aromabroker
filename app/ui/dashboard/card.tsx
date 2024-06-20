@@ -56,7 +56,7 @@ export default function Card({ category, description, datatables, imagename }: C
   }, [translateX]);
 
   return (
-    <div className="overflow-hidden mt-3">
+    <div className="overflow-hidden my-3">
       <div className="w-screen p-3 text-2xl flex justify-start items-center">
         <Image
           src={`/${imagename}.png`}
@@ -73,7 +73,7 @@ export default function Card({ category, description, datatables, imagename }: C
           <Carddetail key={index} item={item as Bean} />
         ))}
       </div>
-      <div className="flex justify-center w-screen mt-4">
+      <div className="flex justify-center w-screen mt-2">
         <div
           className={`w-4 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8' : 'w-4'} transition-all duration-200`}
           onMouseEnter={() => setHoveringPrev(true)}
