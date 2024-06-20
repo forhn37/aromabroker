@@ -4,7 +4,6 @@ import { getImageUrl } from "./supabase/getImageUrl";
 export default async function SupabaseGetUrls(category: string): Promise<string[]> {
   try {
     const beansImageFilePaths = await listImages(category);
-    console.log(beansImageFilePaths);
 
     if (!beansImageFilePaths || beansImageFilePaths.length === 0) {
       console.error("No image file paths found");

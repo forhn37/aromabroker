@@ -97,3 +97,7 @@ export interface Posts {
 
 }
 
+export interface MainImageSlideProps {
+  urlsarray: string[];
+}
+

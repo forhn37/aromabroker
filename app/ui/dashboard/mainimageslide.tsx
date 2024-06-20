@@ -1,16 +1,14 @@
 'use client'
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-interface MainImageSlideProps {
-  urlsarray: string[];
-}
+import { MainImageSlideProps } from '@/app/types/types';
+
 export default function MainImageSlide({urlsarray} : MainImageSlideProps) {
   const [hoveringPrev, setHoveringPrev] = useState(false);
   const [hoveringNext, setHoveringNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  console.log(urlsarray.length)
 
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
