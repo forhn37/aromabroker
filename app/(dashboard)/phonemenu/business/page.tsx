@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import BackButton from '../../../ui/dashboard/backbutton';
 
 
 export default function MobilemenuBusinessPage() {
@@ -9,7 +10,7 @@ export default function MobilemenuBusinessPage() {
   return (
     <div>
       <div className="flex justify-end pr-3">
-        <button className="block" onClick={router.back}>BACK</button>
+        <BackButton />
       </div>
       <h1 className="text-3xl m-5">BUSINESS</h1>
       <div className="list-none text-2xl m-5">
