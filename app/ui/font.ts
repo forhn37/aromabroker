@@ -15,5 +15,3 @@ export const blackhansans = Black_Han_Sans({
 });
 
 export const dohyun = Do_Hyeon({ subsets: ["latin"], weight: "400" });
-
-export const sunflower =Sunflower({ subsets: ["latin"], weight: "500" })
