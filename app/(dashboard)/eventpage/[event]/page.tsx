@@ -25,11 +25,13 @@ export default async function Event({ params, searchParams }: paramsProps) {
 
   console.log('Event table data:', eventtable);
 
+  const eventDetails = eventtable[0];
+
   return (
     <div>
       <div>
         <Image
-          src={searchParams.urlpathname}
+          src={eventDetails.imageurl}
           width={500}
           height={400}
           alt={`Slide `}
@@ -37,10 +39,10 @@ export default async function Event({ params, searchParams }: paramsProps) {
         />
       </div>
       <article className="p-3">
-        <h1 className="text-xl mb-2"> 커핑 클래스 안내</h1>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis aut numquam quas hic facere esse quaerat unde repudiandae quisquam voluptatem nam temporibus error, doloribus libero voluptate deleniti. Iste, voluptatibus quos!
-        </p>
+        <h1 className="text-xl mb-2">{eventDetails.title}</h1>
+        <div className="whitespace-pre-wrap">
+          {eventDetails.content}
+        </div>
       </article>
     </div>
   )
