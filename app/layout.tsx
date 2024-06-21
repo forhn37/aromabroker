@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: 'Aromabroker',
   },
   description: 'The official Aromabroker Coffee in Daejeon.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+  metadataBase: new URL('https://aromabroker.com'),
 };
 
 export default function RootLayout({
