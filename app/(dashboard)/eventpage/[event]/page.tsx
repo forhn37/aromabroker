@@ -13,17 +13,16 @@ export interface urlpathname {
   urlpathname: string;
 }
 export default async function Event({ params, searchParams }: paramsProps) {
-  console.log('Params:', params);
-  console.log('SearchParams:', searchParams);
-  const event = params.event
+  // console.log('Params:', params);
+  // console.log('SearchParams:', searchParams);
   const urlpathname = searchParams.urlpathname
 
-  console.log('Event:', event);
-  console.log('URL Pathname:', urlpathname);
+  // console.log('Event:', event);
+  // console.log('URL Pathname:', urlpathname);
 
   const eventtable = await GetTable<MaineventProps>('mainimage_event', 'imageurl', urlpathname)
 
-  console.log('Event table data:', eventtable);
+  // console.log('Event table data:', eventtable);
 
   const eventDetails = eventtable[0];
 
