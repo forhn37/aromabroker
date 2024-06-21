@@ -101,3 +101,10 @@ export interface MainImageSlideProps {
   urlsarray: string[];
 }
 
+export interface MaineventProps {
+  id : number;
+  created_at : string;
+  title : string;
+  content : string;
+  imageurl : string;
+}

@@ -2,8 +2,9 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { MainImageSlideProps } from '@/app/types/types';
+import Link from 'next/link';
 
-export default function MainImageSlide({urlsarray} : MainImageSlideProps) {
+export default function MainImageSlide({ urlsarray }: MainImageSlideProps) {
   const [hoveringPrev, setHoveringPrev] = useState(false);
   const [hoveringNext, setHoveringNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
@@ -60,20 +61,23 @@ export default function MainImageSlide({urlsarray} : MainImageSlideProps) {
 
   return (
     <div className="w-screen overflow-hidden">
-          <div
+      <div
         className="h-1/3 flex transition-transform duration-300"
         style={{ width: `${100 * urlsarray.length}vw` }}
         ref={containerRef}
       >
         {urlsarray.map((url, index) => (
-          <Image
-            key={index}
-            src={url}
-            width={500}
-            height={400}
-            alt={`Slide ${index + 1}`}
-            className="w-screen"
-          />
+          <div key ={index}>
+            <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url} }}>
+            <Image
+              src={url} 
+              width={500}
+              height={400}
+              alt={`Slide ${index + 1}`}
+              className="w-screen"
+            />
+          </Link>
+          </div>
         ))}
       </div>
       <div className="flex justify-center w-screen mt-3">

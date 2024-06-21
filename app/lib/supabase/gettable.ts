@@ -6,6 +6,9 @@ export default async function GetTable<T>(
   standard?: string,
   value?: string | number
 ): Promise<T[]> {
+  console.log(`Fetching data from table: ${tablename}`);
+  console.log(`Using condition: ${standard} = ${value}`);
+
   // supabase 클라이언트를 사용하여 데이터베이스에서 데이터를 가져옵니다.
   // supabase 클라이언트를 사용하여 데이터베이스에서 데이터를 가져옵니다.
   let query = supabase.from(tablename).select("*");
