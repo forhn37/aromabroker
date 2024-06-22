@@ -117,3 +117,13 @@ export interface NoticePost {
   created_at: string;
   views: number;
 }
+
+export interface RecipeTable {
+  id : number;
+  created_at : string;
+  title : string;
+  content : string;
+  imageurl : string;
+  description : string;
+  coffeePublicName : string;
+}
