@@ -3,20 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '@/app/lib/supabase/supabaseClient'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { NoticePost } from '../types/types';
 
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  created_at: string;
-  views: number;
+
+
+interface BoardTitle {
+  boardtitle : string;
+  tablename : string;
 }
 
 const PAGE_SIZE = 5;
 
-export default function QABoard() {
-  const [posts, setPosts] = useState<Post[]>([]);
+export default function Board({boardtitle, tablename} : BoardTitle) {
+  const [posts, setPosts] = useState<NoticePost[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -28,9 +27,9 @@ export default function QABoard() {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-
+//테이블명 변경
       let query = supabase
-        .from('posts')
+        .from(tablename)
         .select('*', { count: 'exact' })
         .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1)
         .order('created_at', { ascending: false });
@@ -71,7 +70,7 @@ export default function QABoard() {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">title</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">{boardtitle}</h1>
       <p className="mb-4 text-sm">궁금한 점이 있으시다면 Q&A 통해 답변을 받아보세요.</p>
       <div className="border-t border-gray-300 mb-4"></div>
       <form onSubmit={handleSearch} className="mb-4 flex">
@@ -89,7 +88,7 @@ export default function QABoard() {
       ) : (
         posts.map(post => (
           <div key={post.id} className="mb-4">
-            <Link href={`${pathname}/${post.id}`} >
+            <Link href={{pathname : `${pathname}/${post.id}`, query: { boardtitle: boardtitle, tablename : tablename }}} >
               <h2 className="font-bold">{post.title}</h2>
               {/* <p>{post.content}</p> */}
               <p className="text-sm text-gray-500">

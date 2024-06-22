@@ -108,3 +108,12 @@ export interface MaineventProps {
   content : string;
   imageurl : string;
 }
+
+export interface NoticePost {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  created_at: string;
+  views: number;
+}

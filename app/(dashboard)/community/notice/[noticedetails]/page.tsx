@@ -2,17 +2,23 @@
 import { Posts } from "@/app/types/types";
 import GetTable from "@/app/lib/supabase/gettable";
 
-export interface noticeparams {
-  params: noticecontent;
+export interface BoardArg {
+  params: noticedetails;
+  searchParams : noticesearchparams;
+}
+export interface noticedetails {
+  noticedetails: number;
+}
+export interface noticesearchparams {
+  boardtitle : string;
+  tablename : string;
 }
 
-export interface noticecontent {
-  noticecontent: number;
-}
+export default async function NoticeDetails({ params, searchParams }: BoardArg) {
+  const boardtitle = searchParams.boardtitle
+  const tablename = searchParams.tablename;
 
-export default async function Noticecontent({ params }: noticeparams) {
-
-  const PostsTable = await GetTable<Posts>('posts', 'id', params.noticecontent);
+  const PostsTable = await GetTable<Posts>(tablename, 'id', params.noticedetails);
 
   // 가져온 데이터를 반환합니다.
   const PostsTabledata = PostsTable[0]
@@ -21,7 +27,7 @@ export default async function Noticecontent({ params }: noticeparams) {
 
   return (
     <main className="max-w-4xl mx-auto p-4 bg-neutral-100 pt-10 pb-10">
-      <div className="text-3xl text-center mb-6">NOTICE</div>
+      <div className="text-3xl text-center mb-6">{boardtitle}</div>
       <article className="prose lg:prose-xl">
         <h1 className="text-1xl font-bold mb-4">제목 : {PostsTabledata.title}</h1>
         <p className="text-xs text-gray-500 mb-4">
