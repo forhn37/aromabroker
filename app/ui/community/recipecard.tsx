@@ -33,6 +33,7 @@ export default function RecipeCard({ title, created_at, content, imageurl, descr
           {new Date(created_at).toLocaleDateString()}
           <Link href={`/community/recipes/${coffeePublicName}`} passHref>
             <a onClick={handleClick}>자세히보기</a>
+            
           </Link>
         </div>
       </div>
