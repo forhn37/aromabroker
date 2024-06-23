@@ -12,7 +12,6 @@ export default async function Recipes() {
 
 
   return (
-    <RecipeProvider>
       <div className="flex flex-wrap justify-center">
         {Recipetable.map(recipe => (
           <RecipeCard
@@ -25,6 +24,5 @@ export default async function Recipes() {
             description={recipe.description} coffeePublicName={recipe.coffeePublicName} />
         ))}
       </div>
-    </RecipeProvider>
   );
 }

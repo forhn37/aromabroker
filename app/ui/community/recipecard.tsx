@@ -1,22 +1,22 @@
-'use client'
-import GetTable from '@/app/lib/supabase/gettable';
+'use client';
+
 import { RecipeTable } from '@/app/types/types';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRecipeContext } from '@/app/lib/mycontext';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function RecipeCard({ title, created_at, content, imageurl, description, coffeePublicName }: RecipeTable) {
   const { setContent } = useRecipeContext();
   const router = useRouter();
 
-  const handleClick = (e) => {
-    e.preventDefault(); // 기본 링크 동작을 막음
+
+  const handleClick = () => {
     setContent(content);
-    router.push(`/community/recipes/${coffeePublicName}`); // 수동으로 페이지 이동
+    router.push(`/community/recipes/${coffeePublicName}`);
+ // 상태 업데이트 후 페이지 전환을 트리거
   };
 
-  console.log(content)
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white m-4">
       <Image
@@ -31,10 +31,7 @@ export default function RecipeCard({ title, created_at, content, imageurl, descr
         <div className="text-xl mb-2">{description}</div>
         <div className="text-gray-700 text-base py-2 flex justify-between">
           {new Date(created_at).toLocaleDateString()}
-          <Link href={`/community/recipes/${coffeePublicName}`} passHref>
-            <a onClick={handleClick}>자세히보기</a>
-            
-          </Link>
+          <div onClick={handleClick}>자세히보기</div>
         </div>
       </div>
     </div>

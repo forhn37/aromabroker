@@ -4,6 +4,7 @@ import "@/app/ui/globals.css"
 import Nav from "@/app/ui/dashboard/nav";
 import Link from "next/link";
 import Footer from "../ui/dashboard/footer";
+import { RecipeProvider } from "../lib/mycontext";
 
 
 
@@ -21,7 +22,9 @@ export default function Layout({
         </Link>
         <Nav />
       </header>
+      <RecipeProvider>
         {children}
+      </RecipeProvider>
       <Footer />
     </>
   )
