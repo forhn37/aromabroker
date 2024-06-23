@@ -1,10 +1,18 @@
+'use client'
 import GetTable from '@/app/lib/supabase/gettable';
 import { RecipeTable } from '@/app/types/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRecipeContext } from '@/app/lib/mycontext';
 
 export default function RecipeCard({ title, created_at, content, imageurl, description, coffeePublicName }: RecipeTable) {
-
+  const { setContent } = useRecipeContext();
+  
+  const handleClick = () => {
+    setContent(content);
+  };
+  
+  console.log(content)
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white m-4">
       <Image
@@ -20,7 +28,7 @@ export default function RecipeCard({ title, created_at, content, imageurl, descr
         <div className="text-gray-700 text-base py-2 flex justify-between">
           {new Date(created_at).toLocaleDateString()}
           <Link href ={`/community/recipes/${coffeePublicName}`} >
-            <div>자세히보기</div>
+            <div onClick={handleClick}>자세히보기</div>
           </Link>
         </div>
       </div>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import Footer from "../ui/dashboard/footer";
 
 
+
 export default function Layout({
   children
 }: Readonly<{
@@ -20,7 +21,7 @@ export default function Layout({
         </Link>
         <Nav />
       </header>
-      {children}
+        {children}
       <Footer />
     </>
   )

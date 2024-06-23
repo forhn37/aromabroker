@@ -1,9 +1,11 @@
-export default function RecipeDetails() {
+import { RecipeProvider } from "@/app/lib/mycontext";
+import RecipeDetails from "@/app/ui/recipedetails";
+
+export default function RecipeCardDetails() {
+
   return (
-    <div>
-      
-    </div>
+    <RecipeProvider>
+      <RecipeDetails />
+    </RecipeProvider>
   )
-
-
 }
