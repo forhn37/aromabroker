@@ -2,7 +2,7 @@
 
 import { RecipeTable } from '@/app/types/types';
 import Image from 'next/image';
-import { useRecipeContext } from '@/app/lib/mycontext';
+import { useRecipeContext, Content } from '@/app/lib/mycontext';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -10,9 +10,9 @@ export default function RecipeCard({ title, created_at, content, imageurl, descr
   const { setContent } = useRecipeContext();
   const router = useRouter();
 
-
   const handleClick = () => {
-    setContent(content);
+    const recipeContent: Content = { title, content, imageurl };
+    setContent(recipeContent);
     router.push(`/community/recipes/${coffeePublicName}`);
  // 상태 업데이트 후 페이지 전환을 트리거
   };

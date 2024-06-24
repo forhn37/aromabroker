@@ -2,15 +2,20 @@
 'use client'
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-interface RecipeContextType {
+export interface Content {
+  title: string;
   content: string;
-  setContent: React.Dispatch<React.SetStateAction<string>>;
+  imageurl: string;
 }
 
+interface RecipeContextType {
+  content: Content;
+  setContent: React.Dispatch<React.SetStateAction<Content>>;
+}
 const RecipeContext = createContext<RecipeContextType | undefined>(undefined);
 
 export const RecipeProvider = ({ children }: { children: ReactNode }) => {
-  const [content, setContent] = useState<string>('');
+  const [content, setContent] = useState<Content>({ title: '', content: '', imageurl: '' });
 
   return (
     <RecipeContext.Provider value={{ content, setContent }}>
