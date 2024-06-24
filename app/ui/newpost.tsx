@@ -2,16 +2,20 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/app/lib/supabase/supabaseClient';
-import { NoticePost } from '../types/types';
+import 'react-quill/dist/quill.snow.css';
+import dynamic from 'next/dynamic';
 import { TableNameType } from '../(dashboard)/community/notice/new/page';
 
-export default function NewPost({ tablename } :TableNameType) {
+// 동적 import로 ReactQuill 로드
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
+export default function NewPost({ tablename }:TableNameType) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
   const router = useRouter();
 
-  const handleSubmit = async (e :React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { data, error } = await supabase
       .from(tablename)
@@ -29,23 +33,18 @@ export default function NewPost({ tablename } :TableNameType) {
       <h1 className="text-2xl font-bold mb-4">새 글 작성</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-sm font-bold mb-2 ">제목</label>
+          <label className="block text-sm font-bold mb-2">제목</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border w-full h-8"
+            className="border p-2 w-full"
             required
           />
         </div>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2">내용</label>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="border p-2 w-full h-32"
-            required
-          />
+          <ReactQuill value={content} onChange={setContent} className="border p-2 w-full" />
         </div>
         <div className="mb-4">
           <label className="block text-sm font-bold mb-2">작성자</label>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '@/app/lib/supabase/supabaseClient';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ReactPaginate from 'react-paginate';
 import { NoticePost } from '../types/types';
 
 interface BoardTitle {
@@ -52,10 +53,8 @@ export default function Board({ boardtitle, tablename }: BoardTitle) {
     fetchPosts();
   }, [page, searchQuery]);
 
-  const handlePageChange = (newPage: number) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-      setPage(newPage);
-    }
+  const handlePageChange = ({ selected }) => {
+    setPage(selected + 1);
   };
 
   const handleSearch = (event: React.FormEvent) => {
@@ -72,7 +71,7 @@ export default function Board({ boardtitle, tablename }: BoardTitle) {
       <form onSubmit={handleSearch} className="mb-4 flex">
         <input
           type="text"
-          placeholder="제목을 입력하세요"
+          placeholder="검색어 입력"
           value={searchKeyword}
           onChange={(e) => setSearchKeyword(e.target.value)}
           className="border p-2 flex-grow"
@@ -102,29 +101,21 @@ export default function Board({ boardtitle, tablename }: BoardTitle) {
         ))
       )}
       <div className="flex justify-center mt-4">
-        <button
-          className="px-3 py-1 mx-1 "
-          onClick={() => handlePageChange(page - 1)}
-          disabled={page === 1}
-        >
-          &lt;
-        </button>
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index}
-            className='px-2 py-1 '
-            onClick={() => handlePageChange(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
-        <button
-          className="px-3 py-1 mx-1"
-          onClick={() => handlePageChange(page + 1)}
-          disabled={page === totalPages}
-        >
-          &gt;
-        </button>
+        <ReactPaginate
+          previousLabel={'<'}
+          nextLabel={'>'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={totalPages}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageChange}
+          containerClassName={'flex justify-center mt-4'}
+          activeClassName={'bg-black text-white'}
+          pageClassName={'px-4 py-2 mx-1 bg-gray-300 rounded'}
+          previousClassName={'px-4 py-2 mx-1 bg-gray-300 rounded'}
+          nextClassName={'px-4 py-2 mx-1 bg-gray-300 rounded'}
+        />
       </div>
     </div>
   );
