@@ -1,20 +1,18 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/app/lib/supabase/supabaseClient'
+import { supabase } from '@/app/lib/supabase/supabaseClient';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NoticePost } from '../types/types';
 
-
-
 interface BoardTitle {
-  boardtitle : string;
-  tablename : string;
+  boardtitle: string;
+  tablename: string;
 }
 
 const PAGE_SIZE = 5;
 
-export default function Board({boardtitle, tablename} : BoardTitle) {
+export default function Board({ boardtitle, tablename }: BoardTitle) {
   const [posts, setPosts] = useState<NoticePost[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -22,12 +20,11 @@ export default function Board({boardtitle, tablename} : BoardTitle) {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
-  console.log(pathname)
+  console.log(pathname);
 
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-//테이블명 변경
       let query = supabase
         .from(tablename)
         .select('*', { count: 'exact' })
@@ -45,7 +42,6 @@ export default function Board({boardtitle, tablename} : BoardTitle) {
       } else {
         setPosts(data);
         if (count) {
-
           setTotalPages(Math.ceil(count / PAGE_SIZE));
         }
       }
@@ -64,8 +60,8 @@ export default function Board({boardtitle, tablename} : BoardTitle) {
 
   const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
-    setSearchQuery(searchKeyword); // 검색어를 검색 쿼리로 설정하여 useEffect가 실행되게 함
-    setPage(1); // 검색 시 페이지를 1로 리셋
+    setSearchQuery(searchKeyword);
+    setPage(1);
   };
 
   return (
@@ -76,21 +72,27 @@ export default function Board({boardtitle, tablename} : BoardTitle) {
       <form onSubmit={handleSearch} className="mb-4 flex">
         <input
           type="text"
-          placeholder="검색어 입력"
+          placeholder="제목을 입력하세요"
           value={searchKeyword}
           onChange={(e) => setSearchKeyword(e.target.value)}
           className="border p-2 flex-grow"
         />
         <button type="submit" className="bg-black text-white p-2 ml-2">검색</button>
       </form>
+      {tablename !== 'noticetable' ? (
+        <div className="mb-4 text-right">
+          <Link href={{ pathname: `${pathname}/new`, query: { tablename: tablename } }}>
+            <button className="bg-black text-white p-2">새 글 작성</button>
+          </Link>
+        </div>
+      ) : <></>}
       {loading ? (
         <p>Loading...</p>
       ) : (
         posts.map(post => (
           <div key={post.id} className="mb-4">
-            <Link href={{pathname : `${pathname}/${post.id}`, query: { boardtitle: boardtitle, tablename : tablename }}} >
+            <Link href={{ pathname: `${pathname}/${post.id}`, query: { boardtitle: boardtitle, tablename: tablename } }} >
               <h2 className="font-bold">{post.title}</h2>
-              {/* <p>{post.content}</p> */}
               <p className="text-sm text-gray-500">
                 {post.author} | {new Date(post.created_at).toLocaleDateString()} | 조회 {post.views}
               </p>
@@ -101,27 +103,27 @@ export default function Board({boardtitle, tablename} : BoardTitle) {
       )}
       <div className="flex justify-center mt-4">
         <button
-          className="px-4 py-2 mx-1 bg-gray-300 rounded"
+          className="px-3 py-1 mx-1 "
           onClick={() => handlePageChange(page - 1)}
           disabled={page === 1}
         >
-          이전
+          &lt;
         </button>
         {[...Array(totalPages)].map((_, index) => (
           <button
             key={index}
-            className={`px-4 py-2 mx-1 ${page === index + 1 ? 'bg-black text-white' : 'bg-gray-300'} rounded`}
+            className='px-2 py-1 '
             onClick={() => handlePageChange(index + 1)}
           >
             {index + 1}
           </button>
         ))}
         <button
-          className="px-4 py-2 mx-1 bg-gray-300 rounded"
+          className="px-3 py-1 mx-1"
           onClick={() => handlePageChange(page + 1)}
           disabled={page === totalPages}
         >
-          다음
+          &gt;
         </button>
       </div>
     </div>
