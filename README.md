@@ -47,8 +47,8 @@ To get a local copy up and running, follow these simple steps:
     ```
 3. Create a `.env.local` file in the root directory and add your environment variables:
     ```env
-    NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+    NEXT_PUBLIC_SUPABASE_URL=https://qblzpggxwtpkzdhsxtxh.supabase.co
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFibHpwZ2d4d3Rwa3pkaHN4dHhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxNzg5NTksImV4cCI6MjAzMzc1NDk1OX0.zthnqC1HBQrijdyYHgArn3530SERguIUXL2GqTS6g3A
     ```
 
 ## Usage
