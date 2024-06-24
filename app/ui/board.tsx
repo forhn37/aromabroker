@@ -69,23 +69,6 @@ export default function Board({ boardtitle, tablename }: BoardTitle) {
       <h1 className="text-2xl font-bold mb-4 text-center">{boardtitle}</h1>
       <p className="mb-4 text-sm">궁금한 점이 있으시다면 Q&A 통해 답변을 받아보세요.</p>
       <div className="border-t border-gray-300 mb-4"></div>
-      <form onSubmit={handleSearch} className="mb-4 flex">
-        <input
-          type="text"
-          placeholder="제목을 입력하세요"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-          className="border p-2 flex-grow"
-        />
-        <button type="submit" className="bg-black text-white p-2 ml-2">검색</button>
-      </form>
-      {tablename !== 'noticetable' ? (
-        <div className="mb-4 text-right">
-          <Link href={{ pathname: `${pathname}/new`, query: { tablename: tablename } }}>
-            <button className="bg-black text-white p-2">새 글 작성</button>
-          </Link>
-        </div>
-      ) : <></>}
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -101,6 +84,23 @@ export default function Board({ boardtitle, tablename }: BoardTitle) {
           </div>
         ))
       )}
+        <form onSubmit={handleSearch} className="mb-4 flex">
+          <input
+            type="text"
+            placeholder="제목을 입력하세요"
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+            className="border p-2 flex-grow"
+          />
+          <button type="submit" className="bg-gray-700 text-white p-2 ml-2 rounded">검색</button>
+        </form>
+        {tablename !== 'noticetable' ? (
+          <div className="mb-4 text-right">
+            <Link href={{ pathname: `${pathname}/new`, query: { tablename: tablename } }}>
+              <button className="bg-gray-700 text-white p-2 rounded w-full text-sm">글쓰기</button>
+            </Link>
+          </div>
+        ) : <span></span>}
       <div className="flex justify-center mt-4">
         <button
           className="px-3 py-1 mx-1 "

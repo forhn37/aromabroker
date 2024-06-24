@@ -4,14 +4,15 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '@/app/lib/supabase/supabaseClient';
 import { NoticePost } from '../types/types';
 import { TableNameType } from '../(dashboard)/community/notice/new/page';
+import BackButton from './dashboard/backbutton';
 
-export default function NewPost({ tablename } :TableNameType) {
+export default function NewPost({ tablename }: TableNameType) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
   const router = useRouter();
 
-  const handleSubmit = async (e :React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { data, error } = await supabase
       .from(tablename)
@@ -57,7 +58,9 @@ export default function NewPost({ tablename } :TableNameType) {
             required
           />
         </div>
-        <button type="submit" className="bg-black text-white p-2">작성</button>
+        <div className='flex justify-end'>
+          <button type="submit" className="bg-black text-white p-2 ">작성</button>
+        </div>
       </form>
     </div>
   );
