@@ -33,7 +33,15 @@ export default function Footer() {
             <p>문의 및 제안 : aromabroker@gmail.com</p>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-200 pt-8 text-center">
+        <div className="border-t border-gray-200 flex justify-center mt-4 pt-4">
+          <Link href='/informationprocessing'>
+            <span className="text-sm">개인정보처리방침</span>
+          </Link>
+          <Link href='/termsofuse'>
+            <span className="text-sm ml-2">이용약관</span>
+          </Link>
+        </div>
+        <div className="mt-4 border-t border-gray-200 pt-4 text-center">
           <p className="text-sm">Copyright © 아로마브로커 All rights reserved.</p>
         </div>
       </div>
