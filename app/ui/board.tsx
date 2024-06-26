@@ -79,8 +79,8 @@ export default function Board({ boardtitle, tablename }: BoardTitle) {
       }
 
       const data = await response.json();
-      setPosts((prevPosts) => 
-        prevPosts.map((post) => 
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
           post.id === id ? { ...post, views: data.views } : post
         )
       );
@@ -103,21 +103,18 @@ export default function Board({ boardtitle, tablename }: BoardTitle) {
       <h1 className="text-2xl font-bold mb-4 text-center">{boardtitle}</h1>
       <p className="mb-4 text-sm">궁금한 점이 있으시다면 Q&A 통해 답변을 받아보세요.</p>
       <div className="border-t border-gray-300 mb-4"></div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        posts.map(post => (
-          <div key={post.id} className="mb-4">
-            <div onClick={() => handlePostClick(post.id)}>
-                <h2 className="font-bold">{post.title}</h2>
-                <p className="text-sm text-gray-500">
-                  {post.author} | {new Date(post.created_at).toLocaleDateString()} | 조회 {post.views}
-                </p>
-            </div>
-            <div className="border-t border-gray-300 mt-2"></div>
+      {posts.map(post => (
+        <div key={post.id} className="mb-4">
+          <div onClick={() => handlePostClick(post.id)}>
+            <h2 className="font-bold">{post.title}</h2>
+            <p className="text-sm text-gray-500">
+              {post.author} | {new Date(post.created_at).toLocaleDateString()} | 조회 {post.views}
+            </p>
           </div>
-        ))
-      )}
+          <div className="border-t border-gray-300 mt-2"></div>
+        </div>
+      ))
+      }
       <form onSubmit={handleSearch} className="mb-4 flex">
         <input
           type="text"
