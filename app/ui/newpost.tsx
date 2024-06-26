@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/app/lib/supabase/supabaseClient';
-import { NoticePost } from '../types/types';
 import { TableNameType } from '../(dashboard)/community/notice/new/page';
-import BackButton from './dashboard/backbutton';
+
 
 export default function NewPost({ tablename }: TableNameType) {
   const [title, setTitle] = useState('');
