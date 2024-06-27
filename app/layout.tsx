@@ -22,8 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={roboto.className}>{children}</body>
-      <SpeedInsights />
+      <body className={roboto.className}>{children}
+        <SpeedInsights />
+      </body>
+
     </html>
   );
 }

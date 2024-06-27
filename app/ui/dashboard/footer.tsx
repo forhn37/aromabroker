@@ -35,10 +35,10 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-200 flex justify-center mt-4 pt-4">
           <Link href='/informationprocessing'>
-            <span className="text-sm">개인정보처리방침</span>
+            <div className="text-sm">개인정보처리방침</div>
           </Link>
           <Link href='/termsofuse'>
-            <span className="text-sm ml-2">이용약관</span>
+            <div className="text-sm ml-2">이용약관</div>
           </Link>
         </div>
         <div className="mt-4 border-t border-gray-200 pt-4 text-center">
