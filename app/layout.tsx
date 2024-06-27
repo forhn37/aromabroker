@@ -1,5 +1,5 @@
 // TODO : 1. Font select, 2. metadata config
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "@/app/ui/globals.css";
 import { Metadata } from "next";
 // import { sans } from "@/app/ui/font";
@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
     <html>
       <body className={roboto.className}>{children}</body>
+      <SpeedInsights />
     </html>
   );
 }
