@@ -4,7 +4,9 @@ import { supabase } from "./supabaseClient";
 export default async function GetTable<T>(
   tablename: string,
   standard?: string,
-  value?: string | number
+  value?: string | number,
+  orderBy?: string,
+  orderDirection: 'asc' | 'desc' = 'asc'
 ): Promise<T[]> {
 
   let query = supabase.from(tablename).select("*");
@@ -12,6 +14,11 @@ export default async function GetTable<T>(
   // standard와 value가 제공되었을 때만 조건을 추가합니다.
   if (standard && value !== undefined) {
     query = query.eq(standard, value);
+  }
+
+  // orderBy가 제공되었을 때 정렬을 추가합니다.
+  if (orderBy) {
+    query = query.order(orderBy, { ascending: orderDirection === 'asc' });
   }
 
   const { data, error } = await query;

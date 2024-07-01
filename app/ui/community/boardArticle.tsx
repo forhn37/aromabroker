@@ -1,49 +1,14 @@
-'use client'
-
-import { useEffect, useState } from "react";
-import GetTable from "@/app/lib/supabase/gettable";
 import { Posts } from "@/app/types/types";
 
 export interface BoardArticleType {
-  tablename: string;
-  postindex: number;
+  post: Posts | null;
 }
 
-export default function BoardArticle({ tablename, postindex }: BoardArticleType) {
-  const [post, setPost] = useState<Posts | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const PostsTableData = await GetTable<Posts>(tablename, 'id', postindex);
-        if (PostsTableData && PostsTableData.length > 0) {
-          setPost(PostsTableData[0]);
-        } else {
-          setError('Post not found');
-        }
-      } catch (err) {
-        setError('Failed to fetch post');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, [tablename, postindex]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
+export default function BoardArticle({ post }: BoardArticleType) {
   if (!post) {
     return <p>No post data available</p>;
   }
+  console.log(post)
 
   return (
     <article className="prose lg:prose-xl">
