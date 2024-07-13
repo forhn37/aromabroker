@@ -6,6 +6,7 @@ import { NoticePost } from '@/app/types/types';
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const tablename = searchParams.get('tablename');
+  console.log(searchParams)
 
   if (!tablename) {
     return new NextResponse(JSON.stringify({ error: 'Table name is required' }), { status: 400 });

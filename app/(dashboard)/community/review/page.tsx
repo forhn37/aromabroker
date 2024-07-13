@@ -3,7 +3,7 @@ import { NoticePost } from '@/app/types/types';
 
 export default async function Review() {
   const tablename = 'reviewtable';
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/gettableboard?tablename=${tablename}`);
+  const response = await fetch(`/api/gettableboard?tablename=${tablename}`);
   const posts: NoticePost[] = await response.json();
 
   return (
