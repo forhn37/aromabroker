@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server';
 import GetTable from '@/app/lib/supabase/gettable';
 import { NoticePost } from '@/app/types/types';
-export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const postindex = searchParams.get('postindex');
   const tablenames = searchParams.get('tablenames');
-  const tablename = tablenames !== null?tablenames:''
+  const tablename = tablenames !== null?tablenames:'';
 
   if (!postindex) {
     console.log('Missing postindex');
