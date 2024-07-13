@@ -19,7 +19,7 @@ export default async function NoticeDetails({ params, searchParams }: BoardArg) 
   const postindex = params.qnadetails;
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/boarddetails?postindex=${postindex}&tablenames=${tablename}`);
+    const response = await fetch(`/api/boarddetails?postindex=${postindex}&tablenames=${tablename}`);
 
     if (!response.ok) {
       console.error('Fetch request failed', response.statusText);
