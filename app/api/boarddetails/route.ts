@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server';
 import GetTable from '@/app/lib/supabase/gettable';
 import { NoticePost } from '@/app/types/types';
+export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  console.log('Request received'); // 추가된 로그
   const { searchParams } = new URL(request.url);
   const postindex = searchParams.get('postindex');
-  console.log('hello');
+  const tablenames = searchParams.get('tablenames');
+  const tablename = tablenames !== null?tablenames:''
 
   if (!postindex) {
     console.log('Missing postindex');
@@ -14,7 +15,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const data = await GetTable<NoticePost>('noticetable', 'id', parseInt(postindex, 10), 'created_at', 'desc');
+    const data = await GetTable<NoticePost>(tablename, 'id', parseInt(postindex, 10), 'created_at', 'desc');
     console.log('Data fetched successfully');
     return NextResponse.json(data, {
       status: 200,

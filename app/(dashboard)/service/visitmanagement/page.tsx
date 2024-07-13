@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { dohyun } from "@/app/ui/font";
 import BackButton from "@/app/ui/dashboard/backbutton";
-
+export const revalidate = 10;
 
 export default function VisitmentService() {
 

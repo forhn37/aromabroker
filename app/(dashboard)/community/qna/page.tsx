@@ -1,11 +1,14 @@
-//정적페이지 및 글귀
-//TODO : 게시판 구조
-
 import Board from "@/app/ui/board";
-export default function Qna() {
+import { NoticePost } from '@/app/types/types';
+
+export default async function Qna() {
+  const tablename = 'qnatable';
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/gettableboard?tablename=${tablename}`);
+  const posts: NoticePost[] = await response.json();
+
   return (
     <main>
-    <Board boardtitle ='Q&A' tablename = 'qnatable'/>
-  </main>
+      <Board boardtitle='Q&A' tablename={tablename} initialPosts={posts} />
+    </main>
   );
-} 
+}

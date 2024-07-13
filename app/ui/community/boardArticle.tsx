@@ -8,7 +8,6 @@ export default function BoardArticle({ post }: BoardArticleType) {
   if (!post) {
     return <p>No post data available</p>;
   }
-  console.log(post)
 
   return (
     <article className="prose lg:prose-xl">

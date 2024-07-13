@@ -8,6 +8,5 @@ export interface TableNameType {
   tablename : string;
 }
 export default function NewPostPage({searchParams} : NoticePostSearchPrams) {
-  console.log(searchParams)
   return <NewPost tablename={searchParams.tablename} />;
 }
