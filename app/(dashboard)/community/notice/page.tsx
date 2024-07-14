@@ -5,6 +5,7 @@ export default async function Notice() {
   const tablename = 'noticetable';
   const response = await fetch(`/api/gettableboard?tablename=${tablename}`);
   const posts: NoticePost[] = await response.json();
+  console.log('check')
 
   return (
     <main>
