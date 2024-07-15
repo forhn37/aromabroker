@@ -107,7 +107,7 @@ export default function Board({ initialPosts, boardtitle, tablename }: BoardProp
       <div className="border-t border-gray-300 mb-4"></div>
       {posts.map(post => (
         <div key={post.id} className="mb-4">
-          <Link href={`${pathname}/${post.id}`} >
+          <Link href={`${pathname}/${post.id}?boardtitle=${boardtitle}`} >
             <div onClick={() => handlePostClick(post.id)}>
               <h2 className="font-bold">{post.title}</h2>
               <p className="text-sm text-gray-500">

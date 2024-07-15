@@ -1,11 +1,12 @@
 import Board from "@/app/ui/board";
 import { NoticePost } from '@/app/types/types';
+import GetTable from "@/app/lib/supabase/gettable";
 
 export default async function Notice() {
   const tablename = 'noticetable';
-  const response = await fetch(`/api/gettableboard?tablename=${tablename}`);
-  const posts: NoticePost[] = await response.json();
-  console.log('check')
+  const data = await GetTable<NoticePost>(tablename, undefined, undefined, 'created_at', 'desc');
+
+  const posts: NoticePost[] = data;
 
   return (
     <main>

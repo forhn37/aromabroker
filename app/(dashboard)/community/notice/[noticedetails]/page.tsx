@@ -1,5 +1,7 @@
 import BoardArticle from "@/app/ui/community/boardArticle";
 import { Posts } from "@/app/types/types";
+import GetTable from "@/app/lib/supabase/gettable";
+import { NoticePost } from "@/app/types/types";
 
 export interface BoardArg {
   params: noticedetails;
@@ -19,37 +21,22 @@ export default async function NoticeDetails({ params, searchParams }: BoardArg) 
 
   const postindex = params.noticedetails;
 
+  const response = await GetTable<NoticePost>(
+    tablename,
+    "id",
+    postindex,
+    "created_at",
+    "desc"
+  );
 
-  try {
-    const response = await fetch(`/api/boarddetails?postindex=${postindex}&tablenames=${tablename}`);
+  const posts: Posts[] = response
 
-    if (!response.ok) {
-      console.error('Fetch request failed', response.statusText);
-      return (
-        <main className="max-w-4xl mx-auto p-4 bg-neutral-100 pt-10 pb-10">
-          <div className="text-3xl text-center mb-6">{boardtitle}</div>
-          <p>Error loading post data.</p>
-        </main>
-      );
-    }
+  const postdata = posts.length > 0 ? posts[0] : null;
 
-    const posts: Posts[] = await response.json();
-
-    const postdata = posts.length > 0 ? posts[0] : null;
-
-    return (
-      <main className="max-w-4xl mx-auto p-4 bg-neutral-100 pt-10 pb-10">
-        <div className="text-3xl text-center mb-6">{boardtitle}</div>
-        <BoardArticle post={postdata} />
-      </main>
-    );
-  } catch (error) {
-    console.error('Fetch error', error);
-    return (
-      <main className="max-w-4xl mx-auto p-4 bg-neutral-100 pt-10 pb-10">
-        <div className="text-3xl text-center mb-6">{boardtitle}</div>
-        <p>Error loading post data.</p>
-      </main>
-    );
-  }
+  return (
+    <main className="max-w-4xl mx-auto p-4 bg-neutral-100 pt-10 pb-10">
+      <div className="text-3xl text-center mb-6">{boardtitle}</div>
+      <BoardArticle post={postdata} />
+    </main>
+  );
 }
