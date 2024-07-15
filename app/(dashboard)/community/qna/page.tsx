@@ -10,7 +10,7 @@ export default async function Qna() {
 
   return (
     <main>
-      <Board boardtitle='Q&A' tablename={tablename} initialPosts={posts} />
+      <Board boardtitle='QnA' tablename={tablename} initialPosts={posts} />
     </main>
   );
 }
