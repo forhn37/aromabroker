@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Signout from "@/app/ui/loginnout/signout";
 
 export default function Mobilemenu() {
 
@@ -26,6 +27,18 @@ export default function Mobilemenu() {
         <Link href="/phonemenu/community">
           <li className='mb-3'>COMMUNITY</li>
         </Link>
+      </div>
+      <div className="list-none text-sm m-5 p-1">
+      <Link href="/login">
+          <li className='mb-3'>Login</li>
+        </Link>
+        <Link href="/join">
+          <li className='mb-3'>Join</li>
+        </Link>
+        <Link href="/mypage">
+          <li className='mb-3'>My page</li>
+        </Link>
+        {/* <Signout /> */}
       </div>
     </div>
   );
