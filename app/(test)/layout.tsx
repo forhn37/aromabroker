@@ -5,8 +5,7 @@ import Nav from "@/app/ui/dashboard/nav";
 import Link from "next/link";
 import Footer from "../ui/dashboard/footer";
 import { RecipeProvider } from "../lib/mycontext";
-
-
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
 
 export default function Layout({
   children
@@ -17,9 +16,6 @@ export default function Layout({
   return (
     <>
       <header className="flex justify-between p-4">
-        <Link href="/">
-          <Image src="/mainlogo.png" alt="logo" width={55} height={28} />
-        </Link>
         <Nav />
       </header>
         <RecipeProvider>

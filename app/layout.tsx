@@ -5,6 +5,7 @@ import { Metadata } from "next";
 // import { sans } from "@/app/ui/font";
 import { roboto } from "@/app/ui/font";
 import { sans } from "@/app/ui/font";
+import SupabaseProvider from "./lib/supabase/supabaseProvider";
 // 예시 파일
 export const metadata: Metadata = {
   title: {
@@ -22,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={roboto.className}>{children}
+      <body className={roboto.className}>
+        <SupabaseProvider>
+        {children}
+        </SupabaseProvider>
         <SpeedInsights />
       </body>
 

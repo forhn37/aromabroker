@@ -2,8 +2,9 @@
 
 import { signOut, useSession } from 'next-auth/react';
 
-export default function Signout() {
+export default function SignoutPage() {
   const { data: session, status } = useSession();
+  console.log(session)
 
   return (
     <header>
