@@ -5,9 +5,11 @@ import { supabase } from "@/app/lib/supabase/supabaseClient";
 import { Session } from "@supabase/supabase-js";
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
   const [session, setSession] = useState<Session | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -23,6 +25,9 @@ export default function SignInPage() {
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
+      if (session) {
+        router.push('/'); // 로그인 성공 시 메인 페이지로 리디렉션
+      }
     });
 
     return () => {
