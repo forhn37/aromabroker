@@ -44,21 +44,21 @@ export default function Signinnout() {
     }
   };
   return (
-    <div className="list-none text-sm m-5 p-1">
+    <div className="list-none text-lg m-5">
       {session ? (
         <>
-          <button onClick={handleLogout} className='mb-3'>Log Out</button>
+          <button onClick={handleLogout} className='mb-2'>Log Out</button>
           <Link href="/mypage">
-            <li className='mb-3'>My Page</li>
+            <li className='mb-2'>My Page</li>
           </Link>
         </>
       ) : (
         <>
           <Link href="/login">
-            <li className='mb-3'>Login</li>
+            <li className='mb-2'>Login</li>
           </Link>
           <Link href="/join">
-            <li className='mb-3'>Join</li>
+            <li className='mb-2'>Join</li>
           </Link>
         </>
       )}
