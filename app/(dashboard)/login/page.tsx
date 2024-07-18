@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/app/lib/supabase/supabaseClient";
-import { Session, AuthChangeEvent } from "@supabase/supabase-js";
+import { Session } from "@supabase/supabase-js";
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-const SignInPage = () => {
+export default function SignInPage() {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const SignInPage = () => {
 
     checkLogin();
 
-    const { data: authListener } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
     });
 
@@ -28,46 +30,21 @@ const SignInPage = () => {
     };
   }, []);
 
-  const clickGithub = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        redirectTo: 'http://localhost:3000/login',
-      },
-    });
-
-    if (error) {
-      console.error('Error logging in with GitHub:', error);
-    }
-  };
-
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error('Error logging out:', error);
-    } else {
-      setSession(null);
-    }
-  };
-
   return (
     <div>
-      <h1>Sign In</h1>
-      <div>
-        {session ? (
-          <>
-            <button onClick={handleLogout}>Log Out</button>
-            <div>
-              <p>Logged in as {session.user.email}</p>
-              <p>User ID: {session.user.id}</p>
-            </div>
-          </>
-        ) : (
-          <button onClick={clickGithub}>GitHub Login</button>
-        )}
-      </div>
+      <h1>Login</h1>
+      {!session ? (
+        <Auth
+          supabaseClient={supabase}
+          providers={['google', 'kakao']}
+          appearance={{ theme: ThemeSupa }}
+          theme="dark"
+        />
+      ) : (
+        <div>
+          <p>Logged in as {session.user?.email}</p>
+        </div>
+      )}
     </div>
   );
-};
-
-export default SignInPage;
+}
