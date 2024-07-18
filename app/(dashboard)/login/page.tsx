@@ -31,14 +31,13 @@ export default function SignInPage() {
   }, []);
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="p-5">
+      <h1 className="text-center text-3xl mb-10">Login</h1>
       {!session ? (
         <Auth
           supabaseClient={supabase}
           providers={['google', 'kakao']}
-          appearance={{ theme: ThemeSupa }}
-          theme="dark"
+          appearance={{ theme : ThemeSupa }}
         />
       ) : (
         <div>
