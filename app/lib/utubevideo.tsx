@@ -8,19 +8,22 @@ import { useEffect, useState } from 'react';
 import { YoutubeAPIResponse, YoutubeVideo } from '../types/types'
 
 
+
 export default function Utubevideo() {
   const [videos, setVideos] = useState<YoutubeVideo[]>([]);
 
   useEffect(() => {
     async function fetchChannelVideos() {
+      const UtubechannelId = process.env.UtubechannelId as string;
+      const UtubeapiKey = process.env.UtubeapiKey as string;
       try {
-        const res = await fetch('/api/utubeapi');
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${UtubechannelId}&maxResults=8&order=date&key=${UtubeapiKey}`);
 
-        if (!res.ok) {
+        if (!response.ok) {
           throw new Error('Failed to fetch videos');
         }
 
-        const data: YoutubeAPIResponse = await res.json();
+        const data: YoutubeAPIResponse = await response.json();
         setVideos(data.items || []);
       } catch (error) {
         console.error('Error fetching videos:', error);
