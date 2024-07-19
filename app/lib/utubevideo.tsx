@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -7,31 +5,21 @@ import { useEffect, useState } from 'react';
 
 import { YoutubeAPIResponse, YoutubeVideo } from '../types/types'
 
+export default async function Utubevideo() {
+
+  const UtubechannelId = process.env.UtubechannelId as string;
+  const UtubeapiKey = process.env.UtubeapiKey as string;
 
 
-export default function Utubevideo() {
-  const [videos, setVideos] = useState<YoutubeVideo[]>([]);
+  const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${UtubechannelId}&maxResults=8&order=date&key=${UtubeapiKey}`);
 
-  useEffect(() => {
-    async function fetchChannelVideos() {
-      const UtubechannelId = process.env.UtubechannelId as string;
-      const UtubeapiKey = process.env.UtubeapiKey as string;
-      try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${UtubechannelId}&maxResults=8&order=date&key=${UtubeapiKey}`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch videos');
+  }
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch videos');
-        }
+  const data: YoutubeAPIResponse = await response.json();
+  const videos = data.items;
 
-        const data: YoutubeAPIResponse = await response.json();
-        setVideos(data.items || []);
-      } catch (error) {
-        console.error('Error fetching videos:', error);
-      }
-    }
-
-    fetchChannelVideos();
-  }, []);
 
   return (
     <div>
