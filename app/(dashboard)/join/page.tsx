@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '@/app/lib/supabase/supabaseClient';
 import { useRouter } from 'next/navigation';
+import { checkDuplicateEmail } from '@/app/lib/supabase/checkDuplicateEmail';
+import AddressModal from '@/app/lib/addressmodal';
 
 export default function Join() {
   const [userType, setUserType] = useState('personal');
@@ -17,30 +19,75 @@ export default function Join() {
   const [email, setEmail] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isIdChecked, setIsIdChecked] = useState(false);
+  const [isEmailChecked, setIsEmailChecked] = useState(false);
+  const [showAddressModal, setShowAddressModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
+  const [postcode, setPostcode] = useState('');
+  const [extraAddress, setExtraAddress] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // message event listener for address completion
+    const handleAddressComplete = (event :MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.data.type === 'addressComplete') {
+        setPostcode(event.data.addressData.zonecode);
+        setAddress(event.data.addressData.address);
+      }
+    };
+
+    window.addEventListener('message', handleAddressComplete);
+
+    return () => {
+      window.removeEventListener('message', handleAddressComplete);
+    };
+  }, []);
+
+  const handleAddressComplete = (data : any) => {
+    setPostcode(data.zonecode);
+    setAddress(data.address);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== passwordConfirm) {
-      setError('Passwords do not match');
+    if (!isIdChecked) {
+      setError('아이디 중복확인을 눌러주세요');
       return;
     }
-  
+    if (password !== passwordConfirm) {
+      setError('비밀번호가 동일하지 않습니다. ');
+      return;
+    }
+    if (!isEmailChecked) {
+      setError('이메일 중복확인을 눌러주세요 ');
+      return;
+    }
+
     setLoading(true);
     setError(null);
-  
+
     // Supabase 회원가입 처리
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-    });
-  
+    },);
+
     if (error) {
       setError(error.message);
       setLoading(false);
       return;
     }
-  
+
     // 추가 정보 저장 (아이디, 이름, 상호명, 사업자번호, 주소, 전화번호)
     const { error: insertError } = await supabase
       .from('profiles')
@@ -56,24 +103,63 @@ export default function Join() {
           email,
         },
       ]);
-  
+
     if (insertError) {
       setError(insertError.message);
     } else {
       router.push('/'); // 회원가입 후 리디렉션
     }
-  
+
     setLoading(false);
   };
-  
+
 
   const checkDuplicateId = async () => {
-    // ID 중복 확인 로직 추가
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('username', id);
+
+    if (error) {
+      setError('다시 시도해주세요.');
+      return;
+    }
+
+    if (data.length > 0) {
+      setError('이미 사용중이 아이디입니다. ');
+      setIsIdChecked(false);
+    } else {
+      setError(null);
+      setIsIdChecked(true);
+    }
   };
 
-  const checkDuplicateEmail = async () => {
-    // Email 중복 확인 로직 추가
+  const handleEmailCheck = async () => {
+    const isDuplicate = await checkDuplicateEmail(email);
+    if (isDuplicate) {
+      setError('이미 사용중인 이메일입니다.');
+    } else {
+      setError(null);
+      setIsEmailChecked(true)
+    }
   };
+
+  const openAddressSearch = () => {
+    const width = 500;
+    const height = 600;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+
+    window.open('/address-modal', '주소 검색', `width=${width},height=${height},left=${left},top=${top}`);
+  };
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== window.location.origin) return;
+    if (event.data.type === 'addressComplete') {
+      handleAddressComplete(event.data.addressData);
+    }
+  });
+
 
   return (
     <div className="max-w-lg mx-auto p-8 bg-white shadow-md rounded-md">
@@ -163,16 +249,40 @@ export default function Join() {
           />
         </div>
         <div>
-          <label htmlFor="address" className="block text-gray-700">주소 *</label>
+        <label htmlFor="postcode" className="block text-gray-700">주소 *</label>
+        <div className="flex">
           <input
             type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
+            id="postcode"
+            value={postcode}
+            readOnly
+            className="p-2 border border-gray-300 rounded-md"
+            placeholder="우편번호"
           />
+          <button type="button" onClick={openAddressSearch} className="ml-2 p-2 bg-gray-500 text-white rounded-md">주소검색</button>
         </div>
+        <input
+          type="text"
+          id="address"
+          value={address}
+          readOnly
+          className="w-full mt-2 p-2 border border-gray-300 rounded-md"
+          placeholder="주소"
+        />
+        <input
+          type="text"
+          id="extraAddress"
+          value={extraAddress}
+          onChange={(e) => setExtraAddress(e.target.value)}
+          className="w-full mt-2 p-2 border border-gray-300 rounded-md"
+          placeholder="나머지 주소 (선택 입력 가능)"
+        />
+      </div>
+
+      {/* AddressModal 컴포넌트를 조건부로 렌더링 */}
+      {isModalOpen && (
+        <AddressModal onComplete={handleAddressComplete} onClose={closeModal} />
+      )}
         <div>
           <label htmlFor="phone" className="block text-gray-700">휴대전화 *</label>
           <input
@@ -195,7 +305,7 @@ export default function Join() {
               required
               className="flex-grow p-2 border border-gray-300 rounded-md"
             />
-            <button type="button" onClick={checkDuplicateEmail} className="ml-2 p-2 bg-gray-500 text-white rounded-md">중복확인</button>
+            <button type="button" onClick={handleEmailCheck} className="ml-2 p-2 bg-gray-500 text-white rounded-md">중복확인</button>
           </div>
         </div>
         {error && <p className="text-red-500">{error}</p>}
