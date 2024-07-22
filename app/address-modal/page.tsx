@@ -1,12 +1,11 @@
- 'use client';
+'use client';
 
-import AddressModal from "../lib/addressmodal";
-import React from 'react';
+import AddressModal from "@/app/lib/addressmodal";
 
-const AddressModalPage: React.FC = () => {
-  const handleComplete = (addressData: { zonecode: string, address: string }) => {
+const AddressModalPage = () => {
+  const handleComplete = (address: string) => {
     if (window.opener) {
-      window.opener.postMessage(addressData, window.opener.location.origin);
+      window.opener.postMessage({ address }, window.location.origin);
       window.close();
     }
   };
