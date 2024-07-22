@@ -128,13 +128,13 @@ export default function Board({ initialPosts, boardtitle, tablename }: BoardProp
         />
         <button type="submit" className="bg-gray-700 text-white p-2 ml-2 rounded">검색</button>
       </form>
-      {tablename !== 'noticetable' ? (
+      {/* {tablename !== 'noticetable' ? ( */}
         <div className="mb-4 text-right">
           <Link href={{ pathname: `${pathname}/new`, query: { tablename: tablename } }}>
             <button className="bg-gray-700 text-white p-2 rounded w-full text-sm">글쓰기</button>
           </Link>
         </div>
-      ) : <span></span>}
+      {/* ) : <span></span>} */}
       <div className="flex justify-center mt-4">
         <button
           className="px-3 py-1 mx-1"
