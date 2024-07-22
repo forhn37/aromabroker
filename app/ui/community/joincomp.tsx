@@ -128,8 +128,10 @@ export default function Join() {
     const height = 600;
     const left = (window.innerWidth - width) / 2;
     const top = (window.innerHeight - height) / 2;
+    if (typeof window !== 'undefined') {
 
-    window.open('/address-modal', '주소 검색', `width=${width},height=${height},left=${left},top=${top}`);
+      window.open('/address-modal', '주소 검색', `width=${width},height=${height},left=${left},top=${top}`);
+    }
   };
 
   return (
