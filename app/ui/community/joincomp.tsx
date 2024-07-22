@@ -33,11 +33,13 @@ export default function Join() {
         setAddress(event.data.addressData.address);
       }
     };
-
+    if (typeof window !== 'undefined') {
     window.addEventListener('message', handleAddressComplete);
-
+    }
     return () => {
+      if (typeof window !== 'undefined') {
       window.removeEventListener('message', handleAddressComplete);
+      }
     };
   }, []);
 
