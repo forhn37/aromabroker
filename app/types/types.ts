@@ -1,3 +1,5 @@
+import { UUID } from "crypto";
+
 // types.ts
 export interface YoutubeThumbnail {
   url: string;
@@ -94,6 +96,7 @@ export interface Posts {
   content : string;
   author : string;
   views : number;
+  user_id : string;
 
 }
 
@@ -116,6 +119,8 @@ export interface NoticePost {
   author: string;
   created_at: string;
   views: number;
+  user_id : string;
+
 }
 
 export interface RecipeTable {

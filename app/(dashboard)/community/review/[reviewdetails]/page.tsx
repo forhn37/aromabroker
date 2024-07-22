@@ -17,7 +17,7 @@ export interface reviewsearchparams {
   tablename: string;
 }
 
-export default async function QnaDetails({ params, searchParams }: BoardArg) {
+export default async function ReviewDetails({ params, searchParams }: BoardArg) {
   const boardtitle = searchParams.boardtitle;
   const tablename = 'reviewtable'
 
@@ -31,10 +31,9 @@ export default async function QnaDetails({ params, searchParams }: BoardArg) {
     "desc"
   );
   const nextrouter = 'review';
-
-  const posts: Posts[] = response
-
+  const posts: Posts[] = response;
   const postdata = posts.length > 0 ? posts[0] : null;
+  const postdataid = postdata?.user_id || "";
 
   return (
     <div>
@@ -43,8 +42,7 @@ export default async function QnaDetails({ params, searchParams }: BoardArg) {
         <BoardArticle post={postdata} />
       </main>
       <div className="flex w-full justify-center p-2">
-        {/* <UpdateButton tablename={tablename} postindex={postindex} /> */}
-        <DeleteButton tablename={tablename} postindex={postindex} nextrouter={nextrouter}/>
+        {postdata && <DeleteButton tablename={tablename} postindex={postindex} nextrouter={nextrouter} postdataid={postdataid} />}
       </div>
     </div>
   );

@@ -15,7 +15,6 @@ export default function Signinnout() {
     const checkLogin = async () => {
       const { data, error } = await supabase.auth.getSession();
 
-      console.log(data)
       if (error) {
         console.error("Error getting session:", error);
       } else {

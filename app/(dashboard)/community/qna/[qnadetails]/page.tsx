@@ -3,14 +3,17 @@ import { Posts } from "@/app/types/types";
 import GetTable from "@/app/lib/supabase/gettable";
 import { NoticePost } from "@/app/types/types";
 import DeleteButton from "@/app/ui/community/deletebutton";
+import { supabase } from "@/app/lib/supabase/supabaseClient";
 
 export interface BoardArg {
   params: qnadetails;
   searchParams: qnasearchparams;
 }
+
 export interface qnadetails {
   qnadetails: number;
 }
+
 export interface qnasearchparams {
   boardtitle: string;
   tablename: string;
@@ -18,11 +21,10 @@ export interface qnasearchparams {
 
 export default async function QnaDetails({ params, searchParams }: BoardArg) {
   const boardtitle = searchParams.boardtitle;
-  
-  const tablename = 'qnatable'
-
+  const tablename = 'qnatable';
   const postindex = params.qnadetails;
 
+  // Get post data
   const response = await GetTable<NoticePost>(
     tablename,
     "id",
@@ -30,11 +32,11 @@ export default async function QnaDetails({ params, searchParams }: BoardArg) {
     "created_at",
     "desc"
   );
+
   const nextrouter = 'qna';
-
-  const posts: Posts[] = response
-
+  const posts: Posts[] = response;
   const postdata = posts.length > 0 ? posts[0] : null;
+  const postdataid = postdata?.user_id || "";
 
   return (
     <div>
@@ -43,8 +45,7 @@ export default async function QnaDetails({ params, searchParams }: BoardArg) {
         <BoardArticle post={postdata} />
       </main>
       <div className="flex w-full justify-center p-2">
-        {/* <UpdateButton tablename={tablename} postindex={postindex} /> */}
-        <DeleteButton tablename={tablename} postindex={postindex} nextrouter={nextrouter}/>
+        {postdata && <DeleteButton tablename={tablename} postindex={postindex} nextrouter={nextrouter} postdataid={postdataid} />}
       </div>
     </div>
   );
