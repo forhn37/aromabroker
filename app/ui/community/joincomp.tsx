@@ -21,16 +21,12 @@ export default function Join() {
   const [loading, setLoading] = useState(false);
   const [isIdChecked, setIsIdChecked] = useState(false);
   const [isEmailChecked, setIsEmailChecked] = useState(false);
-  const [showAddressModal, setShowAddressModal] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const router = useRouter();
   const [postcode, setPostcode] = useState('');
   const [extraAddress, setExtraAddress] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    // message event listener for address completion
-    const handleAddressComplete = (event :MessageEvent) => {
+    const handleAddressComplete = (event: MessageEvent) => {
       if (event.origin !== window.location.origin) return;
       if (event.data.type === 'addressComplete') {
         setPostcode(event.data.addressData.zonecode);
@@ -44,19 +40,6 @@ export default function Join() {
       window.removeEventListener('message', handleAddressComplete);
     };
   }, []);
-
-  const handleAddressComplete = (data : any) => {
-    setPostcode(data.zonecode);
-    setAddress(data.address);
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,11 +59,7 @@ export default function Join() {
     setLoading(true);
     setError(null);
 
-    // Supabase 회원가입 처리
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    },);
+    const { data, error } = await supabase.auth.signUp({ email, password });
 
     if (error) {
       setError(error.message);
@@ -88,31 +67,29 @@ export default function Join() {
       return;
     }
 
-    // 추가 정보 저장 (아이디, 이름, 상호명, 사업자번호, 주소, 전화번호)
     const { error: insertError } = await supabase
       .from('profiles')
-      .insert([
-        {
-          id: data.user?.id,
-          username: id,
-          full_name: name,
-          business_name: businessName,
-          business_number: businessNumber,
-          address,
-          phone,
-          email,
-        },
-      ]);
+      .insert([{
+        id: data.user?.id,
+        username: id,
+        full_name: name,
+        business_name: businessName,
+        business_number: businessNumber,
+        address,
+        detail_address: extraAddress,
+        zonecode: postcode,
+        phone,
+        email,
+      }]);
 
     if (insertError) {
       setError(insertError.message);
     } else {
-      router.push('/'); // 회원가입 후 리디렉션
+      router.push('/');
     }
 
     setLoading(false);
   };
-
 
   const checkDuplicateId = async () => {
     const { data, error } = await supabase
@@ -126,7 +103,7 @@ export default function Join() {
     }
 
     if (data.length > 0) {
-      setError('이미 사용중이 아이디입니다. ');
+      setError('이미 사용중인 아이디입니다.');
       setIsIdChecked(false);
     } else {
       setError(null);
@@ -152,14 +129,6 @@ export default function Join() {
 
     window.open('/address-modal', '주소 검색', `width=${width},height=${height},left=${left},top=${top}`);
   };
-
-  window.addEventListener('message', (event) => {
-    if (event.origin !== window.location.origin) return;
-    if (event.data.type === 'addressComplete') {
-      handleAddressComplete(event.data.addressData);
-    }
-  });
-
 
   return (
     <div className="max-w-lg mx-auto p-8 bg-white shadow-md rounded-md">
@@ -249,40 +218,37 @@ export default function Join() {
           />
         </div>
         <div>
-        <label htmlFor="postcode" className="block text-gray-700">주소 *</label>
-        <div className="flex">
+          <label htmlFor="postcode" className="block text-gray-700">우편번호 *</label>
+          <div className="flex">
+            <input
+              type="text"
+              id="postcode"
+              value={postcode}
+              readOnly
+              className="p-2 border border-gray-300 rounded-md"
+              placeholder="우편번호"
+            />
+            <button type="button" onClick={openAddressSearch} className="ml-2 p-2 bg-gray-500 text-white rounded-md">주소검색</button>
+          </div>
+        </div>
+        <div>
           <input
             type="text"
-            id="postcode"
-            value={postcode}
+            id="address"
+            value={address}
             readOnly
-            className="p-2 border border-gray-300 rounded-md"
-            placeholder="우편번호"
+            className="w-full mt-2 p-2 border border-gray-300 rounded-md"
+            placeholder="주소"
           />
-          <button type="button" onClick={openAddressSearch} className="ml-2 p-2 bg-gray-500 text-white rounded-md">주소검색</button>
+          <input
+            type="text"
+            id="extraAddress"
+            value={extraAddress}
+            onChange={(e) => setExtraAddress(e.target.value)}
+            className="w-full mt-2 p-2 border border-gray-300 rounded-md"
+            placeholder="나머지 주소 (선택 입력 가능)"
+          />
         </div>
-        <input
-          type="text"
-          id="address"
-          value={address}
-          readOnly
-          className="w-full mt-2 p-2 border border-gray-300 rounded-md"
-          placeholder="주소"
-        />
-        <input
-          type="text"
-          id="extraAddress"
-          value={extraAddress}
-          onChange={(e) => setExtraAddress(e.target.value)}
-          className="w-full mt-2 p-2 border border-gray-300 rounded-md"
-          placeholder="나머지 주소 (선택 입력 가능)"
-        />
-      </div>
-
-      {/* AddressModal 컴포넌트를 조건부로 렌더링 */}
-      {isModalOpen && (
-        <AddressModal onComplete={handleAddressComplete} onClose={closeModal} />
-      )}
         <div>
           <label htmlFor="phone" className="block text-gray-700">휴대전화 *</label>
           <input

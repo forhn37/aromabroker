@@ -1,11 +1,14 @@
 'use client';
 
-import AddressModal from "@/app/lib/addressmodal";
+import { useRouter } from 'next/navigation';
+import AddressModal from '@/app/lib/addressmodal';
 
 const AddressModalPage = () => {
-  const handleComplete = (address: string) => {
+  const router = useRouter();
+
+  const handleComplete = (data: { zonecode: string; address: string }) => {
     if (window.opener) {
-      window.opener.postMessage({ address }, window.location.origin);
+      window.opener.postMessage({ type: 'addressComplete', addressData: data }, window.location.origin);
       window.close();
     }
   };

@@ -1,9 +1,8 @@
-'use client'
 import React from 'react';
 import DaumPostcode from 'react-daum-postcode';
 
 interface AddressModalProps {
-  onComplete: (address: { zonecode: string, address: string }) => void;
+  onComplete: (data: { zonecode: string; address: string }) => void;
   onClose: () => void;
 }
 
@@ -22,15 +21,12 @@ const AddressModal: React.FC<AddressModalProps> = ({ onComplete, onClose }) => {
       fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
     }
 
-    window.opener.postMessage(
-      { type: 'addressComplete', addressData: { zonecode: data.zonecode, address: fullAddress } },
-      window.location.origin
-    );
+    onComplete({ zonecode: data.zonecode, address: fullAddress });
     window.close();
   };
 
   return (
-    <div className="modal">
+    <div>
       <button onClick={onClose} className="close-button">닫기</button>
       <DaumPostcode onComplete={handleComplete} />
     </div>
