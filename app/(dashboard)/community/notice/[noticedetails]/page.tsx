@@ -2,7 +2,7 @@ import BoardArticle from "@/app/ui/community/boardArticle";
 import { Posts } from "@/app/types/types";
 import GetTable from "@/app/lib/supabase/gettable";
 import { NoticePost } from "@/app/types/types";
-import DeleteButton from "@/app/ui/community/deletebutton";
+import NoticeDeleteButton from "@/app/ui/community/noticedeletebutton";
 
 export interface BoardArg {
   params: noticedetails;
@@ -41,7 +41,7 @@ export default async function NoticeDetails({ params, searchParams }: BoardArg) 
         <BoardArticle post={postdata} />
       </main>
       <div className="flex w-full justify-center p-2">
-        {postdata && <DeleteButton tablename={tablename} postindex={postindex} nextrouter={nextrouter} postdataid={postdataid} />}
+        {postdata && <NoticeDeleteButton tablename={tablename} postindex={postindex} nextrouter={nextrouter} postdataid={postdataid} />}
       </div>
     </div>
   );

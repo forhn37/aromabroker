@@ -1,4 +1,4 @@
-import Board from "@/app/ui/board";
+import NoticeBoard from '@/app/ui/noticeboard';
 import { NoticePost } from '@/app/types/types';
 import GetTable from "@/app/lib/supabase/gettable";
 
@@ -10,7 +10,7 @@ export default async function Notice() {
 
   return (
     <main>
-      <Board boardtitle='NOTICE' tablename={tablename} initialPosts={posts} />
+      <NoticeBoard boardtitle='NOTICE' tablename={tablename} initialPosts={posts} />
     </main>
   );
 }

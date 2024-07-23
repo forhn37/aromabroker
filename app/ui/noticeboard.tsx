@@ -6,6 +6,7 @@ import { supabase } from '@/app/lib/supabase/supabaseClient';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { NoticePost } from '../types/types';
+import GetTableAdmin from '../lib/supabase/gettableadmin';
 
 interface BoardProps {
   initialPosts: NoticePost[];
@@ -15,7 +16,7 @@ interface BoardProps {
 
 const PAGE_SIZE = 5;
 
-export default function Board({ initialPosts, boardtitle, tablename }: BoardProps) {
+export default function NoticeBoard({ initialPosts, boardtitle, tablename }: BoardProps) {
   const [posts, setPosts] = useState<NoticePost[]>(initialPosts);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(Math.ceil(initialPosts.length / PAGE_SIZE));
@@ -23,7 +24,26 @@ export default function Board({ initialPosts, boardtitle, tablename }: BoardProp
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
+  const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const adminUsers = await GetTableAdmin<{ id: string }>('profiles', 'isAdmin', true);
+
+      const adminUserIds = adminUsers.map(user => user.id);
+
+
+      const { data, error } = await supabase.auth.getSession();
+      const userId = data?.session?.user?.id;
+
+      if (userId && adminUserIds.includes(userId)) {
+        setIsAdmin(true);
+      }
+    };
+
+    checkAdmin();
+  }, []);
 
   const fetchPosts = async (pageNumber = 1) => {
     setLoading(true);
@@ -117,13 +137,13 @@ export default function Board({ initialPosts, boardtitle, tablename }: BoardProp
         />
         <button type="submit" className="bg-gray-700 text-white p-2 ml-2 rounded">검색</button>
       </form>
-      {/* {tablename !== 'noticetable' ? ( */}
+      {isAdmin ? (
         <div className="mb-4 text-right">
           <Link href={{ pathname: `${pathname}/new`, query: { tablename: tablename } }}>
             <button className="bg-gray-700 text-white p-2 rounded w-full text-sm">글쓰기</button>
           </Link>
         </div>
-      {/* ) : <span></span>} */}
+      ) : <span></span>} 
       <div className="flex justify-center mt-4">
         <button
           className="px-3 py-1 mx-1"
