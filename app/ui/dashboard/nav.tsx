@@ -20,9 +20,9 @@ export default function Nav() {
     }
   }, [pathname]);
 
-
+// "relative w-20 h-14 sm:w-40 sm:h-28"
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center sm:hidden">
       <div className="relative" onClick={toggleMenu}>
         <Link href={isOpen ? '/' : '/phonemenu'}>
           <div className="w-6 h-4 flex flex-col justify-between items-center cursor-pointer">
