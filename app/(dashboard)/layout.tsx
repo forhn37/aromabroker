@@ -14,10 +14,11 @@ export default function Layout({
     <>
       <header className="fixed top-0 left-0 right-0 flex justify-between p-4 sm:p-6 w-full bg-white shadow-sm z-50">
         <div className="hidden sm:flex sm:justify-start sm:w-1/3 sm:items-center">
-          <span className="p-8 text-2xl sm:ml-4">ABOUT</span>
-          <span className="p-8 text-2xl">BUSINESS</span>
-          <span className="p-8 text-2xl">CAFEMENU</span>
-          <span className="p-8 text-2xl">CLASS</span>
+          <span className="p-6 text-2xl sm:ml-4">ABOUT</span>
+          <span className="p-6 text-2xl">BUSINESS</span>
+          <span className="p-6 text-2xl">CAFEMENU</span>
+          <span className="p-6 text-2xl">CLASS</span>
+          <span className="p-6 text-2xl">COMMUNITY</span>
         </div>
         <div className="flex justify-center sm:w-1/3 sm:h-24">
           <Link href="/">
@@ -34,8 +35,8 @@ export default function Layout({
         {/* Nav는 sm이상일때는 보이지 않습니다. */}
         <Nav />
         <div className="hidden sm:flex sm:justify-end sm:w-1/3 sm:items-center">
-          <span className="p-8 text-2xl">COMMUNITY</span>
-          <span className="p-8 text-2xl">LOGIN</span>
+          <span className="p-6 text-2xl">MY PAGE</span>
+          <span className="p-6 text-2xl">LOGIN</span>
         </div>
       </header>
       <div className="pt-20 sm:pt-32"> {/* 헤더 높이만큼 패딩 추가 */}
