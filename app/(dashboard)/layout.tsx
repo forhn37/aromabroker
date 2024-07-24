@@ -4,6 +4,7 @@ import Nav from "@/app/ui/dashboard/nav";
 import Link from "next/link";
 import Footer from "../ui/dashboard/footer";
 import { RecipeProvider } from "../lib/mycontext";
+import LeftTopMenu from "../ui/lefttopmenu";
 
 export default function Layout({
   children
@@ -14,11 +15,7 @@ export default function Layout({
     <>
       <header className="fixed top-0 left-0 right-0 flex justify-between p-4 sm:p-6 w-full bg-white shadow-sm z-50">
         <div className="hidden sm:flex sm:justify-start sm:w-1/3 sm:items-center">
-          <span className="p-6 text-2xl sm:ml-4">ABOUT</span>
-          <span className="p-6 text-2xl">BUSINESS</span>
-          <span className="p-6 text-2xl">CAFEMENU</span>
-          <span className="p-6 text-2xl">CLASS</span>
-          <span className="p-6 text-2xl">COMMUNITY</span>
+          <LeftTopMenu />
         </div>
         <div className="flex justify-center sm:w-1/3 sm:h-24">
           <Link href="/">
