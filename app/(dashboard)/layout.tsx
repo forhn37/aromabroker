@@ -12,35 +12,38 @@ export default function Layout({
 }>) {
   return (
     <>
-      <header className="flex justify-between p-4 sm:p-8 w-screen">
-        <div className="hidden sm:flex sm:justify-around sm:w-1/3 sm:items-center">
-          <span className="p-3 text-3xl">about</span>
-          <span className="p-3 text-3xl">business</span>
-          <span className="p-3 text-3xl">cafemenu</span>
-          <span className="p-3 text-3xl">class</span>
-          <span className="p-3 text-3xl">community</span>
+      <header className="fixed top-0 left-0 right-0 flex justify-between p-4 sm:p-6 w-full bg-white shadow-sm z-50">
+        <div className="hidden sm:flex sm:justify-start sm:w-1/3 sm:items-center">
+          <span className="p-8 text-2xl sm:ml-4">ABOUT</span>
+          <span className="p-8 text-2xl">BUSINESS</span>
+          <span className="p-8 text-2xl">CAFEMENU</span>
+          <span className="p-8 text-2xl">CLASS</span>
         </div>
-        <div className="relative w-20 h-14 sm:w-1/3 sm:h-28 sm:flex sm:justify-center">
+        <div className="flex justify-center sm:w-1/3 sm:h-24">
           <Link href="/">
-            <Image
-              src="https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/public/mainlogo.png?t=2024-07-23T06%3A54%3A37.900Z"
-              alt="logo"
-              fill
-              style={{ objectFit: "contain" }}
-            />
-          </Link >
+            <div className="relative w-20 h-14 sm:w-40 sm:h-24">
+              <Image
+                src="https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/public/mainlogo.png?t=2024-07-23T06%3A54%3A37.900Z"
+                alt="logo"
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+          </Link>
         </div>
         {/* Nav는 sm이상일때는 보이지 않습니다. */}
         <Nav />
         <div className="hidden sm:flex sm:justify-end sm:w-1/3 sm:items-center">
-          <span className="p-3 text-3xl mr-5">Board</span>
-          <span className="p-3 text-3xl">Login</span>
+          <span className="p-8 text-2xl">COMMUNITY</span>
+          <span className="p-8 text-2xl">LOGIN</span>
         </div>
       </header>
-      <RecipeProvider>
-        {children}
-      </RecipeProvider>
-      <Footer />
+      <div className="pt-20 sm:pt-32"> {/* 헤더 높이만큼 패딩 추가 */}
+        <RecipeProvider>
+          {children}
+        </RecipeProvider>
+        <Footer />
+      </div>
     </>
   );
 }
