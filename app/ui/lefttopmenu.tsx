@@ -16,26 +16,26 @@ export interface Menuitemstype {
 }
 
 const menuItems: Menuitemstype = {
-  ABOUT: [{ menuname: "ABOUT AROMABROKER", routeaddress: "about" }],
+  ABOUT: [{ menuname: "AROMABROKER", routeaddress: "about" }],
   BUSINESS: [
-    { menuname: "사업자 컨설팅", routeaddress: "business/consulting" },
-    { menuname: "사업자 방문 시연 요청", routeaddress: "business/demonstrationrequest" },
-    { menuname: "사업자 원두 납품 리스트", routeaddress: "business/beansupply" },
-    { menuname: "사업자 디저트 납품 리스트", routeaddress: "business/dessertsupply" },
+    { menuname: "컨설팅", routeaddress: "business/consulting" },
+    { menuname: "방문시연요청", routeaddress: "business/demonstrationrequest" },
+    { menuname: "원두납품 리스트", routeaddress: "business/beandeliverylist" },
+    { menuname: "디저트납품 리스트", routeaddress: "business/dessertdeliverylist" },
   ],
   CAFEMENU: [
     { menuname: "Coffee", routeaddress: "cafemenu/coffee" },
     { menuname: "Dessert", routeaddress: "cafemenu/dessert" },
   ],
   CLASS: [
-    { menuname: "바리스타 초급 & 심화", routeaddress: "class/barista-basic" },
-    { menuname: "로스팅 초급 & 심화", routeaddress: "class/roasting-basic" },
+    { menuname: "바리스타 초급&심화", routeaddress: "class/barista" },
+    { menuname: "로스팅 초급&심화", routeaddress: "class/roasting" },
     { menuname: "커핑", routeaddress: "class/cupping" },
-    { menuname: "원데이클래스", routeaddress: "class/oneday" },
+    { menuname: "원데이클래스", routeaddress: "class/onedayclass" },
   ],
   COMMUNITY: [
     { menuname: "공지", routeaddress: "community/notice" },
-    { menuname: "레시피", routeaddress: "community/recipe" },
+    { menuname: "레시피", routeaddress: "community/recipes" },
     { menuname: "리뷰", routeaddress: "community/review" },
     { menuname: "Q&A", routeaddress: "community/qna" },
   ],
@@ -57,18 +57,18 @@ export default function LeftTopMenu() {
       {Object.keys(menuItems).map((menu) => (
         <div
           key={menu}
-          className="relative"
+          className="relative w-full bg-orange-500"
           onMouseEnter={() => handleMouseEnter(menu)}
           onMouseLeave={handleMouseLeave}
         >
-          <span className="p-8 text-2xl sm:ml-4">{menu}</span>
+          <span className="p-8 text-2xl bg-slate-500 w-1/5">{menu}</span>
           {openDropdown === menu && (
-            <div className="absolute top-full left-0 bg-white shadow-lg p-4 z-10">
+            <div className="absolute top-full left-0 bg-white shadow-lg p-4 z-10 w-52">
               {(menuItems[menu as keyof Menuitemstype] as MenuItem[]).map((item, index) => (
                 <Link
                   key={index}
                   href={`/${item.routeaddress}`}
-                  className="block p-2"
+                  className="block p-2 sm:w-full sm:flex sm:justify-center text-lg"
                 >
                   {item.menuname}
                 </Link>

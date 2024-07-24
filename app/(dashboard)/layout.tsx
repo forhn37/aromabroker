@@ -5,6 +5,7 @@ import Link from "next/link";
 import Footer from "../ui/dashboard/footer";
 import { RecipeProvider } from "../lib/mycontext";
 import LeftTopMenu from "../ui/lefttopmenu";
+import RightTopMenu from "../ui/righttopmenu";
 
 export default function Layout({
   children
@@ -13,11 +14,11 @@ export default function Layout({
 }>) {
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 flex justify-between p-4 sm:p-6 w-full bg-white shadow-sm z-50">
-        <div className="hidden sm:flex sm:justify-start sm:w-1/3 sm:items-center">
+      <header className="fixed top-0 left-0 right-0 flex justify-between p-4 sm:p-6 bg-white shadow-sm z-50 sm:w-screen">
+        <div className="hidden sm:flex sm:justify-around sm:w-2/5 sm:items-center">
           <LeftTopMenu />
         </div>
-        <div className="flex justify-center sm:w-1/3 sm:h-24">
+        <div className="flex justify-center sm:w-1/5 sm:h-24">
           <Link href="/">
             <div className="relative w-20 h-14 sm:w-40 sm:h-24">
               <Image
@@ -31,12 +32,11 @@ export default function Layout({
         </div>
         {/* Nav는 sm이상일때는 보이지 않습니다. */}
         <Nav />
-        <div className="hidden sm:flex sm:justify-end sm:w-1/3 sm:items-center">
-          <span className="p-6 text-2xl">MY PAGE</span>
-          <span className="p-6 text-2xl">LOGIN</span>
+        <div className="hidden sm:flex sm:justify-end sm:w-2/5 sm:items-center">
+          <RightTopMenu />
         </div>
       </header>
-      <div className="pt-20 sm:pt-40"> {/* 헤더 높이만큼 패딩 추가 */}
+      <div className="pt-20 sm:pt-36"> {/* 헤더 높이만큼 패딩 추가 */}
         <RecipeProvider>
           {children}
         </RecipeProvider>

@@ -58,11 +58,11 @@ export default function Brand() {
         map: map,
         title: 'AROMABROKER',
       });
-    }
+    } 
   }, [mapLoaded]);
 
   return (
-    <main className="h-screen">
+    <main className="h-screen sm:p-3">
       <div className="w-full h-1/2 p-2">
         <h1 className="text-2xl font-medium mb-2">아로마브로커</h1>
         <article>커피 한 잔 속에는 자연이 담겨져 있습니다.
