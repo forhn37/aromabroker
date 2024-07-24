@@ -36,7 +36,7 @@ export default function Layout({
           <span className="p-6 text-2xl">LOGIN</span>
         </div>
       </header>
-      <div className="pt-20 sm:pt-32"> {/* 헤더 높이만큼 패딩 추가 */}
+      <div className="pt-20 sm:pt-40"> {/* 헤더 높이만큼 패딩 추가 */}
         <RecipeProvider>
           {children}
         </RecipeProvider>
