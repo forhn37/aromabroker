@@ -9,28 +9,44 @@ export default function MainImageSlide() {
   const [hoveringNext, setHoveringNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
   const [urls, setUrls] = useState<string[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  
+  const [weburls, setWeburls] = useState<string[]>([]);
+  const [mobileurls, setMobileurls] = useState<string[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);  
 
   // 화면 크기를 체크하여 적절한 폴더명을 설정하는 함수
-  const updateUrls = async () => {
+  const setmainimageweb = async () => {
+    const webUrls = await SupabaseGetUrls('mainimage_web');
+    setWeburls(webUrls);
+  }
+  const setmainimagemobile = async () => {
+    const mobileUrls = await SupabaseGetUrls('mainimage');
+    setMobileurls(mobileUrls);
+  }
+  console.log(weburls);
+  console.log(mobileurls);
+
+  const updateUrls = () => {
     if (window.innerWidth >= 640) {
       // 화면 크기가 sm 이상일 때
-      const webUrls = await SupabaseGetUrls('mainimage_web');
-      setUrls(webUrls);
+      setUrls(weburls);
     } else {
       // 화면 크기가 sm 미만일 때
-      const mobileUrls = await SupabaseGetUrls('mainimage');
-      setUrls(mobileUrls);
+      setUrls(mobileurls);
     }
   };
-
   useEffect(() => {
-    updateUrls();
+    const fetchData = async () => {
+      await setmainimagemobile();
+      await setmainimageweb();
+      updateUrls();
+    };
+
+    fetchData();
     window.addEventListener('resize', updateUrls);
     return () => window.removeEventListener('resize', updateUrls);
-  }, []);
+  }, [weburls, mobileurls]);
+
+
 
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
