@@ -105,7 +105,8 @@ export interface MaineventProps {
   created_at : string;
   title : string;
   content : string;
-  imageurl : string;
+  webimageurl : string;
+  mobileimageurl : string;
 }
 
 export interface NoticePost {

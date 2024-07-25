@@ -11,7 +11,8 @@ export default function MainImageSlide() {
   const [urls, setUrls] = useState<string[]>([]);
   const [weburls, setWeburls] = useState<string[]>([]);
   const [mobileurls, setMobileurls] = useState<string[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);  
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [ismobileweb, setIsmobileweb] =useState('')
 
   // 화면 크기를 체크하여 적절한 폴더명을 설정하는 함수
   const setmainimageweb = async () => {
@@ -19,19 +20,19 @@ export default function MainImageSlide() {
     setWeburls(webUrls);
   }
   const setmainimagemobile = async () => {
-    const mobileUrls = await SupabaseGetUrls('mainimage');
+    const mobileUrls = await SupabaseGetUrls('mainimage_mobile');
     setMobileurls(mobileUrls);
   }
-  console.log(weburls);
-  console.log(mobileurls);
 
   const updateUrls = () => {
     if (window.innerWidth >= 640) {
       // 화면 크기가 sm 이상일 때
       setUrls(weburls);
+      setIsmobileweb('webimageurl')
     } else {
       // 화면 크기가 sm 미만일 때
       setUrls(mobileurls);
+      setIsmobileweb('mobileimageurl')
     }
   };
   useEffect(() => {
@@ -105,16 +106,18 @@ export default function MainImageSlide() {
         ref={containerRef}
       >
         {urls.map((url, index) => (
-          <div key ={index}>
-            <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url} }}>
-            <Image
-              src={url} 
-              width={500}
-              height={400}
-              alt={`Slide ${index + 1}`}
-              className="w-screen"
-            />
-          </Link>
+          <div key={index}>
+            {/* 이미지클릭시 쿼리로  url을 전달 
+            그러나 문제는 웹화면에서는 저url을 갖고 있는 테이블이 없음 즉 테이블을 하나 더 만들던가? 똑같은 아니면 저 url이 아니라 mobileurl을 전달해야한다는 것 */}
+            <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url, ismobileweb : ismobileweb } }}>
+              <Image
+                src={url}
+                width={500}
+                height={400}
+                alt={`Slide ${index + 1}`}
+                className="w-screen"
+              />
+            </Link>
           </div>
         ))}
       </div>
