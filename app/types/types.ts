@@ -100,10 +100,6 @@ export interface Posts {
 
 }
 
-export interface MainImageSlideProps {
-  urlsarray: string[];
-}
-
 export interface MaineventProps {
   id : number;
   created_at : string;

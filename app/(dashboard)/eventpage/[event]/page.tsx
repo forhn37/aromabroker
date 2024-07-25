@@ -27,17 +27,17 @@ export default async function Event({ params, searchParams }: paramsProps) {
   const eventDetails = eventtable[0];
 
   return (
-    <div>
-      <div>
+    <div className="sm:flex sm:justify-around sm: p-12">
+      <div className="sm:flex sm:justify-center sm: items-start">
         <Image
           src={eventDetails.imageurl}
           width={500}
           height={400}
           alt={`Slide `}
-          className="w-screen"
+          className="w-full"
         />
       </div>
-      <article className="p-3">
+      <article className="p-2 sm:p-10">
         <h1 className="text-xl mb-2">{eventDetails.title}</h1>
         <div className="whitespace-pre-wrap">
           {eventDetails.content}

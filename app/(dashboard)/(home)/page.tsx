@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <div>
-      <MainImageSlide urlsarray={urls}/>
+      <MainImageSlide />
       <Card category={"Best Beans"} datatables={beansTable} imagename='coffee'/>
       {/* <Utubevideo /> */}
     </div>

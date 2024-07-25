@@ -1,15 +1,36 @@
 'use client'
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { MainImageSlideProps } from '@/app/types/types';
 import Link from 'next/link';
+import SupabaseGetUrls from '@/app/lib/supabasegeturls';
 
-export default function MainImageSlide({ urlsarray }: MainImageSlideProps) {
+export default function MainImageSlide() {
   const [hoveringPrev, setHoveringPrev] = useState(false);
   const [hoveringNext, setHoveringNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
+  const [urls, setUrls] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  
+
+  // 화면 크기를 체크하여 적절한 폴더명을 설정하는 함수
+  const updateUrls = async () => {
+    if (window.innerWidth >= 640) {
+      // 화면 크기가 sm 이상일 때
+      const webUrls = await SupabaseGetUrls('mainimage_web');
+      setUrls(webUrls);
+    } else {
+      // 화면 크기가 sm 미만일 때
+      const mobileUrls = await SupabaseGetUrls('mainimage');
+      setUrls(mobileUrls);
+    }
+  };
+
+  useEffect(() => {
+    updateUrls();
+    window.addEventListener('resize', updateUrls);
+    return () => window.removeEventListener('resize', updateUrls);
+  }, []);
 
   const prvbutton = function () {
     // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
@@ -27,7 +48,7 @@ export default function MainImageSlide({ urlsarray }: MainImageSlideProps) {
   const nextbutton = function () {
     const newTranslateX = translateX - 100;
     if (containerRef.current !== null) {
-      if (newTranslateX < -100 * (urlsarray.length - 1)) {
+      if (newTranslateX < -100 * (urls.length - 1)) {
         // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
         setTranslateX(0);
         containerRef.current.style.transition = 'none';
@@ -59,14 +80,15 @@ export default function MainImageSlide({ urlsarray }: MainImageSlideProps) {
   }, [translateX]);
 
 
+
   return (
     <div className="w-screen overflow-hidden">
       <div
         className="h-1/3 flex transition-transform duration-300"
-        style={{ width: `${100 * urlsarray.length}vw` }}
+        style={{ width: `${100 * urls.length}vw` }}
         ref={containerRef}
       >
-        {urlsarray.map((url, index) => (
+        {urls.map((url, index) => (
           <div key ={index}>
             <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url} }}>
             <Image
