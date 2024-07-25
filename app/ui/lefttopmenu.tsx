@@ -61,7 +61,7 @@ export default function LeftTopMenu() {
           onMouseEnter={() => handleMouseEnter(menu)}
           onMouseLeave={handleMouseLeave}
         >
-          <span className="text-3xl sm:p-4">{menu}</span>
+          <span className="sm:text-2xl sm:p-4">{menu}</span>
           {openDropdown === menu && (
             <div className="absolute top-full left-0 bg-white shadow-lg p-4 z-10 w-full">
               {(menuItems[menu as keyof Menuitemstype] as MenuItem[]).map((item, index) => (

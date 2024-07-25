@@ -28,7 +28,7 @@ export default function Layout({
               </div>
             </Link>
           </div>
-          <div className="hidden sm:flex sm:justify-between sm:items-center sm:ml-5 sm:w-full">
+          <div className="hidden sm:flex sm:justify-between sm:items-center  sm:w-5/6">
             <LeftTopMenu />
           </div>
         </div>
