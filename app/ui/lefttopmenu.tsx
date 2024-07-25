@@ -57,18 +57,18 @@ export default function LeftTopMenu() {
       {Object.keys(menuItems).map((menu) => (
         <div
           key={menu}
-          className="relative w-full bg-orange-500"
+          className="relative sm:w-1/5 sm:flex sm:justify-center sm:items-center "
           onMouseEnter={() => handleMouseEnter(menu)}
           onMouseLeave={handleMouseLeave}
         >
-          <span className="p-8 text-2xl bg-slate-500 w-1/5">{menu}</span>
+          <span className="text-3xl sm:p-4">{menu}</span>
           {openDropdown === menu && (
-            <div className="absolute top-full left-0 bg-white shadow-lg p-4 z-10 w-52">
+            <div className="absolute top-full left-0 bg-white shadow-lg p-4 z-10 w-full">
               {(menuItems[menu as keyof Menuitemstype] as MenuItem[]).map((item, index) => (
                 <Link
                   key={index}
                   href={`/${item.routeaddress}`}
-                  className="block p-2 sm:w-full sm:flex sm:justify-center text-lg"
+                  className="block p-2 py-4 sm:w-full sm:flex sm:justify-center text-lg"
                 >
                   {item.menuname}
                 </Link>
