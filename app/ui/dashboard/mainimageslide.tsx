@@ -4,49 +4,41 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SupabaseGetUrls from '@/app/lib/supabasegeturls';
 
-export default function MainImageSlide() {
+export interface MainslideProps {
+  webUrls: string[],
+  mobileUrls: string[]
+}
+
+export default function MainImageSlide({ webUrls, mobileUrls }: MainslideProps) {
   const [hoveringPrev, setHoveringPrev] = useState(false);
   const [hoveringNext, setHoveringNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
   const [urls, setUrls] = useState<string[]>([]);
-  const [weburls, setWeburls] = useState<string[]>([]);
-  const [mobileurls, setMobileurls] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [ismobileweb, setIsmobileweb] =useState('')
+  const [ismobileweb, setIsmobileweb] = useState('')
 
   // 화면 크기를 체크하여 적절한 폴더명을 설정하는 함수
-  const setmainimageweb = async () => {
-    const webUrls = await SupabaseGetUrls('mainimage_web');
-    setWeburls(webUrls);
-  }
-  const setmainimagemobile = async () => {
-    const mobileUrls = await SupabaseGetUrls('mainimage_mobile');
-    setMobileurls(mobileUrls);
-  }
+
 
   const updateUrls = () => {
     if (window.innerWidth >= 640) {
-      // 화면 크기가 sm 이상일 때
-      setUrls(weburls);
+      // 화면 크기가 sm 이상일 때 
+      setUrls(webUrls);
       setIsmobileweb('webimageurl')
     } else {
       // 화면 크기가 sm 미만일 때
-      setUrls(mobileurls);
+      setUrls(mobileUrls);
       setIsmobileweb('mobileimageurl')
     }
   };
+
   useEffect(() => {
-    const fetchData = async () => {
-      await setmainimagemobile();
-      await setmainimageweb();
-      updateUrls();
-    };
 
-    fetchData();
+    updateUrls();
     window.addEventListener('resize', updateUrls);
-    return () => window.removeEventListener('resize', updateUrls);
-  }, [weburls, mobileurls]);
 
+    return () => window.removeEventListener('resize', updateUrls);
+  }, []);
 
 
   const prvbutton = function () {
@@ -99,26 +91,22 @@ export default function MainImageSlide() {
 
 
   return (
-    <div className="w-screen overflow-hidden">
+    <div>
       <div
-        className="h-1/3 flex transition-transform duration-300"
+        className="flex transition-transform duration-300"
         style={{ width: `${100 * urls.length}vw` }}
         ref={containerRef}
       >
         {urls.map((url, index) => (
-          <div key={index}>
-            {/* 이미지클릭시 쿼리로  url을 전달 
-            그러나 문제는 웹화면에서는 저url을 갖고 있는 테이블이 없음 즉 테이블을 하나 더 만들던가? 똑같은 아니면 저 url이 아니라 mobileurl을 전달해야한다는 것 */}
-            <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url, ismobileweb : ismobileweb } }}>
-              <Image
-                src={url}
-                width={500}
-                height={400}
-                alt={`Slide ${index + 1}`}
-                className="w-screen"
-              />
-            </Link>
-          </div>
+          <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url, ismobileweb: ismobileweb } }} key={index}>
+            <Image
+              src={url}
+              width={500}
+              height={400}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full"
+            />
+          </Link>
         ))}
       </div>
       <div className="flex justify-center w-screen mt-3">

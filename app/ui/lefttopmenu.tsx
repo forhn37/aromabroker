@@ -68,7 +68,7 @@ export default function LeftTopMenu() {
                 <Link
                   key={index}
                   href={`/${item.routeaddress}`}
-                  className="block p-2 py-4 sm:w-full sm:flex sm:justify-center text-lg"
+                  className="block p-2 py-4 sm:w-full sm:flex sm:justify-center text-base"
                 >
                   {item.menuname}
                 </Link>

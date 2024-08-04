@@ -15,13 +15,17 @@ export default async function Home() {
   const beansTable = await GetTable<Bean>("beans");
   const dripbagsTable = await GetTable<Dripbag>("dripbags");
   //이미지 url 가져오기
-  const urls = await SupabaseGetUrls('mainimage')
+  const webUrls = await SupabaseGetUrls('mainimage_web');
+  const mobileUrls = await SupabaseGetUrls('mainimage_mobile');
+  console.log(webUrls)
+  console.log(mobileUrls)
+
 
 
   return (
     <div>
-      <MainImageSlide />
-      <Card category={"Best Beans"} datatables={beansTable} imagename='coffee'/>
+      <MainImageSlide webUrls={webUrls} mobileUrls={mobileUrls} />
+      <Card category={"Best Beans"} datatables={beansTable} imagename='coffee' />
       {/* <Utubevideo /> */}
     </div>
 
