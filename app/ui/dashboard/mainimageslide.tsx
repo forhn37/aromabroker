@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import SupabaseGetUrls from '@/app/lib/supabasegeturls';
 
 export interface MainslideProps {
   webUrls: string[],
@@ -10,60 +9,48 @@ export interface MainslideProps {
 }
 
 export default function MainImageSlide({ webUrls, mobileUrls }: MainslideProps) {
-  const [hoveringPrev, setHoveringPrev] = useState(false);
-  const [hoveringNext, setHoveringNext] = useState(false);
   const [translateX, setTranslateX] = useState(0);
   const [urls, setUrls] = useState<string[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [ismobileweb, setIsmobileweb] = useState('')
+  const [hoveringPrev, setHoveringPrev] = useState(false);
+  const [hoveringNext, setHoveringNext] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // 화면 크기를 체크하여 적절한 폴더명을 설정하는 함수
-
-
   const updateUrls = () => {
     if (window.innerWidth >= 640) {
-      // 화면 크기가 sm 이상일 때 
       setUrls(webUrls);
-      setIsmobileweb('webimageurl')
+      setIsmobileweb('webimageurl');
     } else {
-      // 화면 크기가 sm 미만일 때
       setUrls(mobileUrls);
-      setIsmobileweb('mobileimageurl')
+      setIsmobileweb('mobileimageurl');
     }
   };
 
   useEffect(() => {
-
     updateUrls();
     window.addEventListener('resize', updateUrls);
-
     return () => window.removeEventListener('resize', updateUrls);
   }, []);
 
-
-  const prvbutton = function () {
-    // 이전 버튼 클릭 시 container가 왼쪽으로 100vw만큼 이동합니다.
+  const prvbutton = () => {
     if (translateX < 0) {
       const newTranslateX = translateX + 100;
       setTranslateX(newTranslateX);
       if (containerRef.current !== null) {
-
         containerRef.current.style.transition = 'transform 1s ease-in-out';
         containerRef.current.style.transform = `translateX(${newTranslateX}vw)`;
       }
     }
   };
 
-  const nextbutton = function () {
+  const nextbutton = () => {
     const newTranslateX = translateX - 100;
     if (containerRef.current !== null) {
-      if (newTranslateX < -100 * (urls.length - 1)) {
-        // 마지막 슬라이드 이후에는 처음으로 돌아갑니다.
+      if (newTranslateX < -(100 * (urls.length - 1))) {
         setTranslateX(0);
         containerRef.current.style.transition = 'none';
         containerRef.current.style.transform = `translateX(0vw)`;
-
-        // 트랜지션 효과를 위해 짧은 시간 후에 다시 설정
         setTimeout(() => {
           if (containerRef.current !== null) {
             containerRef.current.style.transition = 'transform 1s ease-in-out';
@@ -77,34 +64,28 @@ export default function MainImageSlide({ webUrls, mobileUrls }: MainslideProps) 
     }
   };
 
-
   useEffect(() => {
     const interval = setInterval(() => {
-      // 자동으로 다음 슬라이드로 이동
       nextbutton();
-    }, 4000); // 5초마다 실행
+    }, 5000); // 5초마다 실행
 
-    // 컴포넌트 언마운트 시 인터벌 정리
     return () => clearInterval(interval);
-  }, [translateX]);
-
-
+  }, [translateX, urls]); // translateX와 urls를 의존성 배열에 추가
 
   return (
-    <div>
+    <div className='overflow-hidden'>
       <div
-        className="flex transition-transform duration-300"
+        className="flex duration-300 transition-transform"
         style={{ width: `${100 * urls.length}vw` }}
         ref={containerRef}
       >
         {urls.map((url, index) => (
-          <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url, ismobileweb: ismobileweb } }} key={index}>
+          <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url, ismobileweb: ismobileweb } }} key={index} className="sm:mx-40 w-screen">
             <Image
               src={url}
-              width={500}
-              height={400}
+              width={1920}
+              height={1200}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full"
             />
           </Link>
         ))}
@@ -130,5 +111,5 @@ export default function MainImageSlide({ webUrls, mobileUrls }: MainslideProps) 
         />
       </div>
     </div>
-  )
+  );
 }
