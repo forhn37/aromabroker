@@ -10,14 +10,31 @@ export default function Card({ category, description, datatables, imagename }: C
   const [translateX, setTranslateX] = useState(0);
   const [hoveringPrev, setHoveringPrev] = useState(false);
   const [hoveringNext, setHoveringNext] = useState(false);
+  const [ismobileweb, setIsmobileweb] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname()
+  const pathname = usePathname();
   const parts = pathname.split('/');
   const lastPart = parts.pop();
 
+  // 화면 크기를 체크하여 적절한 폴더명을 설정하는 함수
+  const updateUrls = () => {
+    if (window.innerWidth >= 640) {
+      setIsmobileweb(true);
+    } else {
+      setIsmobileweb(false);
+    }
+  };
+
+
+  useEffect(() => {
+    updateUrls();
+    window.addEventListener('resize', updateUrls);
+    return () => window.removeEventListener('resize', updateUrls);
+  }, []);
+
   const prvbutton = function () {
     if (translateX < 0) {
-      const newTranslateX = translateX + 50;
+      const newTranslateX = translateX + 25;
       setTranslateX(newTranslateX);
       if (cardRef.current !== null) {
         cardRef.current.style.transition = 'transform 1s ease-in-out';
@@ -27,13 +44,15 @@ export default function Card({ category, description, datatables, imagename }: C
   };
 
   const nextbutton = function () {
-    const newTranslateX = translateX - 50;
+    const offset = ismobileweb ? 25 : 50; // 삼항 연산자의 결과를 변수에 저장
+    const newTranslateX = translateX - offset;
+    // 변동되는 부분 끝에서 다시 돌아오는 부분 수정
     if (cardRef.current !== null) {
-      if (newTranslateX < -(50 * (datatables.length - 2))) {
+      if (newTranslateX < -(offset * (datatables.length - 4))) { // 여기서도 같은 offset 사용
         setTranslateX(0);
         cardRef.current.style.transition = 'none';
         cardRef.current.style.transform = `translateX(0vw)`;
-
+  
         setTimeout(() => {
           if (cardRef.current !== null) {
             cardRef.current.style.transition = 'transform 1s ease-in-out';
@@ -46,6 +65,7 @@ export default function Card({ category, description, datatables, imagename }: C
       }
     }
   };
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,8 +75,42 @@ export default function Card({ category, description, datatables, imagename }: C
     return () => clearInterval(interval);
   }, [translateX]);
 
-  return (
-    <div className="overflow-hidden my-3">
+  if (ismobileweb) {
+    return (
+      <div className="overflow-hidden my-3 w-screen">
+        <div className="px-3 text-2xl flex justify-center items-center sm:mt-10">
+          {category}
+        </div>
+        <div style={{ width: `${25 * datatables.length}vw` }} className="flex" ref={cardRef}>
+          {datatables.map((item, index) => (
+            <Carddetail key={index} item={item as Bean}  ismobileweb={ismobileweb}/>
+          ))}
+        </div>
+        <div className="flex justify-center w-screen mt-2">
+          <div
+            className={`w-4 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8' : 'w-4'} transition-all duration-200`}
+            onMouseEnter={() => setHoveringPrev(true)}
+            onMouseLeave={() => setHoveringPrev(false)}
+            onTouchStart={() => setHoveringPrev(true)}
+            onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
+            onTouchCancel={() => setHoveringPrev(false)}
+            onClick={prvbutton}
+          />
+          <div
+            className={`w-4 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-8' : 'w-4'} transition-all duration-200`}
+            onMouseEnter={() => setHoveringNext(true)}
+            onMouseLeave={() => setHoveringNext(false)}
+            onTouchStart={() => setHoveringNext(true)}
+            onTouchEnd={() => setTimeout(() => setHoveringNext(false), 100)}
+            onTouchCancel={() => setHoveringNext(false)}
+            onClick={nextbutton}
+          />
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="overflow-hidden my-3">
       <div className="w-screen px-3 text-2xl flex justify-start items-center">
         <Image
           src={`/${imagename}.png`}
@@ -70,7 +124,7 @@ export default function Card({ category, description, datatables, imagename }: C
       </div>
       <div style={{ width: `${50 * datatables.length}vw` }} className="flex" ref={cardRef}>
         {datatables.map((item, index) => (
-          <Carddetail key={index} item={item as Bean} />
+          <Carddetail key={index} item={item as Bean} ismobileweb={ismobileweb} />
         ))}
       </div>
       <div className="flex justify-center w-screen mt-2">
@@ -93,6 +147,8 @@ export default function Card({ category, description, datatables, imagename }: C
           onClick={nextbutton}
         />
       </div>
-    </div>
-  );
+      </div>
+      );
+  }
 }
+
