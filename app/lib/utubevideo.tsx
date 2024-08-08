@@ -36,7 +36,7 @@ export default async function Utubevideo() {
       <div className='w-screen flex flex-wrap '>
         {videos.length > 0 ? (
           videos.map((video) => (
-            <div key={video.id.videoId} className='w-1/4 p-4'>
+            <div key={video.id.videoId} className='w-1/2 sm:w-1/4 p-4'>
               <Link
                 href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                 target="_blank"

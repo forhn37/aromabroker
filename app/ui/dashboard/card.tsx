@@ -33,8 +33,9 @@ export default function Card({ category, description, datatables, imagename }: C
   }, []);
 
   const prvbutton = function () {
+    const offset = ismobileweb ? 25 : 50;
     if (translateX < 0) {
-      const newTranslateX = translateX + 25;
+      const newTranslateX = translateX + offset;
       setTranslateX(newTranslateX);
       if (cardRef.current !== null) {
         cardRef.current.style.transition = 'transform 1s ease-in-out';
@@ -44,11 +45,12 @@ export default function Card({ category, description, datatables, imagename }: C
   };
 
   const nextbutton = function () {
-    const offset = ismobileweb ? 25 : 50; // 삼항 연산자의 결과를 변수에 저장
+    const offset = ismobileweb ? 25 : 50; // 삼항 연산자의 결과를 변수에 저장 
+    const changephase = ismobileweb ? 4 : 2
     const newTranslateX = translateX - offset;
     // 변동되는 부분 끝에서 다시 돌아오는 부분 수정
     if (cardRef.current !== null) {
-      if (newTranslateX < -(offset * (datatables.length - 4))) { // 여기서도 같은 offset 사용
+      if (newTranslateX < -(offset * (datatables.length - changephase))) { // 여기서도 같은 offset 사용
         setTranslateX(0);
         cardRef.current.style.transition = 'none';
         cardRef.current.style.transform = `translateX(0vw)`;
