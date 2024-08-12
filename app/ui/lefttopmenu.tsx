@@ -57,7 +57,7 @@ export default function LeftTopMenu() {
       {Object.keys(menuItems).map((menu) => (
         <div
           key={menu}
-          className="relative sm:w-1/5 sm:flex sm:justify-center sm:items-center "
+          className="relative sm:w-1/5 sm:flex sm:justify-center sm:items-center"
           onMouseEnter={() => handleMouseEnter(menu)}
           onMouseLeave={handleMouseLeave}
         >
