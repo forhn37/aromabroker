@@ -37,7 +37,7 @@ export default async function ReviewDetails({ params, searchParams }: BoardArg) 
 
   return (
     <div>
-      <main className="max-w-4xl mx-auto p-4 bg-neutral-100 pt-10 pb-10">
+      <main className="sm:w-3/5 mx-auto p-4 pt-10 pb-10">
         <div className="text-3xl text-center mb-6">{boardtitle}</div>
         <BoardArticle post={postdata} />
       </main>

@@ -25,6 +25,7 @@ export default function BeandeliveryService() {
         <div className="flex flex-col-reverse sm:flex-row sm:justify-center sm:items-center sm:mb-5">
           <div className="p-3 sm:w-1/4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque distinctio dicta eaque exercitationem tempore nulla labore molestiae inventore esse facere!
           </div>
           <div className="sm:w-1/3">
             <Image

@@ -111,8 +111,8 @@ export default function NoticeBoard({ initialPosts, boardtitle, tablename }: Boa
 
   return (
     <div className="mx-auto p-4 sm:w-3/5">
-      <h1 className="text-2xl font-bold mb-4 text-center">{boardtitle}</h1>
-      <p className="mb-4 text-sm">궁금한 점이 있으시다면 Q&A 통해 답변을 받아보세요.</p>
+      <h1 className="text-2xl mb-4 text-center sm:mb-10 sm:text-3xl">{boardtitle}</h1>
+      <p className="mb-4 text-sm ">궁금한 점이 있으시다면 Q&A 통해 답변을 받아보세요.</p>
       <div className="border-t border-gray-300 mb-4"></div>
       {posts.map(post => (
         <div key={post.id} className="mb-4">

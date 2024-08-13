@@ -52,7 +52,7 @@ export default function RightTopMenu() {
           <Link href="/mypage">
             <span className="p-6 sm:text-xs md:text-xl">MYPAGE</span>
           </Link>
-          <button onClick={handleLogout} className="p-6 text-2xl">
+          <button onClick={handleLogout} className="p-6 text-2xl sm:text-xs md:text-xl">
             LOGOUT
           </button>
         </>
