@@ -1,40 +1,39 @@
 import Image from "next/image";
 import { dohyun } from "@/app/ui/font";
-import BackButton from "@/app/ui/dashboard/backbutton";
 
-
-export default function Cunsulting() {
+export default function BeandeliveryService() {
 
   return (
     <div>
-      {/* 제목 */}
       <div className={`${dohyun.className}`} >
-        <h1 className="text-3xl text-center p-3">사업자컨설팅</h1>
+        <h1 className="text-3xl text-center p-3 sm:mb-5">사업자컨설팅</h1>
       </div>
-
-      {/* 본문 */}
-      <div className="w-full">
-        <div>
-          <Image
-            src={`/eventimage4.jpg`}
-            width={412}
-            height={10}
-            alt="Picture of the author"
-          />
-          <p className="p-3">
+      <div className="w-screen sm:flex sm:flex-col sm:justify-center p-3">
+        <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center sm:mb-5">
+          <div className="sm:w-1/3">
+            <Image
+              src={`/eventimage3.jpg`}
+              width={1280}
+              height={1280}
+              alt="Picture of the author"
+            />
+          </div>
+          <div className="p-3 sm:w-1/4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
-          </p>
+          </div>
         </div>
-        <div>
-          <Image
-            src={`/eventimage5.jpg`}
-            width={412}
-            height={10}
-            alt="Picture of the author2"
-          />
-          <p className="p-3">
+        <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center sm:mb-5">
+          <div className="p-3 sm:w-1/4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
-          </p>
+          </div>
+          <div className="sm:w-1/3">
+            <Image
+              src={`/eventimage4.jpg`}
+              width={1280}
+              height={1280}
+              alt="Picture of the author"
+            />
+          </div>
         </div>
       </div>
     </div>
