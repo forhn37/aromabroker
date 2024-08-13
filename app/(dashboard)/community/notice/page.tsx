@@ -9,7 +9,7 @@ export default async function Notice() {
   const posts: NoticePost[] = data;
 
   return (
-    <main>
+    <main className='w-screen'>
       <NoticeBoard boardtitle='NOTICE' tablename={tablename} initialPosts={posts} />
     </main>
   );
