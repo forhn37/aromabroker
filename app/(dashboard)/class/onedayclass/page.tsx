@@ -1,49 +1,52 @@
 import Image from "next/image";
 import { dohyun } from "@/app/ui/font";
 
-export default function Onedayclass() {
+export default function BeandeliveryService() {
 
   return (
     <div>
-      {/* 제목 */}
       <div className={`${dohyun.className}`} >
-        <h1 className="text-3xl text-center p-3">원데이 클래스</h1>
+        <h1 className="text-3xl text-center p-3 sm:mb-5">원데이클래스</h1>
       </div>
-
-      {/* 본문 */}
-      <div className="w-full">
-        <div>
-          <Image
-            src={`/oneday1.jpg`}
-            width={412}
-            height={10}
-            alt="Picture of the author"
-          />
-          <p className="p-3">
+      <div className="w-screen sm:flex sm:flex-col sm:justify-center p-3">
+        <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center sm:mb-5">
+          <div className="sm:w-1/3">
+            <Image
+              src={`/oneday1.jpg`}
+              width={1280}
+              height={1280}
+              alt="Picture of the author"
+            />
+          </div>
+          <div className="p-3 sm:w-1/4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
-          </p>
+          </div>
         </div>
-        <div>
-          <Image
-            src={`/oneday2.jpg`}
-            width={412}
-            height={10}
-            alt="Picture of the author2"
-          />
-          <p className="p-3">
+        <div className="flex flex-col-reverse sm:flex-row sm:justify-center sm:items-center sm:mb-5">
+          <div className="p-3 sm:w-1/4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
-          </p>
+          </div>
+          <div className="sm:w-1/3">
+            <Image
+              src={`/oneday2.jpg`}
+              width={1280}
+              height={1280}
+              alt="Picture of the author"
+            />
+          </div>
         </div>
-        <div>
-          <Image
-            src={`/oneday3.png`}
-            width={412}
-            height={10}
-            alt="Picture of the author"
-          />
-          <p className="p-3">
+        <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center sm:mb-5">
+          <div className="sm:w-1/3">
+            <Image
+              src={`/oneday3.png`}
+              width={1280}
+              height={1280}
+              alt="Picture of the author"
+            />
+          </div>
+          <div className="p-3 sm:w-1/4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
-          </p>
+          </div>
         </div>
       </div>
     </div>
