@@ -20,23 +20,23 @@ const menuItems: Menuitemstype = {
   BUSINESS: [
     { menuname: "컨설팅", routeaddress: "business/consulting" },
     { menuname: "방문시연요청", routeaddress: "business/demonstrationrequest" },
-    { menuname: "원두납품 리스트", routeaddress: "business/beandeliverylist" },
-    { menuname: "디저트납품 리스트", routeaddress: "business/dessertdeliverylist" },
+    { menuname: "원두납품 거래처", routeaddress: "business/beandeliverylist" },
+    { menuname: "디저트납품 거래처", routeaddress: "business/dessertdeliverylist" },
   ],
   CAFEMENU: [
     { menuname: "Coffee", routeaddress: "cafemenu/coffee" },
     { menuname: "Dessert", routeaddress: "cafemenu/dessert" },
   ],
   CLASS: [
-    { menuname: "바리스타 초급&심화", routeaddress: "class/barista" },
-    { menuname: "로스팅 초급&심화", routeaddress: "class/roasting" },
-    { menuname: "커핑", routeaddress: "class/cupping" },
-    { menuname: "원데이클래스", routeaddress: "class/onedayclass" },
+    { menuname: "Barista", routeaddress: "class/barista" },
+    { menuname: "Roasting", routeaddress: "class/roasting" },
+    { menuname: "Cupping", routeaddress: "class/cupping" },
+    { menuname: "OnedayClass", routeaddress: "class/onedayclass" },
   ],
   COMMUNITY: [
-    { menuname: "공지", routeaddress: "community/notice" },
-    { menuname: "레시피", routeaddress: "community/recipes" },
-    { menuname: "리뷰", routeaddress: "community/review" },
+    { menuname: "Notice", routeaddress: "community/notice" },
+    { menuname: "Recipe", routeaddress: "community/recipes" },
+    { menuname: "Review", routeaddress: "community/review" },
     { menuname: "Q&A", routeaddress: "community/qna" },
   ],
 };
