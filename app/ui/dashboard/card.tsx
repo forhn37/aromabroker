@@ -79,7 +79,7 @@ export default function Card({ category, description, datatables, imagename }: C
 
   if (ismobileweb) {
     return (
-      <div className="overflow-hidden my-3 w-screen">
+      <div className="overflow-hidden my-3 w-screen sm: p-10">
 
         <div className="px-3 text-2xl flex justify-start items-center sm:mt-10 sm">
           <Image
