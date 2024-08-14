@@ -1,7 +1,8 @@
-export default function CafemenuCoffee() {
+import CafemenuCoffee from "@/app/ui/dashboard/cafemenu";
+export default function CafemenuCoffeePage() {
   return (
     <main>
-      Hello CafemenuCoffee
+      <CafemenuCoffee />
     </main>
   );
 }
