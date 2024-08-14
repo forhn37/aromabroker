@@ -33,8 +33,18 @@ export default function CafemenuCoffee() {
     <div>
       <div className="relative w-full sm:h-96 h-52">
         <Image src="/rowlongimage.jpg" className="object-cover w-full h-full" alt="Example Image" width={1920} height={593} />
-        <div className="absolute inset-0 flex justify-center items-center sm:text-4xl text-2xl">
-          Coffee
+        <div className="absolute inset-0 flex justify-center flex-col items-center">
+          <div className="inset-0 flex  items-center sm:text-4xl text-2xl sm : mb-10">
+            COFFEE
+          </div>
+          <div className="inset-0 flex items-center sm:text-2xl text-base text-gray-800 flex-col">
+            <div>
+              Until your life is filled with fragrance,
+            </div>
+            <div>
+              Aromabroker will be with you.
+            </div>
+          </div>
         </div>
       </div>
       <div className="flex justify-start w-full sm:p-20 flex-wrap">
