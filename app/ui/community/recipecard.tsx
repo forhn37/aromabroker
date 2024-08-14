@@ -24,14 +24,14 @@ export default function RecipeCard({ title, created_at, content, imageurl, descr
         alt="Recipe Image"
         width={400}
         height={300}
-        className="w-full"
+        className="w-full sm:p-2 "
       />
       <div className="px-6 py-4">
         <div className="font-semibold text-xl mb-2">{title}</div>
         <div className="text-xl mb-2">{description}</div>
         <div className="text-gray-700 text-base py-2 flex justify-between">
           {new Date(created_at).toLocaleDateString()}
-          <div onClick={handleClick}>자세히보기</div>
+          <button onClick={handleClick}>자세히보기</button>
         </div>
       </div>
     </div>
