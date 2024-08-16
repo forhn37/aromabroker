@@ -10,7 +10,7 @@ export default async function Review() {
   const posts: NoticePost[] = data;
 
   return (
-    <main>
+    <main className="sm:mt-10">
       <Board boardtitle='REVIEW' tablename={tablename} initialPosts={posts} />
     </main>
   );

@@ -12,7 +12,7 @@ export default async function Recipes() {
 
 
   return (
-    <>
+    <div className="sm:mt-10">
       <h1 className="text-2xl mb-4 text-center sm:mb-10 sm:text-3xl  mt-3">Recipe</h1>
       <div className="flex flex-wrap justify-start items-center">
         {Recipetable.map(recipe => (
@@ -26,6 +26,6 @@ export default async function Recipes() {
             description={recipe.description} coffeePublicName={recipe.coffeePublicName} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

@@ -28,17 +28,17 @@ export default function Layout({
               </div>
             </Link>
           </div>
-          <div className="hidden sm:flex sm:justify-between sm:items-center  sm:w-5/6">
+          <div className="hidden md:flex md:justify-between md:items-center md:w-3/5">
             <LeftTopMenu />
           </div>
         </div>
         {/* Nav는 sm이상일때는 보이지 않습니다. */}
         <Nav />
-        <div className="hidden sm:flex sm:justify-end sm:w-2/5 sm:items-center">
+        <div className="hidden md:flex md:justify-end md:w-2/5 md:items-center">
           <RightTopMenu />
         </div>
       </header>
-      <div className="pt-24 sm:mt-10 over"> {/* 헤더 높이만큼 패딩 추가 */}
+      <div className="pt-24 overflow-hidden"> {/* 헤더 높이만큼 패딩 추가 */}
         <RecipeProvider>
           {children}
         </RecipeProvider>

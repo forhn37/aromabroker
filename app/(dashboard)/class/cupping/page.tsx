@@ -4,7 +4,7 @@ import { dohyun } from "@/app/ui/font";
 export default function BeandeliveryService() {
 
   return (
-    <div>
+    <div className="sm:mt-10">
       <div className={`${dohyun.className}`} >
         <h1 className="text-3xl text-center p-3 sm:mb-5">Cupping</h1>
       </div>

@@ -9,7 +9,7 @@ export default async function Qna() {
   const posts: NoticePost[] = data;
 
   return (
-    <main>
+    <main className="sm:mt-10">
       <Board boardtitle='QnA' tablename={tablename} initialPosts={posts} />
     </main>
   );

@@ -4,9 +4,9 @@ import { dohyun } from "@/app/ui/font";
 export default function BeandeliveryService() {
 
   return (
-    <div>
+    <div className="sm:mt-10">
       <div className={`${dohyun.className}`} >
-        <h1 className="text-3xl text-center p-3 sm:mb-5">원두납품거래처</h1>
+        <h1 className="text-3xl text-center p-3 sm:mb-5 ">원두납품거래처</h1>
       </div>
       <div className="w-screen sm:flex sm:flex-col sm:justify-center p-3">
         <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center sm:mb-5">
