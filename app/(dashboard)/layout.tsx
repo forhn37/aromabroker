@@ -7,6 +7,12 @@ import { RecipeProvider } from "../lib/mycontext";
 import LeftTopMenu from "../ui/lefttopmenu";
 import RightTopMenu from "../ui/righttopmenu";
 
+export const metadata = {
+  title: '아로마브로커(aromabroker)',
+  description: '로스팅, 원두, 월평동, 대전, 드립커피',
+  keywords: '원두, 커피, 로스팅'
+}
+
 export default function Layout({
   children
 }: Readonly<{

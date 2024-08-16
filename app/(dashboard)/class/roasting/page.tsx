@@ -1,5 +1,23 @@
 import Image from "next/image";
 import { dohyun } from "@/app/ui/font";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: '대전 커피 로스팅(Roasting) 클래스 - 아로마브로커',
+  description: '커피 로스팅(Roasting)의 모든 것을 배워보세요. 아로마브로커의 로스팅(Roasting) 클래스에서 커피의 본질을 탐구하세요.',
+  keywords: '커피, 로스팅, 커피 클래스, 대전 커피, 아로마브로커, roasting, coffee',
+  authors: [{ name: 'aromabroker', url: 'https://aromabroker.com' }],
+  openGraph: {
+    title: '대전 커피 로스팅(Roasting) 클래스 - 아로마브로커',
+    description: '대전에서 커피 로스팅(Roasting)의 깊이를 탐구하세요. 아로마브로커의 로스팅 클래스로 커피의 본질을 이해할 수 있습니다.',
+    url: 'https://aromabroker.com/class/roasting',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://aromabroker.com/class/roasting',
+  },
+};
+
 
 export default function BeandeliveryService() {
 

@@ -1,5 +1,24 @@
 import Image from "next/image";
 import { dohyun } from "@/app/ui/font";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: '대전 원데이(Oneday) 커피 클래스 - 아로마브로커',
+  description: '바쁜 일상 속에서 즐기는 원데이(Oneday)  커피 클래스. 커피의 매력을 한 번에 경험해보세요.',
+  keywords: '커피, 원데이 클래스, 커피 클래스, 대전 커피, 아로마브로커, onedayclass, coffee',
+  authors: [{ name: 'aromabroker', url: 'https://aromabroker.com' }],
+  openGraph: {
+    title: '대전 원데이(Oneday)  커피 클래스 - 아로마브로커',
+    description: '하루 만에 커피의 모든 것을 배우고 싶은 분들을 위한 원데이 클래스. 대전 아로마브로커에서 경험하세요.',
+    url: 'https://aromabroker.com/class/onedayclass',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://aromabroker.com/class/onedayclass',
+  },
+};
+
+
 
 export default function BeandeliveryService() {
 
