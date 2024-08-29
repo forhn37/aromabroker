@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: 'https://aromabroker.com',
     type: 'website',
     locale:'ko_KR',
-    images:'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/public/mainlogo.png',
+    images:'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/public/mainlogo.png?v=2',
   },
   alternates: {
     canonical: 'https://aromabroker.com',
