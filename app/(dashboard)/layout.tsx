@@ -7,12 +7,6 @@ import { RecipeProvider } from "../lib/mycontext";
 import LeftTopMenu from "../ui/lefttopmenu";
 import RightTopMenu from "../ui/righttopmenu";
 
-export const metadata = {
-  title: '대전 최고의 커피 원두 로스팅 - 아로마브로커',
-  description: '대전 월평동에서 최고의 커피 원두를 로스팅하는 아로마브로커에서 신선한 드립커피를 만나보세요.',
-  keywords: '대전, 커피, 원두, 로스팅, 드립커피, 월평동 커피, 신선한 원두'
-}
-
 export default function Layout({
   children
 }: Readonly<{
