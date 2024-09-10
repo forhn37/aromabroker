@@ -31,9 +31,9 @@ export default async function Utubevideo() {
           alt="Picture of the author"
           className='ml-3'
         />
-        <h1 className='p-3 text-2xl'>YouTube</h1>
+        <h1 className='p-3 text-2xl sm:text-3xl'>YouTube</h1>
       </div>
-      <div className='w-screen flex flex-wrap '>
+      <div className='w-screen flex flex-wrap sm:px-5'>
         {videos.length > 0 ? (
           videos.map((video) => (
             <div key={video.id.videoId} className='w-1/2 sm:w-1/4 p-4'>
