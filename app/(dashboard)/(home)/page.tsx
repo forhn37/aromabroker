@@ -26,7 +26,7 @@ export default async function Home() {
     <div>
       <MainImageSlide webUrls={webUrls} mobileUrls={mobileUrls} />
       <Card category={"Best Beans"} datatables={beansTable} imagename='coffee' />
-      {/* <Utubevideo /> */}
+      <Utubevideo />
     </div>
 
   )
