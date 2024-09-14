@@ -73,17 +73,17 @@ export default function MainImageSlide({ webUrls, mobileUrls }: MainslideProps) 
   }, [translateX, urls]); // translateX와 urls를 의존성 배열에 추가
 
   return (
-    <div className='overflow-hidden'>
+    <div className='overflow-hidden '>
       <div
-        className="flex duration-300 transition-transform"
+        className="flex duration-300 transition-transform sm:justify-center"
         style={{ width: `${100 * urls.length}vw` }}
         ref={containerRef}
       >
         {urls.map((url, index) => (
-          <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url, ismobileweb: ismobileweb } }} key={index} className="sm:mx-40 w-screen">
+          <Link href={{ pathname: `/eventpage/event${index}`, query: { urlpathname: url, ismobileweb: ismobileweb } }} key={index} className="sm:mx-40 ">
             <Image
               src={url}
-              width={1920}
+              width={2400}
               height={1200}
               alt={`Slide ${index + 1}`}
             />
