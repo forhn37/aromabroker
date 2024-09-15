@@ -31,8 +31,8 @@ export default async function Event({ params, searchParams }: paramsProps) {
         {eventDetails && eventDetails.webimageurl || eventDetails.mobileimageurl ? (
           <Image
             src={imageUrl}
-            width={500}
-            height={400}
+            width={2400}
+            height={1200}
             alt={`Slide`}
             className="w-full"
           />
