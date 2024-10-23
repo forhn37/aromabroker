@@ -1,6 +1,7 @@
 import GetTable from "@/app/lib/supabase/gettable";
 import { MaineventProps } from "@/app/types/types";
 import Image from "next/image";
+import Link from "next/link";
 export interface paramsProps {
   params: event;
   searchParams: urlpathname;
@@ -26,36 +27,32 @@ export default async function Event({ params, searchParams }: paramsProps) {
   const imageUrl = eventDetails[ismobileweb as keyof MaineventProps] as string;
 
   return (
-    <div className="sm:flex sm:justify-around sm: p-6 ">
-      <div className="sm:flex sm:justify-center sm: items-start sm:flex-col">
-        {/* {eventDetails && eventDetails.webimageurl || eventDetails.mobileimageurl ? ( */}
-        <Image
-          src={imageUrl}
-          width={3000}
-          height={1200}
-          alt={`Slide`}
-          className="w-full"
-        />
-        <Image
-          src='/cuppingclass.jpg'
-          width={2400}
-          height={1200}
-          alt={`Slide`}
-          className="w-full sm:p-10" />
-        {/* // ) : (
-        //   <p>Image not available</p> // 대체 텍스트 또는 요소
-        // )} */}
-      </div>
+    <div className="sm:flex sm:justify-around sm:p-6 ">
+      <Image
+        src='/cuppingclass.jpg'
+        width={2400}
+        height={1200}
+        alt={`Slide`}
+        className="w-3/2" />
       {eventDetails ? (
-        <article className="p-2 sm:p-10 sm:w-2/5 sm:flex sm:justify-center">
-          <h1 className="text-xl mb-2">{eventDetails.title}</h1>
-          <div>
-            hi
+        <article className="p-2 sm:p-10 sm:w-2/5 sm:flex sm:justify-start sm:flex-col">
+          <h1 className="sm:text-3xl mb-2 font-semibold">{eventDetails.title}</h1>
+          <h2 className="text-2xl sm:mt-4">이달의 클래스</h2>
+          <h2 className="text-2xl sm:mt-4">30,000원</h2>
+          <div className="flex flex-col sm:text-xl sm:mt-4">
+            <div>클래스 수강료는 현장결제 및 계좌이체만 가능한 점 양해 부탁드립니다. </div>
+            <div>
+              클래스 날짜 및 시간은 당월 인원의 스케쥴에 따라 달라질수 있습니다.
+            </div>
           </div>
         </article>
       ) : (
         <p>Event details not available</p> // 대체 텍스트 또는 요소
       )}
+      <div>
+        <Link href="/community/class">
+        </Link>
+      </div>
     </div>
   );
 }

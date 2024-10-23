@@ -79,14 +79,14 @@ export default function Card({ category, description, datatables, imagename }: C
 
   if (ismobileweb) {
     return (
-      <div className="overflow-hidden my-3 w-screen sm: p-10">
-
-        <div className="px-3 text-2xl flex justify-start items-center sm:mt-10 sm">
+      <div className="overflow-hidden my-3">
+        <div className="px-3 sm:px-0 text-3xl flex justify-start items-center sm:ml-5">
           <Image
             src={`/${imagename}.png`}
             width={30}
             height={10}
             alt="Picture of the author"
+            className="mr-1"
           />
           {category}
         </div>
@@ -145,7 +145,7 @@ export default function Card({ category, description, datatables, imagename }: C
             onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
             onTouchCancel={() => setHoveringPrev(false)}
             onClick={prvbutton}
-          /> 
+          />
           <div
             className={`w-4 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-8' : 'w-4'} transition-all duration-200`}
             onMouseEnter={() => setHoveringNext(true)}
