@@ -38,6 +38,7 @@ const menuItems: Menuitemstype = {
     { menuname: "Recipe", routeaddress: "community/recipes" },
     { menuname: "Review", routeaddress: "community/review" },
     { menuname: "Q&A", routeaddress: "community/qna" },
+    { menuname: "클래스신청", routeaddress: "community/classregister" },
   ],
 };
 
