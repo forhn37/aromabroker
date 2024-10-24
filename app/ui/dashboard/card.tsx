@@ -80,14 +80,7 @@ export default function Card({ category, description, datatables, imagename }: C
   if (ismobileweb) {
     return (
       <div className="overflow-hidden my-3 sm:mt-10">
-        <div className="px-3 sm:px-0 text-3xl flex justify-center items-center sm:ml-5">
-          {/* <Image
-            src={`/${imagename}.png`}
-            width={30}
-            height={10}
-            alt="Picture of the author"
-            className="mr-1"
-          /> */}
+        <div className="px-3 sm:px-0 sm:text-4xl flex justify-center items-center sm:ml-5 sm:py-20">
           {category}
         </div>
         <div style={{ width: `${25 * datatables.length}vw` }} className="flex sm:mt-10" ref={cardRef}>
