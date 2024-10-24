@@ -27,6 +27,9 @@ export default function MobilemenuCommunityPage() {
         <Link href="/community/qna">
           <li className='mb-3'>Q&A</li>
         </Link>
+        <Link href="/community/classregister">
+          <li className='mb-3'>클래스신청</li>
+        </Link>
       </div>
     </div>
   );

@@ -13,10 +13,15 @@ export interface Menuitemstype {
   CAFEMENU: MenuItem[];
   CLASS: MenuItem[];
   COMMUNITY: MenuItem[];
+  SHOP: MenuItem[];
 }
 
 const menuItems: Menuitemstype = {
   ABOUT: [{ menuname: "AROMABROKER", routeaddress: "about" }],
+  SHOP: [
+    { menuname: "Beans", routeaddress: "shop/beans" },
+    { menuname: "DripBag", routeaddress: "shop/dripbag" },
+  ],
   BUSINESS: [
     { menuname: "컨설팅", routeaddress: "business/consulting" },
     { menuname: "방문시연요청", routeaddress: "business/demonstrationrequest" },

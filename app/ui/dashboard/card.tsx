@@ -79,43 +79,43 @@ export default function Card({ category, description, datatables, imagename }: C
 
   if (ismobileweb) {
     return (
-      <div className="overflow-hidden my-3">
-        <div className="px-3 sm:px-0 text-3xl flex justify-start items-center sm:ml-5">
-          <Image
+      <div className="overflow-hidden my-3 sm:mt-10">
+        <div className="px-3 sm:px-0 text-3xl flex justify-center items-center sm:ml-5">
+          {/* <Image
             src={`/${imagename}.png`}
             width={30}
             height={10}
             alt="Picture of the author"
             className="mr-1"
-          />
+          /> */}
           {category}
         </div>
-        <div style={{ width: `${25 * datatables.length}vw` }} className="flex" ref={cardRef}>
+        <div style={{ width: `${25 * datatables.length}vw` }} className="flex sm:mt-10" ref={cardRef}>
           {datatables.map((item, index) => (
             <Carddetail key={index} item={item as Bean} ismobileweb={ismobileweb} />
           ))}
         </div>
-        <div className="flex justify-center w-screen mt-2">
-          <div
-            className={`w-4 sm:w-8 h-3 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8 sm:w-12' : 'w-4 sm:w-8'} transition-all duration-200`}
-            onMouseEnter={() => setHoveringPrev(true)}
-            onMouseLeave={() => setHoveringPrev(false)}
-            onTouchStart={() => setHoveringPrev(true)}
-            onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
-            onTouchCancel={() => setHoveringPrev(false)}
-            onClick={prvbutton}
-          />
-          <div
-            className={`w-4 sm:w-8  h-3 rounded-md bg-gray-300 ${hoveringNext ? 'w-8 sm:w-12' : 'w-4 sm:w-8'} transition-all duration-200`}
-            onMouseEnter={() => setHoveringNext(true)}
-            onMouseLeave={() => setHoveringNext(false)}
-            onTouchStart={() => setHoveringNext(true)}
-            onTouchEnd={() => setTimeout(() => setHoveringNext(false), 100)}
-            onTouchCancel={() => setHoveringNext(false)}
-            onClick={nextbutton}
-          />
-        </div>
+        <div className="flex justify-center w-screen mt-3">
+        <div
+          className={`w-10 h-3 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-20' : 'w-10'} transition-all duration-200`}
+          onMouseEnter={() => setHoveringPrev(true)}
+          onMouseLeave={() => setHoveringPrev(false)}
+          onTouchStart={() => setHoveringPrev(true)}
+          onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
+          onTouchCancel={() => setHoveringPrev(false)}
+          onClick={prvbutton}
+        />
+        <div
+          className={`w-10 h-3 rounded-md bg-gray-300 ${hoveringNext ? 'w-20' : 'w-10'} transition-all duration-200`}
+          onMouseEnter={() => setHoveringNext(true)}
+          onMouseLeave={() => setHoveringNext(false)}
+          onTouchStart={() => setHoveringNext(true)}
+          onTouchEnd={() => setTimeout(() => setHoveringNext(false), 100)}
+          onTouchCancel={() => setHoveringNext(false)}
+          onClick={nextbutton}
+        />
       </div>
+    </div>
     );
   } else {
     return (
@@ -131,32 +131,32 @@ export default function Card({ category, description, datatables, imagename }: C
             {category}
           </div>
         </div>
-        <div style={{ width: `${50 * datatables.length}vw` }} className="flex" ref={cardRef}>
+        <div style={{ width: `${50 * datatables.length}vw` }} className="flex sm:mt-20" ref={cardRef}>
           {datatables.map((item, index) => (
             <Carddetail key={index} item={item as Bean} ismobileweb={ismobileweb} />
           ))}
         </div>
-        <div className="flex justify-center w-screen mt-2">
-          <div
-            className={`w-4 h-2 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-8' : 'w-4'} transition-all duration-200`}
-            onMouseEnter={() => setHoveringPrev(true)}
-            onMouseLeave={() => setHoveringPrev(false)}
-            onTouchStart={() => setHoveringPrev(true)}
-            onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
-            onTouchCancel={() => setHoveringPrev(false)}
-            onClick={prvbutton}
-          />
-          <div
-            className={`w-4 h-2 rounded-md bg-gray-300 ${hoveringNext ? 'w-8' : 'w-4'} transition-all duration-200`}
-            onMouseEnter={() => setHoveringNext(true)}
-            onMouseLeave={() => setHoveringNext(false)}
-            onTouchStart={() => setHoveringNext(true)}
-            onTouchEnd={() => setTimeout(() => setHoveringNext(false), 100)}
-            onTouchCancel={() => setHoveringNext(false)}
-            onClick={nextbutton}
-          />
-        </div>
+        <div className="flex justify-center w-screen mt-3">
+        <div
+          className={`w-10 h-3 mr-2 rounded-md bg-gray-300 ${hoveringPrev ? 'w-20' : 'w-10'} transition-all duration-200`}
+          onMouseEnter={() => setHoveringPrev(true)}
+          onMouseLeave={() => setHoveringPrev(false)}
+          onTouchStart={() => setHoveringPrev(true)}
+          onTouchEnd={() => setTimeout(() => setHoveringPrev(false), 100)}
+          onTouchCancel={() => setHoveringPrev(false)}
+          onClick={prvbutton}
+        />
+        <div
+          className={`w-10 h-3 rounded-md bg-gray-300 ${hoveringNext ? 'w-20' : 'w-10'} transition-all duration-200`}
+          onMouseEnter={() => setHoveringNext(true)}
+          onMouseLeave={() => setHoveringNext(false)}
+          onTouchStart={() => setHoveringNext(true)}
+          onTouchEnd={() => setTimeout(() => setHoveringNext(false), 100)}
+          onTouchCancel={() => setHoveringNext(false)}
+          onClick={nextbutton}
+        />
       </div>
+    </div>
     );
   }
 }
