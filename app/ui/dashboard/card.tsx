@@ -80,9 +80,9 @@ export default function Card({ category, description, datatables, imagename }: C
   if (ismobileweb) {
     return (
       <div className="overflow-hidden my-3 sm:mt-10">
-        <div className="px-3 sm:px-0 sm:text-4xl flex justify-center items-center sm:ml-5 sm:py-20">
+        {/* <div className="px-3 sm:px-0 sm:text-4xl flex justify-center items-center sm:ml-5 sm:py-20">
           {category}
-        </div>
+        </div> */}
         <div style={{ width: `${25 * datatables.length}vw` }} className="flex sm:mt-10" ref={cardRef}>
           {datatables.map((item, index) => (
             <Carddetail key={index} item={item as Bean} ismobileweb={ismobileweb} />
@@ -113,7 +113,7 @@ export default function Card({ category, description, datatables, imagename }: C
   } else {
     return (
       <div className="overflow-hidden my-3">
-        <div className="w-screen px-3 text-2xl flex justify-start items-center">
+        {/* <div className="w-screen px-3 text-2xl flex justify-start items-center">
           <Image
             src={`/${imagename}.png`}
             width={30}
@@ -123,7 +123,7 @@ export default function Card({ category, description, datatables, imagename }: C
           <div className="p-2">
             {category}
           </div>
-        </div>
+        </div> */}
         <div style={{ width: `${50 * datatables.length}vw` }} className="flex sm:mt-20" ref={cardRef}>
           {datatables.map((item, index) => (
             <Carddetail key={index} item={item as Bean} ismobileweb={ismobileweb} />
