@@ -33,16 +33,34 @@ export default async function Beans({ params, searchParams }: parmastype) {
   const bean: Bean = data[0];
 
   return (
-    <main className='flex flex-col justify-center items-center bg-slate-300 p-3'>
-      <Image src={bean.imageurl} width={380} height={200} alt="beans" className='outline outline-black' />
-      <div className='flex flex-col items-start w-full p-4'>
-        <div className='text-3xl mb-3'>기본 정보</div>
-        <div className='text-xl mb-2'>{bean.name}</div>
-        <div className='text-lg mb-2'>{bean.price}</div>
-        <div className='text-lg mb-2'>{bean.weight}</div>
-        <div className='text-lg mb-2'>{bean.strength}</div>
-        <div>배송비 : {bean.shippingcost}</div>
-        <div className='text-lg mb-2'>{bean.description}</div>
+    <main className='sm:flex justify-center p-3 bg-gray-100'>
+      <div className='sm:p-10 sm:w-1/2 flex sm:justify-end sm:mt-20 justify-center'>
+        <Image src={bean.imageurl} width={1920} height={1200} alt="beans" className='sm:w-4/5 p-2' />
+      </div>
+      <div className='flex p-4 sm:w-1/2 h-full sm:px-20 sm:py-32'>
+        <div className='flex flex-col justify-center w-full'>
+          <div className='sm:text-3xl sm:mb-4 font-bold text-xl mb-2'>{bean.name}</div>
+          <div className='sm:mb-6 sm:text-3xl text-xl mb-3'>{new Intl.NumberFormat('ko-KR').format(bean.price)}원</div>
+          <div>
+            <div className='sm:text-base text-sm sm:mb-3 font-semibold'>기본 정보</div>
+            <div className='flex sm:w-full text-sm py-2'>
+              <div className='sm:w-1/4 w-1/4 font-bold'>
+                <div className='sm:py-2 py-1'>배송비</div>
+                <div className='sm:py-2 py-1'>노트</div>
+                <div className='sm:py-2 py-1'>용량</div>
+              </div>
+              <div>
+                <div className='sm:py-2 py-1'>{new Intl.NumberFormat('ko-KR').format(bean.shippingcost)}원</div>
+                <div className='sm:py-2 py-1'>{bean.description}</div>
+                <div className='sm:py-2 py-1'>{bean.weight}</div>
+              </div>
+            </div>
+          </div>
+          <div className='sm:mt-5 bg-green-600 sm:w-2/3'>
+            <button className='border w-full sm:py-2 py-1 '>N페이 구매</button>
+          </div>
+          <div className='py-2'>당일 12시이전 주문건에 관하여 당일 발송합니다.</div>
+        </div>
       </div>
     </main>
   );
