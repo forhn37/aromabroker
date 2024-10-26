@@ -38,7 +38,7 @@ export default function Layout({
           <RightTopMenu />
         </div>
       </header>
-      <div className="pt-24 overflow-hidden"> {/* 헤더 높이만큼 패딩 추가 */}
+      <div className="pt-20 mt-2 sm:mt-0 sm:pt-24  overflow-hidden"> {/* 헤더 높이만큼 패딩 추가 */}
         <RecipeProvider>
           {children}
         </RecipeProvider>
