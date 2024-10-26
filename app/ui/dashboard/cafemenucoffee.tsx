@@ -2,30 +2,50 @@ import Image from "next/image"
 
 const coffeemenuitems = [
   {
-    coffeename: '스페니쉬 연유라떼',
-    coffeenameeng: 'Spanish Condensed Milk Café Latte',
-    description: '평화로운 유럽 초원의 감성을 담은 부드럽고 달콤한 스페니쉬 연유라떼',
-    src: '/coffeemenu1.png'
+    coffeename: '아메리카노',
+    coffeenameeng: 'Americano',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/americano.jpg?t=2024-10-26T06%3A28%3A02.260Z'
   },
   {
-    coffeename: '롱블랙',
-    coffeenameeng: 'Long Black',
-    description: '아메리카노보다 진하고 부드러운 플레이버를 느낄 수 있는 에스프레소 음료',
-    src: '/coffeemenu2.png'
+    coffeename: '아이스아메리카노',
+    coffeenameeng: 'Ice Americano',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/iceamericano.jpg?t=2024-10-26T06%3A29%3A39.827Z'
   },
   {
-    coffeename: '허니 레몬티',
-    coffeenameeng: 'Honey Lemon Tea',
-    description: '진한 TWG 프렌치 얼그레이의 향과 달콤한 꿀, 상큼한 레몬이 녹아든 향긋한 티',
-    src: '/coffeemenu3.png',
+    coffeename: '까페라떼',
+    coffeenameeng: 'Caffe Latte',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/caffelatte.jpg?t=2024-10-26T06%3A28%3A29.141Z'
   },
   {
-    coffeename: '스트로베리 피치 프라페',
-    coffeenameeng: 'Strawberry Peach Frappe',
-    description: '딸기와 복숭아의 상큼함이 조화롭게 어우러져 달콤하고 시원하게 즐길 수 있는 과일 프라페',
-    src: '/coffeemenu4.png'
-  }
-
+    coffeename: '까페모카',
+    coffeenameeng: 'Caffe Mocha',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/caffemocha.jpg'
+  },
+  {
+    coffeename: '에스프레소',
+    coffeenameeng: 'Espresso',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/espresso.jpg?t=2024-10-26T06%3A29%3A07.608Z'
+  },
+  {
+    coffeename: '에스프레소마키아토',
+    coffeenameeng: 'Espresso Macchiato',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/espressomachiatto.jpg'
+  },
+  {
+    coffeename: '보네펠트루이보스크림오렌지',
+    coffeenameeng: 'Ronnefeldt Rooibos Cream Orange',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/luibosorage.jpg'
+  },
+  {
+    coffeename: '너트크림콜드브루라떼',
+    coffeenameeng: 'Nut Cream Coldbrew Latte',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/nut%20cream%20coldbrewlatte.jpg?t=2024-10-26T06%3A31%3A58.665Z'
+  },
+  {
+    coffeename: '바닐라라떼',
+    coffeenameeng: 'Vanilla Latte',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/coffee/vanillalatte.jpg'
+  },
 ]
 
 export default function CafemenuCoffee() {
@@ -53,7 +73,6 @@ export default function CafemenuCoffee() {
             <Image src={coffeemenuitem.src} alt={coffeemenuitem.coffeenameeng} width={1920} height={593} />
             <div className="text-base sm:text-xl mt-4">{coffeemenuitem.coffeename}</div>
             <div className="text-xs sm:text-base text-gray-600 mt-2">{coffeemenuitem.coffeenameeng}</div>
-            <div className="text-xs sm:text-sm mt-2">{coffeemenuitem.description}</div>
           </div>
         ))}
       </div>
