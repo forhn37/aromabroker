@@ -37,13 +37,12 @@ export default function BeandeliveryService() {
             />
           </div>
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          바리스타 클래스는 단순히 커피 한 잔을 만드는 기술을 배우는 것을 넘어, 커피 한 잔에 담긴 수백 년의 역사와 이야기를 체험하는 시간입니다. 커피는 15세기 아랍에서 시작되어 전 세계로 퍼지며 각국의 문화와 어우러져 왔습니다. 바리스타로서 첫걸음을 내딛는 이 과정에서는 커피의 기원부터 현대의 다양한 추출 방식에 이르기까지, 커피가 가진 깊은 풍미와 감성을 탐구합니다.
           </div>
         </div>
         <div className="flex flex-col-reverse sm:flex-row sm:justify-center sm:items-center sm:mb-5">
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque distinctio dicta eaque exercitationem tempore nulla labore molestiae inventore esse facere!
+          이 클래스는 커피 원두의 선택에서부터 각종 기구의 사용법, 그라인딩과 추출 기법, 에스프레소 머신의 세밀한 조작, 부드러운 우유 스티밍과 라떼 아트의 섬세한 터치까지 단계별로 안내해 줍니다. 커피의 맛을 이해하고 평가하는 능력을 키우며, 풍부한 향이 가득한 커피 한 잔으로 사람들과 소통하는 법을 배웁니다.
           </div>
           <div className="sm:w-1/3">
             <Image
@@ -64,7 +63,7 @@ export default function BeandeliveryService() {
             />
           </div>
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          이 시간은 커피가 단순한 음료가 아닌, 순간을 함께 나누고, 감성을 전하는 예술임을 깨닫게 하는 특별한 경험이 될 것입니다. 커피에 대한 진정한 열정과 감동을 느끼고 싶은 분들께 추천합니다.
           </div>
         </div>
       </div>

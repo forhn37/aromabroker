@@ -38,12 +38,12 @@ export default function BeandeliveryService() {
             />
           </div>
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          Oneday 클래스는 커피의 세계를 짧은 시간 안에 넓고 깊게 탐험하는 특별한 여정입니다. 커피는 15세기부터 세계 각지에서 다양한 방식으로 즐겨져 온 음료로, 그 안에는 수많은 문화와 이야기가 녹아 있습니다. 이 클래스에서는 커피의 기초부터 다양한 추출 기법, 원두 선택, 그리고 커피의 맛과 향을 평가하는 방법까지 하루에 경험할 수 있도록 구성되었습니다.
           </div>
         </div>
         <div className="flex flex-col-reverse sm:flex-row sm:justify-center sm:items-center sm:mb-5">
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          커피 초보자부터 애호가까지, 누구나 부담 없이 즐길 수 있는 Oneday 클래스는 커피의 풍미를 짧은 시간 동안 경험하고자 하는 분들을 위해 준비되었습니다.
           </div>
           <div className="sm:w-1/3">
             <Image
@@ -64,7 +64,7 @@ export default function BeandeliveryService() {
             />
           </div>
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          커피가 단순한 음료를 넘어 일상에 잔잔한 기쁨과 위안을 주는 존재임을 느끼게 될 것입니다. 다양한 커피의 매력을 느끼며 특별한 하루를 만끽하고 싶은 분들께 이 클래스를 추천합니다.
           </div>
         </div>
       </div>

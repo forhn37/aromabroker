@@ -23,19 +23,20 @@ export default async function Event({ params, searchParams }: paramsProps) {
   const eventtable = await GetTable<MaineventProps>('mainimage_event', ismobileweb, urlpathname);
   console.log(eventtable)
   const eventDetails = eventtable[0];
+  console.log(eventDetails.classdetailimage)
 
   const imageUrl = eventDetails[ismobileweb as keyof MaineventProps] as string;
 
   return (
     <div className="sm:flex sm:justify-around sm:p-6 ">
       <Image
-        src='/cuppingclass.jpg'
+        src={eventDetails.classdetailimage}
         width={2400}
         height={1200}
         alt={`Slide`}
         className="w-3/2" />
       {eventDetails ? (
-        <article className="p-2 sm:p-10 sm:w-2/5 sm:flex sm:justify-start sm:flex-col">
+        <article className="p-2 sm:p-10 sm:w-2/5 sm:flex sm:justify-start sm:flex-col sm:mt-4">
           <h1 className="sm:text-3xl mb-2 font-semibold">{eventDetails.title}</h1>
           <h2 className="text-2xl sm:mt-4">이달의 클래스</h2>
           <h2 className="text-2xl sm:mt-4">30,000원</h2>

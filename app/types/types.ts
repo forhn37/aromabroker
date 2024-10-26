@@ -107,7 +107,7 @@ export interface MaineventProps {
   content : string;
   webimageurl : string;
   mobileimageurl : string;
-  classdetailimage? : string;
+  classdetailimage : string;
 }
 
 export interface NoticePost {

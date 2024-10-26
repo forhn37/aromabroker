@@ -2,29 +2,71 @@ import Image from "next/image"
 
 const dessertmenuitems = [
   {
-    dessertname: '스트로베리 초콜릿 생크림',
-    dessertnameeng: 'Strawberry Chocolate Fresh Cream Cake',
-    description: '한가득 올린 상큼한 딸기, 크런치 초코볼이 초콜릿 생크림 사이사이 씹히는 투썸 시그니처 케이크',
-    src: '/dessertmenu1.jpg'
+    dessertname: '아몬드초코비스코티',
+    dessertnameeng: 'Amond Chocolate Biscotti',
+    description: '한번 구워 낸 다음 살짝 식혀서 먹기 좋게 자른 다음 다시 오븐에서 완전히 건조될 때 까지 구워 낸 비스킷',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Amond%20Choco%20Biscotti.jpg'
   },
   {
-    dessertname: '마스카포네 티라미수',
-    dessertnameeng: 'Mascarpone Tiramisu',
-    description: '마스카포네 치즈 크림과 에스프레소 커피 시럽이 촉촉하게 어우러진 이탈리안 무스 케이크',
-    src: '/dessertmenu2.jpg'
+    dessertname: '아몬드비스코티',
+    dessertnameeng: 'Amond Biscotti',
+    description: '한번 구워 낸 다음 살짝 식혀서 먹기 좋게 자른 다음 다시 오븐에서 완전히 건조될 때 까지 구워 낸 비스킷',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Amond%20Biscotti.jpg'
   },
   {
-    dessertname: '레드벨벳',
-    dessertnameeng: 'Red Velvet',
-    description: '붉은 컬러 시트에 고소한 버터 크림치즈를 풍부하게 올려 볼륨감이 돋보이는 투썸 대표 구움 케이크',
-    src: '/dessertmenu3.jpg'
+    dessertname: '발로나초코휘낭시에',
+    dessertnameeng: 'Valrhona Chocolate Financier',
+    description: '천연버터의 풍미에 코코아, 진한 발로나초코스틱으로 깊은맛을 낸 초코휘낭시에',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Valrhona%20Chocolate%20Financier.jpg'
   },
   {
-    dessertname: '뉴욕 치즈 케이크',
-    dessertnameeng: 'New York Cheese Cake',
-    description: '부드럽고 촉촉한 식감과 진한 치즈의 맛을 느낄 수 있는 정통 뉴욕 스타일의 구움 치즈 케이크',
-    src: '/dessertmenu4.jpg'
-  }
+    dessertname: '바닐라빈휘낭시에',
+    dessertnameeng: 'Vanilla bean Financier',
+    description: '천연버터의 풍미에 바닐라빈의 풍미를 느낄 수 있는 휘낭시에',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Vanilla%20bean%20Financier.jpg'
+  },
+  {
+    dessertname: '솔티드아몬드휘낭시에',
+    dessertnameeng: 'Salted Amond Financier',
+    description: '달콤한 아몬드와 솔티드한 카라멜이 조화가 된 휘낭시에',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Salted%20Amond%20Financier.jpg'
+  },
+  {
+    dessertname: '고메버터쿠키',
+    dessertnameeng: 'Gourmet Butter Cookie',
+    description: '프랑스 고메버터에서 느낄 수 있는 풍미를 그대로 담은 고소한 쿠키',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Gourmet%20Butter%20Cookie.jpg'
+  },
+  {
+    dessertname: '촉촉한초코칩쿠키',
+    dessertnameeng: 'Soft Chocolate Chip Cookie',
+    description: '겉은 바삭하고 속은 쫀득한 식감의 초코칩이 가득한 쿠키',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Soft%20Chocolate%20Chip%20Cookie.jpg'
+  },
+  {
+    dessertname: '감태오란다',
+    dessertnameeng: 'Ecklonia cava Oranda',
+    description: '감태 특유의 싱그러운 향과 부드러운 식감의 오란다를 함께 즐길 수 있는 전통디저트',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Ecklonia%20cava%20Oranda.jpg'
+  },
+  {
+    dessertname: '흑임자오란다',
+    dessertnameeng: 'Black Sesame Oranda',
+    description: '부드러운 식감의 오란다와 흑임자의 조합으로 남녀노소 함께 즐길 수 있는 전통디저트',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Black%20Sesame%20Oranda.jpg'
+  },
+  {
+    dessertname: '씨앗오란다',
+    dessertnameeng: 'Seed Oranda',
+    description: '씨앗 특유의 고소함과 부드러운 식감의 오란다의 조합으로 탄생한 전통디저트',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Seed%20Oranda.jpg'
+  },
+  {
+    dessertname: '플레인오란다',
+    dessertnameeng: 'Plain Oranda',
+    description: '남녀노소 좋아하는 부드러운 식감의 오란다',
+    src: 'https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/dessert/Plain%20Oranda.jpg'
+  },
 ]
 
 export default function CafemenuDessert() {

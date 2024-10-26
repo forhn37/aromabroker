@@ -37,12 +37,12 @@ export default function BeandeliveryService() {
             />
           </div>
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          Roasting 클래스는 생두를 향기롭고 깊은 맛을 지닌 커피로 완성하는 과정을 배우는 시간입니다. 로스팅은 커피의 향과 맛을 결정하는 중요한 단계로, 그 역사는 커피가 전 세계로 퍼져 나가던 시기부터 시작되었습니다. 커피가 처음 로스팅되던 순간부터 오늘날까지, 바리스타와 로스터들은 온도와 시간을 통해 커피의 무한한 풍미를 끌어내는 기술을 발전시켜 왔습니다.
           </div>
         </div>
         <div className="flex flex-col-reverse sm:flex-row sm:justify-center sm:items-center sm:mb-5">
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          이 클래스에서는 로스팅 기초부터 생두의 선택과 보관, 온도와 시간 조절의 중요성을 배우고, 직접 로스팅을 경험해 봅니다. 라이트부터 다크 로스트까지 다양한 로스팅 레벨을 체험하며 각 레벨이 만들어내는 커피의 개성과 매력을 느낄 수 있습니다. 
           </div>
           <div className="sm:w-1/3">
             <Image
@@ -63,7 +63,7 @@ export default function BeandeliveryService() {
             />
           </div>
           <div className="p-3 sm:w-1/4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga numquam dolor vitae deserunt nemo magnam qui, a aliquam facere, nostrum unde dolorum corrupti modi consectetur maiores ipsa rem quae ipsum!
+          로스팅된 커피의 맛을 평가하며, 커피의 변화를 이해하는 흥미로운 시간을 제공합니다. 커피 한 알에 담긴 이야기와 노력을 느끼고 싶은 분들에게 추천드립니다.
           </div>
         </div>
       </div>
