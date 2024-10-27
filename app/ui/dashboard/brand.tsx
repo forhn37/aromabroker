@@ -60,7 +60,8 @@ export default function Brand() {
     <main className="sm:p-3 flex-col overflow-hidden">
       <div className="w-screen p-2 sm:flex sm:flex-row flex-col justify-center items-center sm:mb-5">
         <div className='sm:w-1/4'>
-          <h1 className="sm:text-4xl text-2xl font-medium sm:mb-4 mb-2 sm:font-semibold sm:text-right">Aromabroker</h1>
+          <h1 className="sm:text-4xl text-2xl font-medium sm:mb-4 mb-2 sm:font-semibold sm:text-center mt-5">Aromabroker</h1>
+          <h2 className='sm:text-xl sm:mb-3'>AROMA BROKER는 10년 이상의 노하우와 한결 같은 열정을 갖춘 Roasting Factory입니다.</h2>
           <article>커피 한 잔 속에는 자연이 담겨져 있습니다.
             아로마브로커를 통해 아름다운 자연을 거니세요. 아로마브로커의 향기가 집안에 가득차는 날을 항상 기대하고 있습니다. 우리의 향기가 당신을 행복하게 하길 바랍니다. 
           </article>

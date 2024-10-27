@@ -17,7 +17,10 @@ export interface Menuitemstype {
 }
 
 const menuItems: Menuitemstype = {
-  AROMABROKER: [{ menuname: "About", routeaddress: "about" }],
+  AROMABROKER: [
+    { menuname: "About", routeaddress: "about" },
+    { menuname: "Profile", routeaddress: "profile" }
+  ],
   SHOP: [
     { menuname: "Beans", routeaddress: "shop/beans" },
     { menuname: "DripBag", routeaddress: "shop/dripbag" },
