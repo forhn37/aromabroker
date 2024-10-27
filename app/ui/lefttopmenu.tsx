@@ -8,7 +8,7 @@ export interface MenuItem {
 }
 
 export interface Menuitemstype {
-  ABOUT: MenuItem[];
+  AROMABROKER: MenuItem[];
   BUSINESS: MenuItem[];
   CAFEMENU: MenuItem[];
   CLASS: MenuItem[];
@@ -17,7 +17,7 @@ export interface Menuitemstype {
 }
 
 const menuItems: Menuitemstype = {
-  ABOUT: [{ menuname: "AROMABROKER", routeaddress: "about" }],
+  AROMABROKER: [{ menuname: "About", routeaddress: "about" }],
   SHOP: [
     { menuname: "Beans", routeaddress: "shop/beans" },
     { menuname: "DripBag", routeaddress: "shop/dripbag" },
@@ -25,8 +25,8 @@ const menuItems: Menuitemstype = {
   BUSINESS: [
     { menuname: "컨설팅", routeaddress: "business/consulting" },
     { menuname: "방문시연요청", routeaddress: "business/demonstrationrequest" },
-    { menuname: "원두납품 거래처", routeaddress: "business/beandeliverylist" },
-    { menuname: "디저트납품 거래처", routeaddress: "business/dessertdeliverylist" },
+    { menuname: "원두거래처리스트", routeaddress: "business/beandeliverylist" },
+    { menuname: "디저트거래처리스트", routeaddress: "business/dessertdeliverylist" },
   ],
   CAFEMENU: [
     { menuname: "Coffee", routeaddress: "cafemenu/coffee" },
@@ -63,18 +63,18 @@ export default function LeftTopMenu() {
       {Object.keys(menuItems).map((menu) => (
         <button
           key={menu}
-          className="relative sm:w-1/5 sm:flex sm:justify-center sm:items-center"
+          className="relative sm:w-2/5 sm:flex sm:justify-center sm:items-center"
           onMouseEnter={() => handleMouseEnter(menu)}
           onMouseLeave={handleMouseLeave}
         >
-          <span className="sm:p-4 sm:text-xs md:text-xl">{menu}</span>
+          <span className="sm:p-4 sm:text-xs md:text-base">{menu}</span>
           {openDropdown === menu && (
             <div className="absolute top-full left-0 bg-white shadow-lg p-4 z-10 w-full">
               {(menuItems[menu as keyof Menuitemstype] as MenuItem[]).map((item, index) => (
                 <Link
                   key={index}
                   href={`/${item.routeaddress}`}
-                  className="block p-2 py-4 sm:w-full sm:flex sm:justify-center sm:text-sm md:text-base"
+                  className="block py-4 sm:w-full sm:flex sm:justify-center sm:text-xs md:text-xs"
                 >
                   {item.menuname}
                 </Link>

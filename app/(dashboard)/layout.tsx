@@ -14,11 +14,11 @@ export default function Layout({
 }>) {
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 flex justify-between p-4 sm:p-6 bg-white shadow-sm z-50 sm:w-screen">
+      <header className="fixed top-0 left-0 right-0 flex justify-between sm:py-6 bg-white shadow-sm z-50 sm:w-screen">
         <div className="sm:w-3/5 sm:flex sm:justify-start">
           <div className="flex justify-center sm:px-2 sm:h-12">
             <Link href="/">
-              <div className="relative w-20 h-14 sm:w-40 sm:h-12">
+              <div className="relative w-20 h-14 sm:w-40 sm:h-12 sm:mt-3">
                 <Image
                   src="https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/public/mainlogo.png?t=2024-07-23T06%3A54%3A37.900Z"
                   alt="logo"

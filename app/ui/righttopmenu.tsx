@@ -39,23 +39,23 @@ export default function RightTopMenu() {
   return (
     <>
       {!session ? (
-        <>
+        <div className="sm:mr-4">
           <Link href="/join">
-            <span className="p-6 sm:text-xs md:text-xl">JOIN</span>
+            <span className="p-6 sm:text-xs md:text-lg">JOIN</span>
           </Link>
           <Link href="/login">
-            <span className="p-6 sm:text-xs md:text-xl">LOGIN</span>
+            <span className="p-6 sm:text-xs md:text-lg">LOGIN</span>
           </Link>
-        </>
+        </div>
       ) : (
-        <>
+        <div className="sm:mr-4">
           <Link href="/mypage">
-            <span className="p-6 sm:text-xs md:text-xl">MYPAGE</span>
+            <span className="p-6 sm:text-xs md:text-lg">MYPAGE</span>
           </Link>
-          <button onClick={handleLogout} className="p-6 text-2xl sm:text-xs md:text-xl">
+          <button onClick={handleLogout} className="p-6 text-2xl sm:text-xs md:text-lg">
             LOGOUT
           </button>
-        </>
+        </div>
       )}
     </>
   );

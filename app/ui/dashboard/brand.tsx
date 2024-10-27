@@ -57,8 +57,8 @@ export default function Brand() {
   }, [mapLoaded]);
 
   return (
-    <main className="sm:p-3 flex-col h-screen overflow-hidden">
-      <div className="w-screen p-2 sm:h-1/2 sm:flex sm:flex-row flex-col justify-center items-center sm:mb-5">
+    <main className="sm:p-3 flex-col overflow-hidden">
+      <div className="w-screen p-2 sm:flex sm:flex-row flex-col justify-center items-center sm:mb-5">
         <div className='sm:w-1/4'>
           <h1 className="sm:text-4xl text-2xl font-medium sm:mb-4 mb-2 sm:font-semibold sm:text-right">Aromabroker</h1>
           <article>커피 한 잔 속에는 자연이 담겨져 있습니다.
@@ -69,7 +69,7 @@ export default function Brand() {
           <Image src="/aboutcoffeimage.jpg" alt="coffeimage" width={1280} height={1280}/>
         </div>
       </div>
-      <div className="w-screen p-2 sm:h-1/2 sm:flex sm:flex-row-reverse flex-col justify-center items-center">
+      <div className="w-screen p-2 sm:h-96 sm:flex sm:flex-row-reverse flex-col justify-center items-center">
         <div className='sm:w-1/4'>
           <h1 className="sm:text-4xl text-2xl font-medium sm:mb-4 mb-2 sm:font-semibold ">Shop Information</h1>
           <div>
