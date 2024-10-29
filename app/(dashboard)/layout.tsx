@@ -14,7 +14,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 flex justify-between sm:py-6 bg-white shadow-sm z-50 sm:w-screen">
+      <header className="fixed top-0 left-0 right-0 flex justify-between sm:py-6 bg-white shadow-sm z-50 sm:w-screen p-4 sm:p-0">
         <div className="sm:w-3/5 sm:flex sm:justify-start">
           <div className="flex justify-center sm:px-2 sm:h-12">
             <Link href="/">
