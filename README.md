@@ -1,8 +1,26 @@
 # Aromabroker
 [AROMABROKER.COM](https://aromabroker.com/)
 
-아로마브로커 프로젝트에 오신 것을 환영합니다! 이 프로젝트는 Next.js로 구축되었으며, 오프라인 매장 aromabroker의 홈페이지이자 커피 애호가들을 위한 종합 플랫폼을 제공합니다. 실시간 웹사이트를 방문해보세요:)
+아로마브로커 프로젝트에 오신 것을 환영합니다! 오프라인 매장 aromabroker의 홈페이지이자 커피 애호가들을 위한 종합 플랫폼을 제공합니다. 
+이 프로젝트는 Next.js로 구축되었으며, 동일한 도메인으로 반응형 웹 디자인으로 웹과 모바일에 구분없이 컨텐츠를 즐길 수 있습니다. 
 
+### WEB
+<div align="center">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capture1.jpg" width="45%" alt="Image 1">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capture2.jpg" width="45%" alt="Image 1">
+</div>
+<div align="center">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capture3.jpg" width="45%" alt="Image 1">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capture4.jpg" width="45%" alt="Image 1">
+</div>
+
+### MOBILE
+<div align="center">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capturemobile1.jpg" width="20%" alt="Image 1">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capturemobile2.jpg" width="20%" alt="Image 1">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capturemobile3.jpg" width="20%" alt="Image 1">
+  <img src="https://github.com/forhn37/aromabroker/blob/main/public/capturemobile4.jpg" width="20%" alt="Image 1">
+</div>
 
 ## 목차
 
