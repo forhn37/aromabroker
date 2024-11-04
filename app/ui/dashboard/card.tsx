@@ -85,7 +85,7 @@ export default function Card({ category, description, datatables, imagename }: C
         </div> */}
         <div style={{ width: `${25 * datatables.length}vw` }} className="flex sm:mt-10" ref={cardRef}>
           {datatables.map((item, index) => (
-            <Carddetail key={index} item={item as Bean} ismobileweb={ismobileweb} />
+            <Carddetail key={index} item={item} ismobileweb={ismobileweb} />
           ))}
         </div>
         <div className="flex justify-center w-screen mt-3">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'aromabroker', url: 'https://aromabroker.com' }],
   robots: 'https://aromabroker.com',
   openGraph: {
-    title: '아로마브로커(aromabroker)',
+    title: '대전 월평동 커피 명가 - 아로마브로커(aromabroker)',
     description: '신선한 원두와 고품질의 로스팅을 경험하세요. 대전에서 최고의 커피를 찾으신다면 아로마브로커를 방문하세요.',
     url: 'https://aromabroker.com',
     type: 'website',
