@@ -23,7 +23,7 @@ export default function Layout({
                   src="https://qblzpggxwtpkzdhsxtxh.supabase.co/storage/v1/object/public/aromabrokerbucket/public/mainlogo.png?t=2024-07-23T06%3A54%3A37.900Z"
                   alt="logo"
                   fill
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain" }} className="sm:-mt-3 sm:-ml-1"
                 />
               </div>
             </Link>
